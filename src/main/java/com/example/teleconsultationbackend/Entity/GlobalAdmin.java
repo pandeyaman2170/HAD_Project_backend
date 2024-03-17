@@ -1,4 +1,5 @@
 package com.example.teleconsultationbackend.Entity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -7,6 +8,7 @@ import java.util.List;
 
 @Data
 @Entity
+
 @Table(name = "global_admin")
 public class GlobalAdmin {
     @Id
@@ -18,5 +20,6 @@ public class GlobalAdmin {
     private String email;
 
     @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Hospital> hospitals = new ArrayList<>();
 }
