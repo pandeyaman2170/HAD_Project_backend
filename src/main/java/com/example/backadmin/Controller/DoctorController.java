@@ -2,9 +2,7 @@ package com.example.backadmin.Controller;
 
 
 import com.example.backadmin.Entity.Doctor;
-import com.example.backadmin.Entity.Hospital;
 import com.example.backadmin.Services.DoctorService;
-import com.example.backadmin.Services.HospitalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +27,11 @@ public class DoctorController {
         return doctorOptional.map(doctor -> new ResponseEntity<>(doctor, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
+    @GetMapping("/get_doctor_list")
+    public ResponseEntity<List<Doctor>> getDoctors() {
+        List<Doctor> doctors = doctorService.getAllDoctors();
+        return ResponseEntity.ok(doctors);
+    }
 
     @PostMapping("/add_doctor")
     public ResponseEntity<Doctor> createDoctor(@RequestBody Doctor doctor) {
@@ -46,8 +49,6 @@ public class DoctorController {
         doctorService.deleteDoctor(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-
-
 
 
 }
