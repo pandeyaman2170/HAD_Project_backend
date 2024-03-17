@@ -20,4 +20,7 @@ public class Hospital {
     @ManyToOne
     @JoinColumn(name = "global_admin_id")  // Foreign key column in hospitals table
     private GlobalAdmin admin;
+
+    @OneToMany(mappedBy = "hospital", cascade = CascadeType.ALL)
+    private List<Doctor> doctors;
 }

@@ -2,15 +2,13 @@ package com.example.teleconsultationbackend.Entity;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Date;
 
 
 @Entity
+@Data
 @Table(name = "users")
 public class User {
 
@@ -32,6 +30,10 @@ public class User {
     private String address;
     private String city;
     private Long pincode;
+
+    @OneToOne(mappedBy = "user")
+    private Doctor doctor;
+
 
     // Getters and setters
 

@@ -5,5 +5,5 @@ import com.example.teleconsultationbackend.Entity.Hospital;
 
 public interface HospitalService {
     void createHospital(Long admin_id,Hospital hospital);
-
+    void addDoctor(Long hospitalId, Doctor doctor);
 }

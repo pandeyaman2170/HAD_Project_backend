@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 
+@Data
 @Entity
 @Table(name = "Doctors")
 public class Doctor{
@@ -29,4 +30,11 @@ public class Doctor{
 //    @JoinColumn(name = "hospital_id")
 //    private Hospital hospital;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "hospital_id")
+    private Hospital hospital;
 }
