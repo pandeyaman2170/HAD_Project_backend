@@ -1,11 +1,13 @@
 package com.example.teleconsultationbackend.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.List;
 @Data
 @Entity
+
 @Table(name = "hospitals")
 public class Hospital {
     @Id
@@ -17,6 +19,7 @@ public class Hospital {
 
     @ManyToOne
     @JoinColumn(name = "global_admin_id")  // Foreign key column in hospitals table
+    @JsonIgnore
     private GlobalAdmin admin;
 
 }
