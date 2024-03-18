@@ -5,9 +5,29 @@ import com.example.teleconsultationbackend.Service.HospitalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
+@CrossOrigin
 public class HospitalController {
 
+    @Autowired
+    private HospitalService hospitalService;
+
+    @PostMapping("/hospital_admin/add_doctor/{hospital_id}")
+    public String addDoctor(@PathVariable Long hospital_id, @RequestBody Doctor doctor){
+        System.out.println(doctor);
+        hospitalService.addDoctor(hospital_id,doctor);
+        return "doctor added succesfully!!";
+    }
+
+    @PostMapping("add/{admin_id}")
+    public String addHospital(@PathVariable Long admin_id, @RequestBody Hospital hospital)
+    {
+        hospitalService.createHospital(admin_id,hospital);
+        return "done";
+    }
+//    @PostMapping("/hospital_admin/add_doctor/{hospital_id}")
+//    public String addHospital(@PathVariable Long hospital_id, @RequestBody Doctor doctor){
+//        hospitalService.createDoctor(hospital_id, doctor);
+//        return "Done";
+//    }
 }

@@ -8,6 +8,7 @@ import java.util.Date;
 
 @Data
 @Entity
+@Data
 @Table(name = "users")
 public class User {
 
@@ -29,6 +30,10 @@ public class User {
     private String address;
     private String city;
     private Long pincode;
+
+    @OneToOne(mappedBy = "user")
+    private Doctor doctor;
+
 
     // Getters and setters
 
