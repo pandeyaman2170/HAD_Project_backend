@@ -41,7 +41,7 @@ public class DoctorService {
             existingDoctor.setEmail(updatedDoctor.getEmail());
             existingDoctor.setDepartment(updatedDoctor.getDepartment());
             existingDoctor.setPincode(updatedDoctor.getPincode());
-            existingDoctor.setHospitalId(updatedDoctor.getHospitalId());
+//            existingDoctor.setHospitalId(updatedDoctor.getHospitalId());
 
             return doctorRepository.save(existingDoctor);
         } else {
