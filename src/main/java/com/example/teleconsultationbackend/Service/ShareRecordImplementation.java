@@ -1,10 +1,7 @@
 package com.example.teleconsultationbackend.Service;
 
 import com.example.teleconsultationbackend.Entity.Hospital;
-import com.example.teleconsultationbackend.Entity.Patient;
 import com.example.teleconsultationbackend.Entity.ShareRecordHospital;
-import com.example.teleconsultationbackend.Repository.HospitalInterface;
-import com.example.teleconsultationbackend.Repository.PatientRepository;
 import com.example.teleconsultationbackend.Repository.ShareRecordRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +11,6 @@ import org.springframework.stereotype.Service;
 public class ShareRecordImplementation implements ShareRecordService{
     @Autowired
     private ShareRecordRepository shareRecordRepository;
-    @Autowired
-    private HospitalInterface hospitalInterface;
-
     @Override
     @Transactional
     public void createShareRecord(Hospital sending, Hospital receiving){
