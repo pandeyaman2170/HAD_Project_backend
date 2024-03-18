@@ -1,13 +1,7 @@
 package com.example.teleconsultationbackend.Service;
 
-import com.example.teleconsultationbackend.Entity.Doctor;
-import com.example.teleconsultationbackend.Entity.GlobalAdmin;
-import com.example.teleconsultationbackend.Entity.Hospital;
-import com.example.teleconsultationbackend.Entity.User;
-import com.example.teleconsultationbackend.Repository.DoctorRepository;
-import com.example.teleconsultationbackend.Repository.GlobalAdminRepository;
-import com.example.teleconsultationbackend.Repository.HospitalRepository;
-import com.example.teleconsultationbackend.Repository.UserRepository;
+import com.example.teleconsultationbackend.Entity.*;
+import com.example.teleconsultationbackend.Repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,6 +21,8 @@ public class HospitalServiceImplementation implements HospitalService {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    private DepartmentRepository departmentRepository;
 
     @Override
     @Transactional
@@ -58,5 +54,15 @@ public class HospitalServiceImplementation implements HospitalService {
             throw new IllegalArgumentException("Hospital with id " + hospital_id + " not found.");
         }
 
+    }
+    @Override
+    public void addDepartments(Long hospitalId, Department department){
+        Optional<Hospital> optionalHospital= hospitalRepository.findById(hospitalId);
+        if(optionalHospital.isPresent()){
+            Hospital hospital= optionalHospital.get();
+            hospital.getDepartments().add(department);
+            System.out.println(department.getName());
+            departmentRepository.save(department);
+        }
     }
 }
