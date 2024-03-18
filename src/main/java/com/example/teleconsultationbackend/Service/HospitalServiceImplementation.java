@@ -1,17 +1,12 @@
 package com.example.teleconsultationbackend.Service;
 
-import com.example.teleconsultationbackend.Entity.Doctor;
-import com.example.teleconsultationbackend.Entity.GlobalAdmin;
-import com.example.teleconsultationbackend.Entity.Hospital;
-import com.example.teleconsultationbackend.Entity.User;
-import com.example.teleconsultationbackend.Repository.DoctorRepository;
-import com.example.teleconsultationbackend.Repository.GlobalAdminRepository;
-import com.example.teleconsultationbackend.Repository.HospitalRepository;
-import com.example.teleconsultationbackend.Repository.UserRepository;
+import com.example.teleconsultationbackend.Entity.*;
+import com.example.teleconsultationbackend.Repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -26,6 +21,9 @@ public class HospitalServiceImplementation implements HospitalService {
     DoctorRepository doctorRepository;
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    DepartmentRepository departmentRepository;
 
 
     @Override
@@ -42,21 +40,41 @@ public class HospitalServiceImplementation implements HospitalService {
         }
     }
 
+
+    //saving the doctor details in doctor, user and department table;
     @Override
     public void addDoctor(Long hospital_id, Doctor doctor) {
         Optional<Hospital> optionalHospital = hospitalRepository.findById(hospital_id);
-        if(optionalHospital.isPresent()){
+        Optional<Department> optionalDepartment = departmentRepository.findById(doctor.getDepartment().getId());
+        if(optionalHospital.isPresent() && optionalDepartment.isPresent()){
             Hospital hospital=optionalHospital.get();
+            Department department=optionalDepartment.get();
+            doctor.setDepartment(department);
             doctor.setHospital(hospital);
             User user = doctor.getUser();
+//            Department department = doctor.getDepartment();
+//            if(doctor.getId()==null){
+//
+//            }
             if(user.getId()==null){
                 userRepository.save(user);
             }
             doctorRepository.save(doctor);
         }
         else{
-            throw new IllegalArgumentException("Hospital with id " + hospital_id + " not found.");
+            throw new IllegalArgumentException("Hospital with id  or department with id " + hospital_id + ": "+doctor.getDepartment().getId()+ "not found.");
         }
 
+    }
+
+    @Override
+    public void addDepartments(Long hospitalId, Department department){
+        Optional<Hospital> optionalHospital= hospitalRepository.findById(hospitalId);
+        if(optionalHospital.isPresent()){
+            Hospital hospital= optionalHospital.get();
+            hospital.getDepartments().add(department);
+            System.out.println(department.getName());
+            departmentRepository.save(department);
+        }
     }
 }

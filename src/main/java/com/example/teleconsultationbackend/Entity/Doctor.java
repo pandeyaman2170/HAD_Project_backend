@@ -18,7 +18,6 @@ public class Doctor{
     private Long id;
 
     private String registrationNumber;
-    private  String department;
     private boolean online_status;
 
 
@@ -37,4 +36,8 @@ public class Doctor{
     @ManyToOne
     @JoinColumn(name = "hospital_id")
     private Hospital hospital;
+
+    @ManyToOne
+    @JoinColumn(name="department_id")
+    private Department department;
 }

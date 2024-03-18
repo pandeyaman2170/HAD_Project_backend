@@ -1,4 +1,5 @@
 package com.example.teleconsultationbackend.Controller;
+import com.example.teleconsultationbackend.Entity.Department;
 import com.example.teleconsultationbackend.Entity.Doctor;
 import com.example.teleconsultationbackend.Entity.Hospital;
 import com.example.teleconsultationbackend.Service.HospitalService;
@@ -25,6 +26,16 @@ public class HospitalController {
         hospitalService.createHospital(admin_id,hospital);
         return "done";
     }
+
+    @PostMapping("/hospital_admin/add_depertment/{hospital_id}")
+    public String adddepartment(@PathVariable Long hospital_id,
+                                @RequestBody Department department){
+        System.out.println(department);
+        hospitalService.addDepartments(hospital_id,department);
+        return "Department Added sussefully";
+    }
+
+
 //    @PostMapping("/hospital_admin/add_doctor/{hospital_id}")
 //    public String addHospital(@PathVariable Long hospital_id, @RequestBody Doctor doctor){
 //        hospitalService.createDoctor(hospital_id, doctor);
