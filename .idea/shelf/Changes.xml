@@ -1,0 +1,9 @@
+<changelist name="Changes" date="1710682012193" recycled="false">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/shelved.patch" />
+  <option name="DESCRIPTION" value="Changes" />
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/example/teleconsultationbackend/Controller/HospitalController.class" />
+    <option name="AFTER_PATH" value="target/classes/com/example/teleconsultationbackend/Controller/HospitalController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/HospitalController.class" />
+  </binary>
+</changelist>

@@ -1,0 +1,410 @@
+Index: main/java/com/example/backadmin/BackadminApplication.java
+===================================================================
+diff --git a/main/java/com/example/backadmin/BackadminApplication.java b/main/java/com/example/backadmin/BackadminApplication.java
+deleted file mode 100644
+--- a/main/java/com/example/backadmin/BackadminApplication.java	(revision c68c96189d6690e4082c4a8d23136e5c8d9472b8)
++++ /dev/null	(revision c68c96189d6690e4082c4a8d23136e5c8d9472b8)
+@@ -1,13 +0,0 @@
+-package com.example.backadmin;
+-
+-import org.springframework.boot.SpringApplication;
+-import org.springframework.boot.autoconfigure.SpringBootApplication;
+-
+-@SpringBootApplication
+-public class BackadminApplication {
+-
+-	public static void main(String[] args) {
+-		SpringApplication.run(BackadminApplication.class, args);
+-	}
+-
+-}
+Index: main/java/com/example/backadmin/Entity/Doctor.java
+===================================================================
+diff --git a/main/java/com/example/backadmin/Entity/Doctor.java b/main/java/com/example/backadmin/Entity/Doctor.java
+deleted file mode 100644
+--- a/main/java/com/example/backadmin/Entity/Doctor.java	(revision c68c96189d6690e4082c4a8d23136e5c8d9472b8)
++++ /dev/null	(revision c68c96189d6690e4082c4a8d23136e5c8d9472b8)
+@@ -1,22 +0,0 @@
+-package com.example.backadmin.Entity;
+-
+-import jakarta.persistence.*;
+-import lombok.*;
+-
+-@Entity
+-@Table(name = "Doctor")
+-@Getter
+-@Setter
+-@AllArgsConstructor
+-@NoArgsConstructor
+-@ToString
+-public class Doctor {
+-
+-    @Id
+-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+-    private Long id;
+-
+-    private String name;
+-    private Long hospitalId;
+-
+-}
+Index: main/java/com/example/backadmin/Controller/DoctorController.java
+===================================================================
+diff --git a/main/java/com/example/backadmin/Controller/DoctorController.java b/main/java/com/example/backadmin/Controller/DoctorController.java
+deleted file mode 100644
+--- a/main/java/com/example/backadmin/Controller/DoctorController.java	(revision c68c96189d6690e4082c4a8d23136e5c8d9472b8)
++++ /dev/null	(revision c68c96189d6690e4082c4a8d23136e5c8d9472b8)
+@@ -1,53 +0,0 @@
+-package com.example.backadmin.Controller;
+-
+-
+-import com.example.backadmin.Entity.Doctor;
+-import com.example.backadmin.Entity.Hospital;
+-import com.example.backadmin.Services.DoctorService;
+-import com.example.backadmin.Services.HospitalService;
+-import org.springframework.beans.factory.annotation.Autowired;
+-import org.springframework.http.HttpStatus;
+-import org.springframework.http.ResponseEntity;
+-import org.springframework.web.bind.annotation.*;
+-
+-import java.util.List;
+-import java.util.Optional;
+-
+-@RestController
+-@CrossOrigin
+-@RequestMapping("/api/hospitaladmin")
+-public class DoctorController {
+-    @Autowired
+-    private DoctorService  doctorService;
+-
+-    @GetMapping
+-    public List<Doctor> getAllDoctors() {return doctorService.getAllDoctors();}
+-
+-    @GetMapping("/{id}")
+-    public ResponseEntity<Doctor> getDoctorById(@PathVariable Long id) {
+-        Optional<Doctor> doctorOptional = doctorService.getDoctorById(id);
+-        return doctorOptional.map(doctor -> new ResponseEntity<>(doctor, HttpStatus.OK))
+-                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+-    }
+-
+-    @PostMapping
+-    public ResponseEntity<Doctor> createDoctor(@RequestBody Doctor doctor) {
+-        Doctor createdDoctor = doctorService.createDoctor(doctor);
+-        System.out.println("+++++++++++++++++++++");
+-        return new ResponseEntity<>(createdDoctor, HttpStatus.CREATED);
+-    }
+-    @PutMapping("/{id}")
+-    public ResponseEntity<Doctor> updateDoctor(@RequestBody Doctor updatedDoctor, @PathVariable Long id) {
+-        Doctor updatedDoctorResult = doctorService.updateDoctor(updatedDoctor, id);
+-        return new ResponseEntity<>(updatedDoctorResult, HttpStatus.OK);
+-    }
+-    @DeleteMapping("/{id}")
+-    public ResponseEntity<Void> deleteDoctor(@PathVariable Long id) {
+-        doctorService.deleteDoctor(id);
+-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+-    }
+-
+-
+-
+-
+-}
+Index: main/java/com/example/backadmin/Repository/DoctorRepository.java
+===================================================================
+diff --git a/main/java/com/example/backadmin/Repository/DoctorRepository.java b/main/java/com/example/backadmin/Repository/DoctorRepository.java
+deleted file mode 100644
+--- a/main/java/com/example/backadmin/Repository/DoctorRepository.java	(revision c68c96189d6690e4082c4a8d23136e5c8d9472b8)
++++ /dev/null	(revision c68c96189d6690e4082c4a8d23136e5c8d9472b8)
+@@ -1,9 +0,0 @@
+-package com.example.backadmin.Repository;
+-
+-import com.example.backadmin.Entity.Doctor;
+-import org.springframework.data.jpa.repository.JpaRepository;
+-
+-
+-public interface DoctorRepository extends JpaRepository<Doctor,Long> {
+-
+-}
+Index: main/java/com/example/backadmin/Services/DoctorService.java
+===================================================================
+diff --git a/main/java/com/example/backadmin/Services/DoctorService.java b/main/java/com/example/backadmin/Services/DoctorService.java
+deleted file mode 100644
+--- a/main/java/com/example/backadmin/Services/DoctorService.java	(revision c68c96189d6690e4082c4a8d23136e5c8d9472b8)
++++ /dev/null	(revision c68c96189d6690e4082c4a8d23136e5c8d9472b8)
+@@ -1,45 +0,0 @@
+-package com.example.backadmin.Services;
+-
+-import com.example.backadmin.Entity.Doctor;
+-import com.example.backadmin.Entity.Hospital;
+-import com.example.backadmin.Repository.DoctorRepository;
+-import org.springframework.beans.factory.annotation.Autowired;
+-import org.springframework.stereotype.Service;
+-
+-import javax.print.Doc;
+-import java.util.List;
+-import java.util.Optional;
+-
+-@Service
+-public class DoctorService {
+-
+-    @Autowired
+-    private DoctorRepository doctorRepository;
+-
+-    public List<Doctor> getAllDoctors() {return doctorRepository.findAll();}
+-    public Optional<Doctor> getDoctorById(Long id) {return doctorRepository.findById(id);}
+-    public Doctor createDoctor(Doctor doctor) {
+-        System.out.println("****************************");
+-        return doctorRepository.save(doctor);
+-
+-    }
+-    public Doctor updateDoctor(Doctor updatedDoctor, Long id) {
+-        Optional<Doctor> existingDoctorOptional = doctorRepository.findById(id);
+-
+-        if (existingDoctorOptional.isPresent()) {
+-            Doctor existingDoctor = existingDoctorOptional.get();
+-            existingDoctor.setName(updatedDoctor.getName());
+-            existingDoctor.setHospitalId(updatedDoctor.getHospitalId());
+-            return doctorRepository.save(existingDoctor);
+-        } else {
+-            throw new RuntimeException("Hospital not found with id: " + id);
+-        }
+-    }
+-
+-    public void deleteDoctor(Long id) {
+-        doctorRepository.deleteById(id);
+-    }
+-
+-
+-
+-}
+Index: main/java/com/example/backadmin/Entity/Hospital.java
+===================================================================
+diff --git a/main/java/com/example/backadmin/Entity/Hospital.java b/main/java/com/example/backadmin/Entity/Hospital.java
+deleted file mode 100644
+--- a/main/java/com/example/backadmin/Entity/Hospital.java	(revision c68c96189d6690e4082c4a8d23136e5c8d9472b8)
++++ /dev/null	(revision c68c96189d6690e4082c4a8d23136e5c8d9472b8)
+@@ -1,25 +0,0 @@
+-package com.example.backadmin.Entity;
+-
+-import jakarta.persistence.*;
+-import lombok.*;
+-
+-import java.util.List;
+-import lombok.Data;
+-import org.springframework.boot.autoconfigure.domain.EntityScan;
+-
+-@Entity
+-@Table(name = "Hospital")
+-@NoArgsConstructor
+-@AllArgsConstructor
+-@ToString
+-@Getter
+-@Setter
+-public class Hospital {
+-
+-    @Id
+-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+-    private Long id;
+-
+-    private String name;
+-    private String location;
+-}
+\ No newline at end of file
+Index: main/java/com/example/backadmin/Controller/HospitalController.java
+===================================================================
+diff --git a/main/java/com/example/backadmin/Controller/HospitalController.java b/main/java/com/example/backadmin/Controller/HospitalController.java
+deleted file mode 100644
+--- a/main/java/com/example/backadmin/Controller/HospitalController.java	(revision c68c96189d6690e4082c4a8d23136e5c8d9472b8)
++++ /dev/null	(revision c68c96189d6690e4082c4a8d23136e5c8d9472b8)
+@@ -1,50 +0,0 @@
+-package com.example.backadmin.Controller;
+-
+-import com.example.backadmin.Entity.Hospital;
+-import com.example.backadmin.Services.HospitalService;
+-import org.springframework.beans.factory.annotation.Autowired;
+-import org.springframework.http.HttpStatus;
+-import org.springframework.http.ResponseEntity;
+-import org.springframework.web.bind.annotation.*;
+-import java.util.List;
+-import java.util.Optional;
+-
+-@RestController
+-@CrossOrigin
+-@RequestMapping("/api/hospitals")
+-public class HospitalController {
+-
+-    @Autowired
+-    private HospitalService hospitalService;
+-
+-    @GetMapping
+-    public List<Hospital> getAllHospitals() {
+-        return hospitalService.getAllHospitals();
+-    }
+-
+-    @GetMapping("/{id}")
+-    public ResponseEntity<Hospital> getHospitalById(@PathVariable Long id) {
+-        Optional<Hospital> hospitalOptional = hospitalService.getHospitalById(id);
+-        return hospitalOptional.map(hospital -> new ResponseEntity<>(hospital, HttpStatus.OK))
+-                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+-    }
+-
+-    @PostMapping
+-    public ResponseEntity<Hospital> createHospital(@RequestBody Hospital hospital) {
+-        Hospital createdHospital = hospitalService.createHospital(hospital);
+-        System.out.println("+++++++++++++++++++++");
+-        return new ResponseEntity<>(createdHospital, HttpStatus.CREATED);
+-    }
+-
+-    @PutMapping("/{id}")
+-    public ResponseEntity<Hospital> updateHospital(@RequestBody Hospital updatedHospital, @PathVariable Long id) {
+-        Hospital updatedHospitalResult = hospitalService.updateHospital(updatedHospital, id);
+-        return new ResponseEntity<>(updatedHospitalResult, HttpStatus.OK);
+-    }
+-
+-    @DeleteMapping("/{id}")
+-    public ResponseEntity<Void> deleteHospital(@PathVariable Long id) {
+-        hospitalService.deleteHospital(id);
+-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+-    }
+-}
+Index: main/java/com/example/backadmin/Repository/HospitalRepository.java
+===================================================================
+diff --git a/main/java/com/example/backadmin/Repository/HospitalRepository.java b/main/java/com/example/backadmin/Repository/HospitalRepository.java
+deleted file mode 100644
+--- a/main/java/com/example/backadmin/Repository/HospitalRepository.java	(revision c68c96189d6690e4082c4a8d23136e5c8d9472b8)
++++ /dev/null	(revision c68c96189d6690e4082c4a8d23136e5c8d9472b8)
+@@ -1,9 +0,0 @@
+-package com.example.backadmin.Repository;
+-
+-import com.example.backadmin.Entity.Hospital;
+-import org.springframework.data.jpa.repository.JpaRepository;
+-import org.springframework.stereotype.Repository;
+-
+-@Repository
+-public interface HospitalRepository extends JpaRepository<Hospital, Long> {
+-}
+Index: main/java/com/example/backadmin/Services/HospitalService.java
+===================================================================
+diff --git a/main/java/com/example/backadmin/Services/HospitalService.java b/main/java/com/example/backadmin/Services/HospitalService.java
+deleted file mode 100644
+--- a/main/java/com/example/backadmin/Services/HospitalService.java	(revision c68c96189d6690e4082c4a8d23136e5c8d9472b8)
++++ /dev/null	(revision c68c96189d6690e4082c4a8d23136e5c8d9472b8)
+@@ -1,47 +0,0 @@
+-package com.example.backadmin.Services;
+-
+-import com.example.backadmin.Entity.Hospital;
+-import com.example.backadmin.Repository.HospitalRepository;
+-import org.springframework.beans.factory.annotation.Autowired;
+-import org.springframework.stereotype.Service;
+-import java.util.List;
+-import java.util.Optional;
+-
+-@Service
+-public class HospitalService {
+-
+-    @Autowired
+-    private HospitalRepository hospitalRepository;
+-
+-    public List<Hospital> getAllHospitals() {
+-        return hospitalRepository.findAll();
+-    }
+-
+-    public Optional<Hospital> getHospitalById(Long id) {
+-        return hospitalRepository.findById(id);
+-    }
+-
+-    public Hospital createHospital(Hospital hospital) {
+-        System.out.println("****************************");
+-        return hospitalRepository.save(hospital);
+-
+-    }
+-
+-    public Hospital updateHospital(Hospital updatedHospital, Long id) {
+-        Optional<Hospital> existingHospitalOptional = hospitalRepository.findById(id);
+-
+-        if (existingHospitalOptional.isPresent()) {
+-            Hospital existingHospital = existingHospitalOptional.get();
+-            existingHospital.setName(updatedHospital.getName());
+-            existingHospital.setLocation(updatedHospital.getLocation());
+-            return hospitalRepository.save(existingHospital);
+-        } else {
+-            throw new RuntimeException("Hospital not found with id: " + id);
+-        }
+-    }
+-
+-    public void deleteHospital(Long id) {
+-        hospitalRepository.deleteById(id);
+-    }
+-}
+-
+Index: .idea/dataSources.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"DataSourceManagerImpl\" format=\"xml\" multifile-model=\"true\">\r\n    <data-source source=\"LOCAL\" name=\"teleBackend@localhost\" uuid=\"2fdd4c1b-7bd8-43fa-973d-e14dd17a6f4e\">\r\n      <driver-ref>mysql.8</driver-ref>\r\n      <synchronize>true</synchronize>\r\n      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>\r\n      <jdbc-url>jdbc:mysql://localhost:3306/teleBackend</jdbc-url>\r\n      <working-dir>$ProjectFileDir$</working-dir>\r\n    </data-source>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/dataSources.xml b/.idea/dataSources.xml
+--- a/.idea/dataSources.xml	(revision c68c96189d6690e4082c4a8d23136e5c8d9472b8)
++++ b/.idea/dataSources.xml	(date 1710681308091)
+@@ -1,11 +1,11 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+-    <data-source source="LOCAL" name="teleBackend@localhost" uuid="2fdd4c1b-7bd8-43fa-973d-e14dd17a6f4e">
++    <data-source source="LOCAL" name="teleBackend" uuid="9f3d54ba-5dd1-4069-ae6b-9fff243eaa40">
+       <driver-ref>mysql.8</driver-ref>
+       <synchronize>true</synchronize>
+       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+-      <jdbc-url>jdbc:mysql://localhost:3306/teleBackend</jdbc-url>
++      <jdbc-url>jdbc:mysql://localhost:3306</jdbc-url>
+       <working-dir>$ProjectFileDir$</working-dir>
+     </data-source>
+   </component>
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"CompilerConfiguration\">\r\n    <annotationProcessing>\r\n      <profile default=\"true\" name=\"Default\" enabled=\"true\" />\r\n      <profile name=\"Maven default annotation processors profile\" enabled=\"true\">\r\n        <sourceOutputDir name=\"target/generated-sources/annotations\" />\r\n        <sourceTestOutputDir name=\"target/generated-test-sources/test-annotations\" />\r\n        <outputRelativeToContentRoot value=\"true\" />\r\n        <module name=\"TeleConsultationBackend\" />\r\n      </profile>\r\n    </annotationProcessing>\r\n  </component>\r\n  <component name=\"JavacSettings\">\r\n    <option name=\"ADDITIONAL_OPTIONS_OVERRIDE\">\r\n      <module name=\"TeleConsultationBackend\" options=\"-parameters\" />\r\n    </option>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/compiler.xml b/.idea/compiler.xml
+--- a/.idea/compiler.xml	(revision c68c96189d6690e4082c4a8d23136e5c8d9472b8)
++++ b/.idea/compiler.xml	(date 1710680806387)
+@@ -7,6 +7,7 @@
+         <sourceOutputDir name="target/generated-sources/annotations" />
+         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+         <outputRelativeToContentRoot value="true" />
++        <module name="backadmin" />
+         <module name="TeleConsultationBackend" />
+       </profile>
+     </annotationProcessing>
+@@ -14,6 +15,7 @@
+   <component name="JavacSettings">
+     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+       <module name="TeleConsultationBackend" options="-parameters" />
++      <module name="backadmin" options="-parameters" />
+     </option>
+   </component>
+ </project>
+\ No newline at end of file
+Index: target/classes/application.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>spring.application.name=TeleConsultationBackend\r\nspring.datasource.url=jdbc:mysql://localhost:3306/teleBackend\r\nspring.datasource.username=alex\r\nspring.datasource.password=Rushi@46\r\nspring.jpa.hibernate.ddl-auto=update\r\nserver.port=8090\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>ISO-8859-1
+===================================================================
+diff --git a/target/classes/application.properties b/target/classes/application.properties
+--- a/target/classes/application.properties	(revision c68c96189d6690e4082c4a8d23136e5c8d9472b8)
++++ b/target/classes/application.properties	(date 1710681083481)
+@@ -1,6 +1,8 @@
+ spring.application.name=TeleConsultationBackend
+-spring.datasource.url=jdbc:mysql://localhost:3306/teleBackend
+-spring.datasource.username=alex
+-spring.datasource.password=Rushi@46
++spring.datasource.url=jdbc:mysql://localhost:3306/teleBackend?createDatabaseIfNotExist=true
++spring.datasource.username=root
++spring.datasource.password=Aman@1525
+ spring.jpa.hibernate.ddl-auto=update
++spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
++spring.datasource.initialization-mode=always
+ server.port=8090
