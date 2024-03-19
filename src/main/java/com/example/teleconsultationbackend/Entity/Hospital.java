@@ -1,5 +1,6 @@
 package com.example.teleconsultationbackend.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
@@ -18,6 +19,7 @@ public class Hospital {
     private String location;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "global_admin_id")  // Foreign key column in hospitals table
     private GlobalAdmin admin;
 
