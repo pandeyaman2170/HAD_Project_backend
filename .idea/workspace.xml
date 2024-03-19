@@ -22,7 +22,6 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -64,6 +63,15 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="TeleConsultationBackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="TeleConsultationBackend" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.teleconsultationbackend.TeleConsultationBackendApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -75,6 +83,7 @@
       <workItem from="1710778375688" duration="441000" />
       <workItem from="1710778821006" duration="104000" />
       <workItem from="1710778928187" duration="941000" />
+      <workItem from="1710828339405" duration="4771000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <option name="closed" value="true" />
