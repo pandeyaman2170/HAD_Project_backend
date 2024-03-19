@@ -13,12 +13,12 @@ public class GlobalAdminController {
     @Autowired
     private GlobalAdminService globalAdminService;
 
-//    @PostMapping("add/{admin_id}")
-//    public String addHospital(@PathVariable Long admin_id, @RequestBody Hospital hospital)
-//    {
-//        globalAdminService.createHospital(admin_id,hospital);
-//        return "done";
-//    }
+    @PostMapping("add/{admin_id}")
+    public String addHospital(@PathVariable Long admin_id, @RequestBody Hospital hospital)
+    {
+        globalAdminService.createHospital(admin_id,hospital);
+        return "done";
+    }
 
     @GetMapping("view/{admin_id}")
     public List<Hospital> viewHospital(@PathVariable Long admin_id)
