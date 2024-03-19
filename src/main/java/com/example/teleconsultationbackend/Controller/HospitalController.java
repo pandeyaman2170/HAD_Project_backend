@@ -20,13 +20,6 @@ public class HospitalController {
         return "doctor added succesfully!!";
     }
 
-    @PostMapping("add/{admin_id}")
-    public String addHospital(@PathVariable Long admin_id, @RequestBody Hospital hospital)
-    {
-        hospitalService.createHospital(admin_id,hospital);
-        return "done";
-    }
-
     @PostMapping("/hospital_admin/add_depertment/{hospital_id}")
     public String adddepartment(@PathVariable Long hospital_id,
                                 @RequestBody Department department){
