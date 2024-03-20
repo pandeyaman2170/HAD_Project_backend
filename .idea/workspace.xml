@@ -107,6 +107,7 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+}]]></component>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
