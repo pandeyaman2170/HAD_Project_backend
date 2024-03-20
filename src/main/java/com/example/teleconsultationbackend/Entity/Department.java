@@ -23,4 +23,6 @@ public class Department {
     @ManyToMany(mappedBy = "departments",cascade = CascadeType.ALL)
     private List<Hospital> hospitals;
 
+    @OneToOne(mappedBy = "department")
+    private Queues queues;
 }
