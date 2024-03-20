@@ -16,4 +16,8 @@ public class Patient{
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "queue_id")
+    private Queues queues;
 }
