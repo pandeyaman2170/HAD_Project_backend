@@ -17,6 +17,7 @@ public class Hospital {
 
     private String name;
     private String location;
+    private String phone;
 
     @ManyToOne
     @JsonIgnore
