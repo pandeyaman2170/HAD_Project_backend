@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 public class GlobalAdminController {
     @Autowired
     private GlobalAdminService globalAdminService;
@@ -41,4 +42,26 @@ public class GlobalAdminController {
         return "Deleted";
 
     }
+
+    //--------------------------query for data visualization.---------------------------------
+    @GetMapping("totalHospitals")
+    public int totalHospitals()
+    {
+        return globalAdminService.totalHospitals();
+    }
+
+    @GetMapping("totalDoctors")
+    public int totalDoctors()
+    {
+        return globalAdminService.totalDoctors();
+    }
+
+    @GetMapping("totalPatients")
+    public int totalPatients()
+    {
+        return globalAdminService.totalPatients();
+    }
+
+
+
 }
