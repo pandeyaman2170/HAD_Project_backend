@@ -4,11 +4,39 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ccde34d3-335f-4aac-8277-d76c0c84bfc6" name="Changes" comment="update" />
+    <list default="true" id="ccde34d3-335f-4aac-8277-d76c0c84bfc6" name="Changes" comment="login user">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/GlobalAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/GlobalAdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/HospitalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/HospitalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Entity/Hospital.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Entity/Hospital.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Repository/HospitalRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Repository/HospitalRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/HospitalServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/HospitalServiceImplementation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Controller/GlobalAdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Controller/GlobalAdminController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Controller/HospitalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Controller/HospitalController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Entity/Hospital.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Entity/Hospital.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Repository/HospitalRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Repository/HospitalRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Repository/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Service/HospitalServiceImplementation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Service/HospitalServiceImplementation.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -18,8 +46,29 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="recentNewPullRequestHead">
+      <RepoCoordinatesHolder>
+        <option name="owner" value="pandeyaman2170" />
+        <option name="repository" value="HAD_Project_backend" />
+      </RepoCoordinatesHolder>
+    </option>
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="6cbd90eb-12b5-4b40-9040-c264309eafbe" />
+        <option name="url" value="https://github.com/pandeyaman2170/HAD_Project_backend.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
@@ -29,24 +78,51 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop-veerendra&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
   }
+}</component>
+  <component name="RunManager">
+    <configuration name="TeleConsultationBackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="TeleConsultationBackend" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.teleconsultationbackend.TeleConsultationBackendApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.teleconsultationbackend.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
 }]]></component>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.TeleConsultationBackendApplication" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -58,6 +134,9 @@
       <workItem from="1710778375688" duration="441000" />
       <workItem from="1710778821006" duration="104000" />
       <workItem from="1710778928187" duration="941000" />
+      <workItem from="1710828339405" duration="13599000" />
+      <workItem from="1710922168517" duration="7023000" />
+      <workItem from="1710931943983" duration="1841000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <option name="closed" value="true" />
@@ -67,14 +146,35 @@
       <option name="project" value="LOCAL" />
       <updated>1710778952404</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="login user">
+      <option name="closed" value="true" />
+      <created>1710833669711</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1710833669711</updated>
+
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <MESSAGE value="login user" />
+    <option name="LAST_COMMIT_MESSAGE" value="login user" />
   </component>
 </project>

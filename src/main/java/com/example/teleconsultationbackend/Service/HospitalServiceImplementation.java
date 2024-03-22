@@ -65,4 +65,13 @@ public class HospitalServiceImplementation implements HospitalService {
             departmentRepository.save(department);
         }
     }
+
+    public String adminlogin(String phone) {
+        Hospital hospital = hospitalRepository.findByPhone(phone);
+        if (hospital != null) {
+            return "OK";
+        } else {
+            return "Error: User not found";
+        }
+    }
 }

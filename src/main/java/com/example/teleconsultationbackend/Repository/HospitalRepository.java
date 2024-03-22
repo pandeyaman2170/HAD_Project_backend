@@ -18,4 +18,6 @@ public interface HospitalRepository extends JpaRepository<Hospital,Long> {
     @Modifying
     @Query("DELETE FROM Hospital h WHERE h.hospital_id = ?1 AND h.admin.id = ?2")
     void delete_hospital_by_id(Long hospital_id, Long admin_id);
+
+    Hospital findByPhone(String phone);
 }

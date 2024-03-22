@@ -1,6 +1,5 @@
 package com.example.teleconsultationbackend.Controller;
 
-import com.example.teleconsultationbackend.Entity.GlobalAdmin;
 import com.example.teleconsultationbackend.Entity.Hospital;
 import com.example.teleconsultationbackend.Service.GlobalAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
