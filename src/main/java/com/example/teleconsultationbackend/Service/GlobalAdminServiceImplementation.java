@@ -2,6 +2,7 @@ package com.example.teleconsultationbackend.Service;
 
 import com.example.teleconsultationbackend.Entity.GlobalAdmin;
 import com.example.teleconsultationbackend.Entity.Hospital;
+import com.example.teleconsultationbackend.Repository.ConsultationRepository;
 import com.example.teleconsultationbackend.Repository.GlobalAdminRepository;
 import com.example.teleconsultationbackend.Repository.HospitalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,9 @@ public class GlobalAdminServiceImplementation implements GlobalAdminService{
 
     @Autowired
     GlobalAdminRepository globalAdminRepository;
+
+    @Autowired
+    ConsultationRepository consultationRepository;
 
     @Override
     @Transactional
@@ -57,6 +61,37 @@ public class GlobalAdminServiceImplementation implements GlobalAdminService{
         hospitalRepository.delete_hospital_by_id(hospital_id,admin_id);
 
     }
+
+    @Override
+    @Transactional
+    public int totalHospitals()
+    {
+        List<Hospital> hospitals=hospitalRepository.findAll();
+        return hospitals.size();
+    }
+
+    @Override
+    @Transactional
+    public int totalDoctors()
+    {
+        int totalDoctors=0;
+        List<Hospital> hospitals=hospitalRepository.findAll();
+
+        for (Hospital hospital : hospitals) {
+            totalDoctors += hospital.getDoctors().size();
+        }
+        return totalDoctors;
+
+    }
+    @Override
+    @Transactional
+    public int totalPatients()
+    {
+        return consultationRepository.distinctPatient();
+    }
+
+
+
 
 
 
