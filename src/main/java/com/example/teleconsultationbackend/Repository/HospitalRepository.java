@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Set;
 
 public interface HospitalRepository extends JpaRepository<Hospital,Long> {
     List<Hospital> findByAdminId(Long global_admin_id);
@@ -20,4 +21,7 @@ public interface HospitalRepository extends JpaRepository<Hospital,Long> {
     void delete_hospital_by_id(Long hospital_id, Long admin_id);
 
     Hospital findByPhone(String phone);
+
+    @Query("SELECT h from Hospital h WHERE h.hospital_id = ?1")
+    Hospital getHospitalsByHospital_id(Long hospitalID);
 }

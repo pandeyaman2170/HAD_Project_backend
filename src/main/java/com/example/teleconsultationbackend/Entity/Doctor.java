@@ -1,12 +1,15 @@
 package com.example.teleconsultationbackend.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
 
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "Doctors")
 public class Doctor{
@@ -18,23 +21,19 @@ public class Doctor{
     private Long id;
 
     private String registrationNumber;
-    private  String department;
     private boolean online_status;
-
-
-//    @OneToOne
-//    @JoinColumn(name = "user_id")
-//    private User user;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "hospital_id")
-//    private Hospital hospital;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "hospital_id")
     private Hospital hospital;
+
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name="department_id")
+    private Department department;
 }
