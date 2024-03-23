@@ -4,34 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5096d72f-771b-4680-800f-28e8d194d4fa" name="Changes" comment="update">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/ConsultationController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/PdfController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/PrescriptionController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/DTO/DateWiseConsultations.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/DTO/MonthWiseConsultation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/DTO/PrescriptionDetails.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Entity/Consultation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Entity/Prescription.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Images/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Repository/ConsultationRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Repository/PrescriptionRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/ConsultationService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/ConsultationServiceImplemetation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/PdfService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/PdfServiceImplementation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/PrescriptionService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/PrescriptionServiceImplementation.java" afterDir="false" />
+    <list default="true" id="ed71d78f-36fb-4740-a1fe-7c8df3b3d9df" name="Changes" comment="update">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Config/AwsConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/AWSController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/StorageService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/StorageServiceImplementation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/GlobalAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/GlobalAdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/GlobalAdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/GlobalAdminService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/GlobalAdminServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/GlobalAdminServiceImplementation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Controller/GlobalAdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Controller/GlobalAdminController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Service/GlobalAdminService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Service/GlobalAdminService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Service/GlobalAdminServiceImplementation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Service/GlobalAdminServiceImplementation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/ShareRecordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/ShareRecordController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,53 +22,65 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="recentNewPullRequestHead">
+      <RepoCoordinatesHolder>
+        <option name="owner" value="pandeyaman2170" />
+        <option name="repository" value="HAD_Project_backend" />
+      </RepoCoordinatesHolder>
+    </option>
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="e9ab0fdb-0169-43e1-b13b-3b2005c38f2c" />
+        <option name="url" value="https://github.com/pandeyaman2170/HAD_Project_backend.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 6
+  &quot;associatedIndex&quot;: 7
 }</component>
-  <component name="ProjectId" id="2dzZH5OK3RPKB4iuFomdx4xbFMP" />
+  <component name="ProjectId" id="2e2R4z0In2SesFGqMBFwfFq2JDy" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop-rushi-new&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/lenovo/Desktop/TeleConsultationBackend&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
-    ]
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "develop-rushi-new",
+    "last_opened_file_path": "/home/lenovo/Desktop/TeleConsultationBackend",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Images" />
-    </key>
-  </component>
+}]]></component>
   <component name="RunManager">
     <configuration name="TeleConsultationBackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="TeleConsultationBackend" />
@@ -99,16 +92,14 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="5096d72f-771b-4680-800f-28e8d194d4fa" name="Changes" comment="update" />
-      <created>1711012776277</created>
+      <changelist id="ed71d78f-36fb-4740-a1fe-7c8df3b3d9df" name="Changes" comment="update" />
+      <created>1711100498749</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1711012776277</updated>
-      <workItem from="1711012777428" duration="2274000" />
-      <workItem from="1711043283446" duration="1154000" />
-      <workItem from="1711045807053" duration="901000" />
-      <workItem from="1711081956881" duration="5739000" />
-      <workItem from="1711089666585" duration="2682000" />
+      <updated>1711100498749</updated>
+      <workItem from="1711100499836" duration="576000" />
+      <workItem from="1711128214894" duration="2254000" />
+      <workItem from="1711167080268" duration="8731000" />
     </task>
     <servers />
   </component>
