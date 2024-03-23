@@ -1,5 +1,6 @@
 package com.example.teleconsultationbackend.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -13,16 +14,16 @@ public class Department {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-//    @ManyToOne
-//    @JoinColumn(name = "hospital_id")
-//    private Hospital hospital;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
     private List<Doctor> doctors;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "departments",cascade = CascadeType.ALL)
     private List<Hospital> hospitals;
 
-    @OneToOne(mappedBy = "department")
+    @JsonIgnore
+    @OneToOne(mappedBy = "department", cascade = CascadeType.ALL)
     private Queues queues;
 }

@@ -1,6 +1,7 @@
 package com.example.teleconsultationbackend.Entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -30,6 +31,7 @@ public class User {
     private String city;
     private Long pincode;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "user")
     private Doctor doctor;
 

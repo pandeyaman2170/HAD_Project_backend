@@ -23,6 +23,7 @@ public class Doctor{
     private String registrationNumber;
     private boolean online_status;
 
+    @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;

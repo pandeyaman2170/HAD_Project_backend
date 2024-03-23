@@ -5,13 +5,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5847fcd3-22ec-45bd-b176-9ee4328e5b25" name="Changes" comment="update">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/QueuesController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/QueueServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Entity/Department.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Entity/Department.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Entity/Doctor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Entity/Doctor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Entity/Patient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Entity/Patient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Entity/Queues.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Entity/Queues.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Entity/ShareRecordHospital.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Entity/ShareRecordHospital.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/HospitalServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/HospitalServiceImplementation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/QueueService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/QueueService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Entity/Department.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Entity/Department.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Entity/Doctor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Entity/Doctor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Entity/Patient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Entity/Patient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Entity/ShareRecordHospital.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Entity/ShareRecordHospital.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Entity/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Service/HospitalServiceImplementation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Service/HospitalServiceImplementation.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
   </component>
   <component name="GithubProjectSettings">
     <option name="branchProtectionPatterns">
@@ -20,11 +51,16 @@
       </list>
     </option>
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "git-widget-placeholder": "develop-aman-new"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop-aman-new&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="TeleConsultationBackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="TeleConsultationBackend" />
@@ -41,6 +77,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.TeleConsultationBackendApplication" />
         <item itemvalue="Spring Boot.TeleConsultationBackendApplication" />
       </list>
     </recent_temporary>
