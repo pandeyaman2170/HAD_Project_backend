@@ -22,4 +22,11 @@ public class GlobalAdmin {
     @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Hospital> hospitals = new ArrayList<>();
+    public String toString() {
+        return "Hospital{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                // Include other relevant fields
+                '}';
+    }
 }
