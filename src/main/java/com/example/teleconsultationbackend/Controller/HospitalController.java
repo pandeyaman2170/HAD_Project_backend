@@ -1,12 +1,18 @@
 package com.example.teleconsultationbackend.Controller;
+import com.example.teleconsultationbackend.DTO.DoctorDetails;
 import com.example.teleconsultationbackend.Entity.Department;
 import com.example.teleconsultationbackend.Entity.Doctor;
 import com.example.teleconsultationbackend.Entity.Hospital;
+import com.example.teleconsultationbackend.Service.DoctorService;
 import com.example.teleconsultationbackend.Entity.User;
 import com.example.teleconsultationbackend.Service.HospitalService;
 import com.example.teleconsultationbackend.Service.HospitalServiceImplementation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 @RestController
 @CrossOrigin
@@ -18,15 +24,17 @@ public class HospitalController {
     @Autowired
     private HospitalServiceImplementation hospitalservice;
 
+    @Autowired
+    private DoctorService doctorService;
+
     @PostMapping("/hospital_admin/login")
     public String login(@RequestBody Hospital loginRequest) {
         return hospitalservice.adminlogin(loginRequest.getPhone());
     }
 
-    @PostMapping("/hospital_admin/add_doctor/{hospital_id}")
-    public String addDoctor(@PathVariable Long hospital_id, @RequestBody Doctor doctor){
-        System.out.println(doctor);
-        hospitalService.addDoctor(hospital_id,doctor);
+    @PostMapping("/hospital_admin/add_doctor")
+    public String addDoctor(@RequestBody DoctorDetails doctorDetails){
+        doctorService.addDoctor(doctorDetails);
         return "doctor added succesfully!!";
     }
 
@@ -38,9 +46,9 @@ public class HospitalController {
         return "Department Added sussefully";
     }
 
-//    @PostMapping("/hospital_admin/add_doctor/{hospital_id}")
-//    public String addHospital(@PathVariable Long hospital_id, @RequestBody Doctor doctor){
-//        hospitalService.createDoctor(hospital_id, doctor);
-//        return "Done";
-//    }
+    @GetMapping("/get_all_departments/{hospital_id}")
+    public List<Department> getDepartments(@PathVariable Long hospital_id){
+        return hospitalService.getAllDepartments(hospital_id);
+    }
+
 }
