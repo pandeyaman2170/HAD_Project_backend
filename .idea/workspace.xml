@@ -6,7 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="ed71d78f-36fb-4740-a1fe-7c8df3b3d9df" name="Changes" comment="getDoctorByPhoneNumber is added in doctor Service. Roles are added in aws controller.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/PatientServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/PatientServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/DepartmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/DepartmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/DTO/PatientLoginStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/DTO/UserLoginStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Repository/DoctorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Repository/DoctorRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
     </list>
@@ -69,7 +73,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "develop-rushi-new",
+    "git-widget-placeholder": "develop-aman-new",
     "last_opened_file_path": "/home/lenovo/IdeaProjects/HAD_Project_Frontend",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -106,6 +110,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.TeleConsultationBackendApplication" />
+        <item itemvalue="Spring Boot.TeleConsultationBackendApplication" />
         <item itemvalue="Spring Boot.TeleConsultationBackendApplication" />
         <item itemvalue="Spring Boot.TeleConsultationBackendApplication" />
         <item itemvalue="Spring Boot.TeleConsultationBackendApplication" />
