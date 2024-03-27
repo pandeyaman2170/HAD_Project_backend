@@ -1,5 +1,6 @@
 package com.example.teleconsultationbackend.Controller;
 
+import com.example.teleconsultationbackend.DTO.PatientDetails;
 import com.example.teleconsultationbackend.Entity.Patient;
 import com.example.teleconsultationbackend.Entity.User;
 import com.example.teleconsultationbackend.Repository.PatientRepository;
@@ -10,7 +11,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("patient")
 public class PatientController {
 
@@ -82,7 +83,7 @@ public class PatientController {
 
     @PreAuthorize("hasRole('ROLE_PATIENT')")
     @GetMapping("/getPatientByPhoneNumber/{phoneNumber}")
-    public Patient getPatientByPhoneNumber(@PathVariable String phoneNumber) {
+    public PatientDetails getPatientByPhoneNumber(@PathVariable String phoneNumber) {
         return patientService.getPatientByPhoneNumber(phoneNumber);
     }
 

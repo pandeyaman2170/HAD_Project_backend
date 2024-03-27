@@ -1,5 +1,6 @@
 package com.example.teleconsultationbackend.Service;
 
+import com.example.teleconsultationbackend.DTO.PatientDetails;
 import com.example.teleconsultationbackend.Entity.Department;
 import com.example.teleconsultationbackend.Entity.Patient;
 import com.example.teleconsultationbackend.Entity.Queues;
@@ -11,6 +12,8 @@ import com.example.teleconsultationbackend.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Date;
 
 @Service
 public class PatientServiceImpl implements PatientService {
@@ -99,11 +102,30 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public Patient getPatientByPhoneNumber(String phoneNumber) {
+    public PatientDetails getPatientByPhoneNumber(String phoneNumber) {
         try {
             Patient patient = patientRepository.findByPhoneNo(phoneNumber);
+
+//                public PatientDetails(long patientId, String title, String firstName, String lastName, String gender, String phoneNo, String email, Date
+//            dob, String addr, String city, long pincode) {
+//                this.patientId = patientId;
+//                this.title = title;
+//                this.firstName = firstName;
+//                this.lastName = lastName;
+//                this.gender = gender;
+//                this.phoneNo = phoneNo;
+//                this.email = email;
+//                this.dob = dob;
+//                this.addr = addr;
+//                this.city = city;
+//                this.pincode = pincode;
+//            }
+
             if (patient != null) {
-                return patient;
+                return new PatientDetails(patient.getId(),patient.getUser().getTitle(),patient.getUser().getFirstName(),patient.getUser().getLastName(),
+                        patient.getUser().getGender(),patient.getUser().getPhone(),patient.getUser().getEmail(),patient.getUser().getDob(),
+                        patient.getUser().getAddress(),patient.getUser().getCity(),patient.getUser().getPincode()
+                );
             }
             return null;
         } catch (Exception e) {

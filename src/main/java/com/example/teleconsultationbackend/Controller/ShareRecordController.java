@@ -4,13 +4,10 @@ import com.example.teleconsultationbackend.Entity.Hospital;
 import com.example.teleconsultationbackend.Entity.Patient;
 import com.example.teleconsultationbackend.Service.ShareRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
-
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 public class ShareRecordController {
 

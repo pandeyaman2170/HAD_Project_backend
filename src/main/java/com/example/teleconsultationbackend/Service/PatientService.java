@@ -1,5 +1,6 @@
 package com.example.teleconsultationbackend.Service;
 
+import com.example.teleconsultationbackend.DTO.PatientDetails;
 import com.example.teleconsultationbackend.Entity.Patient;
 import com.example.teleconsultationbackend.Entity.User;
 
@@ -12,5 +13,5 @@ public interface PatientService {
 
     public Patient getPatientByPatientId(long patientId);
 
-    public Patient getPatientByPhoneNumber(String phoneNumber);
+    public PatientDetails getPatientByPhoneNumber(String phoneNumber);
 }
