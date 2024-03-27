@@ -4,38 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-
-    <list default="true" id="ed71d78f-36fb-4740-a1fe-7c8df3b3d9df" name="Changes" comment="update">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Config/JwtEntryPoint.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Config/SecurityConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/HomeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/DTO/PatientLoginStatus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Entity/JwtRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Entity/JwtResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Filter/JwtFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/UserAuthenticationService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Utility/JWTUtility.java" afterDir="false" />
+    <list default="true" id="ed71d78f-36fb-4740-a1fe-7c8df3b3d9df" name="Changes" comment="IMPLEMENTED JWT SECURITY WITH PATIENT ROLE.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/DoctorController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/DTO/DoctorFetchDetails.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/HospitalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/HospitalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Config/SecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/AWSController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/AWSController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/ConsultationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/ConsultationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/DepartmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/DepartmentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/PatientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/PatientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/PdfController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/PdfController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/PrescriptionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/PrescriptionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Repository/DoctorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Repository/DoctorRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Repository/PatientRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Repository/PatientRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/DoctorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/DoctorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/DoctorServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/DoctorServiceImplementation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/PatientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/PatientService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/PatientServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/PatientServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/PdfServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/PdfServiceImplementation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/PrescriptionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/PrescriptionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/PrescriptionServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/PrescriptionServiceImplementation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Controller/HospitalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Controller/HospitalController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Controller/ShareRecordController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Controller/ShareRecordController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Repository/DoctorRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Repository/DoctorRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Repository/PatientRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Repository/PatientRepository.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +38,6 @@
         <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
-
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -128,7 +110,6 @@
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-
     <task active="true" id="Default" summary="Default task">
       <changelist id="ed71d78f-36fb-4740-a1fe-7c8df3b3d9df" name="Changes" comment="update" />
       <created>1711100498749</created>
@@ -145,13 +126,24 @@
       <workItem from="1711441884357" duration="11392000" />
       <workItem from="1711462729933" duration="3747000" />
       <workItem from="1711469318427" duration="10055000" />
-      <workItem from="1711513545892" duration="2264000" />
+      <workItem from="1711513545892" duration="2568000" />
+      <workItem from="1711516917096" duration="5158000" />
     </task>
+    <task id="LOCAL-00001" summary="IMPLEMENTED JWT SECURITY WITH PATIENT ROLE.">
+      <option name="closed" value="true" />
+      <created>1711516112796</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1711516112796</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update" />
     <MESSAGE value="AWS configuration in spring boot is done. &#10;Also all crud API for AWS i.e UPLOAD file,DELETE file, fetch file with id all is done." />
-    <option name="LAST_COMMIT_MESSAGE" value="AWS configuration in spring boot is done. &#10;Also all crud API for AWS i.e UPLOAD file,DELETE file, fetch file with id all is done." />
+    <MESSAGE value="IMPLEMENTED JWT SECURITY WITH PATIENT ROLE." />
+    <option name="LAST_COMMIT_MESSAGE" value="IMPLEMENTED JWT SECURITY WITH PATIENT ROLE." />
   </component>
 </project>

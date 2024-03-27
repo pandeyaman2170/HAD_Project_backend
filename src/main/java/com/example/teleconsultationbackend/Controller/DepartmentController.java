@@ -15,6 +15,7 @@ public class DepartmentController {
     @Autowired
     private DepartmentService departmentService;
 
+
     @GetMapping("/department/get_all_hospitals")
     public List<Hospital> getAllHospitals(Long department_id){
         return departmentService.getAllHospitals(department_id);
