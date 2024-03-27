@@ -83,22 +83,20 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public Patient updatePatient(Patient patient, long patientId) {
-        Patient updatedPatient = patientRepository.findById(patientId).get();
-
-        updatedPatient.getUser().setTitle(patient.getUser().getTitle());
-        updatedPatient.getUser().setFirstName(patient.getUser().getFirstName());
-        updatedPatient.getUser().setLastName(patient.getUser().getLastName());
-        updatedPatient.getUser().setPincode(patient.getUser().getPincode());
-        updatedPatient.getUser().setCity(patient.getUser().getCity());
-        updatedPatient.getUser().setAddress(patient.getUser().getAddress());
-        updatedPatient.getUser().setPhone(patient.getUser().getPhone());
-        updatedPatient.getUser().setGender(patient.getUser().getGender());
-        updatedPatient.getUser().setEmail(patient.getUser().getEmail());
-        updatedPatient.getUser().setRole(patient.getUser().getRole());
-        updatedPatient.getUser().setDob(patient.getUser().getDob());
-
-        return patientRepository.save(updatedPatient);
+    public PatientDetails updatePatient(PatientDetails patientDetails, long patientId) {
+        Patient updatedPatient = patientRepository.findPatientById(patientId);
+        updatedPatient.getUser().setTitle(patientDetails.getTitle());
+        updatedPatient.getUser().setFirstName(patientDetails.getFirstName());
+        updatedPatient.getUser().setLastName(patientDetails.getLastName());
+        updatedPatient.getUser().setPincode(patientDetails.getPincode());
+        updatedPatient.getUser().setCity(patientDetails.getCity());
+        updatedPatient.getUser().setAddress(patientDetails.getAddr());
+        updatedPatient.getUser().setPhone(patientDetails.getPhoneNo());
+        updatedPatient.getUser().setGender(patientDetails.getGender());
+        updatedPatient.getUser().setEmail(patientDetails.getEmail());
+        updatedPatient.getUser().setDob(patientDetails.getDob());
+        patientRepository.save(updatedPatient);
+        return patientDetails;
     }
 
     @Override
