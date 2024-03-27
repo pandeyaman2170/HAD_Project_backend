@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+
     <list default="true" id="ed71d78f-36fb-4740-a1fe-7c8df3b3d9df" name="Changes" comment="update">
       <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Config/AwsConfig.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/AWSController.java" afterDir="false" />
@@ -32,6 +33,7 @@
         <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
+
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -82,15 +84,28 @@
   }
 }]]></component>
   <component name="RunManager">
-    <configuration name="TeleConsultationBackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+    <configuration name="TeleConsultationBackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="TeleConsultationBackend" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.teleconsultationbackend.TeleConsultationBackendApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.teleconsultationbackend.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.TeleConsultationBackendApplication" />
+        <item itemvalue="Spring Boot.TeleConsultationBackendApplication" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="TaskManager">
+
     <task active="true" id="Default" summary="Default task">
       <changelist id="ed71d78f-36fb-4740-a1fe-7c8df3b3d9df" name="Changes" comment="update" />
       <created>1711100498749</created>
@@ -102,9 +117,6 @@
       <workItem from="1711167080268" duration="8731000" />
     </task>
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update" />
