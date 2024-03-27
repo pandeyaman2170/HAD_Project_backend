@@ -3,13 +3,11 @@ package com.example.teleconsultationbackend.Controller;
 import com.example.teleconsultationbackend.Entity.Doctor;
 import com.example.teleconsultationbackend.Service.QueueService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 public class QueuesController {
 

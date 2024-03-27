@@ -54,6 +54,7 @@ public class SecurityConfiguration {
 
         http.csrf().disable()
                 .authorizeHttpRequests((authorize) -> {
+                    authorize.requestMatchers("/**").permitAll();
                     authorize.requestMatchers("/authenticate/**").permitAll();
                     authorize.requestMatchers("/prescription/addPrescription/**").hasRole("DOCTOR");
                     authorize.requestMatchers("/prescription/getPrescriptionsPatient/{patientId}/**").hasRole("PATIENT");
