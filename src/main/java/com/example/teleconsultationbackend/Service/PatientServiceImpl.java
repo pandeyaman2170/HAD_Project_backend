@@ -7,6 +7,7 @@ import com.example.teleconsultationbackend.Entity.User;
 import com.example.teleconsultationbackend.Repository.DepartmentRepository;
 import com.example.teleconsultationbackend.Repository.PatientRepository;
 import com.example.teleconsultationbackend.Repository.QueuesRepository;
+import com.example.teleconsultationbackend.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +17,9 @@ public class PatientServiceImpl implements PatientService {
 
     @Autowired
     private PatientRepository patientRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Autowired
     private QueuesRepository queuesRepository;
@@ -74,4 +78,39 @@ public class PatientServiceImpl implements PatientService {
             return null;
         }
     }
+
+    @Override
+    public Patient updatePatient(Patient patient, long patientId) {
+        Patient updatedPatient = patientRepository.findById(patientId).get();
+
+        updatedPatient.getUser().setTitle(patient.getUser().getTitle());
+        updatedPatient.getUser().setFirstName(patient.getUser().getFirstName());
+        updatedPatient.getUser().setLastName(patient.getUser().getLastName());
+        updatedPatient.getUser().setPincode(patient.getUser().getPincode());
+        updatedPatient.getUser().setCity(patient.getUser().getCity());
+        updatedPatient.getUser().setAddress(patient.getUser().getAddress());
+        updatedPatient.getUser().setPhone(patient.getUser().getPhone());
+        updatedPatient.getUser().setGender(patient.getUser().getGender());
+        updatedPatient.getUser().setEmail(patient.getUser().getEmail());
+        updatedPatient.getUser().setRole(patient.getUser().getRole());
+        updatedPatient.getUser().setDob(patient.getUser().getDob());
+
+        return patientRepository.save(updatedPatient);
+    }
+
+    @Override
+    public Patient getPatientByPhoneNumber(String phoneNumber) {
+        try {
+            Patient patient = patientRepository.findByPhoneNo(phoneNumber);
+            if (patient != null) {
+                return patient;
+            }
+            return null;
+        } catch (Exception e) {
+            System.out.println("Error Occurred while verifying phone number");
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 }

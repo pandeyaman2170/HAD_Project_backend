@@ -8,5 +8,9 @@ public interface PatientService {
     void joinQueue(Patient patient, Long dep_id);
     void deletePatientFromQueue(Long pid);
 
+    public Patient updatePatient(Patient patient, long patientId);
+
     public Patient getPatientByPatientId(long patientId);
+
+    public Patient getPatientByPhoneNumber(String phoneNumber);
 }
