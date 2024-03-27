@@ -14,4 +14,8 @@ public interface GlobalAdminService {
     void updateHospital(Long admin_id, Long hospital_id,Hospital hospital);
 
     void deleteHospital(Long admin_id, Long hospital_id);
+
+    int totalHospitals();
+    int totalDoctors();
+    int totalPatients();
 }

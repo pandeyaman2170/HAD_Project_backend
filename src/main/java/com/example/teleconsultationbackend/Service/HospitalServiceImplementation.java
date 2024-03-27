@@ -25,6 +25,9 @@ public class HospitalServiceImplementation implements HospitalService {
     @Autowired
     private DepartmentRepository departmentRepository;
 
+    @Autowired
+    private QueuesRepository queuesRepository;
+
     @Override
     @Transactional
     public void createHospital(Long admin_id, Hospital hospital) {
@@ -39,26 +42,6 @@ public class HospitalServiceImplementation implements HospitalService {
         }
     }
 
-//    @Override
-//    @Transactional
-//    public void addDoctor(Long hospital_id,Long department_id, Doctor doctor) {
-//        Department department = departmentRepository.findDepartmentById(department_id);
-//        Optional<Hospital> optionalHospital = hospitalRepository.findById(hospital_id);
-//        if(optionalHospital.isPresent()){
-//            Hospital hospital=optionalHospital.get();
-//            doctor.setHospital(hospital);
-//            doctor.setDepartment(department);
-//            User user = doctor.getUser();
-//            if(user.getId()==null){
-//                userRepository.save(user);
-//            }
-//            doctorRepository.save(doctor);
-//        }
-//        else{
-//            throw new IllegalArgumentException("Hospital with id " + hospital_id + " not found.");
-//        }
-//
-//    }
 
     @Override
     @Transactional
@@ -69,8 +52,22 @@ public class HospitalServiceImplementation implements HospitalService {
         if(optionalHospital.isPresent()){
             Hospital hospital= optionalHospital.get();
             hospital.getDepartments().add(department1);
-//            System.out.println(department1.getName());
+            System.out.println(department.getName());
+
+            /* creating a queue for the new Department */
+            if(queuesRepository.findQueueByDepartment(department1) != null) {
+                System.out.println("The Queue Already created for this department");
+            }else{
+                System.out.println("creating the queue");
+
+                Queues queues = new Queues();
+                queues.setDepartment(department1);
+                department1.setQueues(queues);
+
+                System.out.println("created the queue for department : " + department1.getName());
+            }
             departmentRepository.save(department1);
+
         }
         else{
             throw new IllegalArgumentException("Hospital with id " + hospitalId + " not found.");

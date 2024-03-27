@@ -1,5 +1,6 @@
 package com.example.teleconsultationbackend.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -13,9 +14,11 @@ public class ShareRecordHospital {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long record_id;
 
+    @JsonIgnore
     @ManyToOne(cascade = CascadeType.MERGE)
     private Hospital sending_hospital;
 
+    @JsonIgnore
     @ManyToOne(cascade = CascadeType.MERGE)
     private Hospital receiving_hospital;
 }

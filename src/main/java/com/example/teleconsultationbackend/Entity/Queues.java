@@ -16,12 +16,11 @@ public class Queues {
     @Column(name = "queues_id")
     private Long queue_id;
 
-//    private Boolean isAccepted;
-//    private Boolean isPresent;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "queues", cascade = CascadeType.ALL)
     private List<Patient> patients;
 
+    @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "department_id")
     private Department department;
