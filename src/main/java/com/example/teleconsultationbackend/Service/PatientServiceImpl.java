@@ -96,6 +96,7 @@ public class PatientServiceImpl implements PatientService {
         updatedPatient.getUser().setEmail(patientDetails.getEmail());
         updatedPatient.getUser().setDob(patientDetails.getDob());
         patientRepository.save(updatedPatient);
+        patientDetails.setPatientId(patientId);
         return patientDetails;
     }
 
