@@ -34,6 +34,7 @@ public class HospitalController {
 
     @PostMapping("/hospital_admin/add_doctor")
     public String addDoctor(@RequestBody DoctorDetails doctorDetails){
+        doctorDetails.setRole("doctor");
         doctorService.addDoctor(doctorDetails);
         return "doctor added succesfully!!";
     }

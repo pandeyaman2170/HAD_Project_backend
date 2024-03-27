@@ -61,4 +61,17 @@ public class PatientServiceImpl implements PatientService {
             System.out.println("patient deleted from the queue");
         }
     }
+
+    @Override
+    public Patient getPatientByPatientId(long patientId) {
+        try {
+            if(patientRepository.findById(patientId).isPresent())
+                return patientRepository.findById(patientId).get();
+            else return null;
+        } catch (Exception e) {
+            System.out.println("Error Occurred while fetching patient by patient Id");
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

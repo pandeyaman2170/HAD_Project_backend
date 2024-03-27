@@ -1,5 +1,7 @@
 package com.example.teleconsultationbackend.Service;
 
+import com.example.teleconsultationbackend.DTO.PrescriptionDetails;
+import com.example.teleconsultationbackend.Entity.Patient;
 import com.example.teleconsultationbackend.Entity.Prescription;
 import com.example.teleconsultationbackend.Repository.PrescriptionRepository;
 import com.itextpdf.text.*;
@@ -16,16 +18,25 @@ import java.util.Set;
 
 @Service
 public class PdfServiceImplementation implements  PdfService{
-    private final PrescriptionRepository prescriptionRepository;
+   // private final PrescriptionRepository prescriptionRepository;
+
 
     @Autowired
-    public PdfServiceImplementation(PrescriptionRepository prescriptionRepository) {
-        this.prescriptionRepository = prescriptionRepository;
-    }
+    private PrescriptionService prescriptionService;
+
+    @Autowired
+    private PatientService patientService;
+
+//    @Autowired
+//    public PdfServiceImplementation(PrescriptionRepository prescriptionRepository) {
+//        this.prescriptionRepository = prescriptionRepository;
+//    }
     @Override
     public ByteArrayInputStream generatePdf(int prescriptionId) {
         try {
-            Prescription prescription = prescriptionRepository.findPrescriptionByPrescriptionId(prescriptionId);
+            //Prescription prescription = prescriptionRepository.findPrescriptionByPrescriptionId(prescriptionId);
+            PrescriptionDetails prescription = prescriptionService.getPrescriptionById(prescriptionId);
+            Patient patient = patientService.getPatientByPatientId(prescription.getPatientId());
             if (prescription == null) {
                 throw new IllegalArgumentException("Prescription not found with id: " + prescriptionId);
             }
@@ -63,7 +74,7 @@ public class PdfServiceImplementation implements  PdfService{
             headerTable.addCell(key);
             key.setPhrase(new Phrase(" ", keyFont));
             headerTable.addCell(key);
-            key.setPhrase(new Phrase("Dr." + prescription.getDoctor().getUser().getFirstName(), keyFont));
+            key.setPhrase(new Phrase("Dr." + prescription.getDoctorName(), keyFont));
             headerTable.addCell(key);
 
             key.setPhrase(new Phrase(" ", keyFont));
@@ -73,7 +84,7 @@ public class PdfServiceImplementation implements  PdfService{
             headerTable.addCell(key);
             key.setPhrase(new Phrase(" ", keyFont));
             headerTable.addCell(key);
-            key.setPhrase(new Phrase("ID" + prescription.getDoctor().getId(), keyFont));
+            key.setPhrase(new Phrase("ID" + prescription.getDoctorId(), keyFont));
             headerTable.addCell(key);
 
 
@@ -125,28 +136,28 @@ public class PdfServiceImplementation implements  PdfService{
 
             key.setPhrase(new Phrase("Patient Id:", keyFont));
             patientTable.addCell(key);
-            key.setPhrase(new Phrase("" + prescription.getPatient().getId(), valueFont));
+            key.setPhrase(new Phrase("" + prescription.getPatientId(), valueFont));
             patientTable.addCell(key);
             key.setPhrase(new Phrase("", keyFont));
             patientTable.addCell(key);
 
             key.setPhrase(new Phrase("Patient Name:", keyFont));
             patientTable.addCell(key);
-            key.setPhrase(new Phrase(prescription.getPatient().getUser().getFirstName() + " " +prescription.getPatient().getUser().getLastName() , valueFont));
+            key.setPhrase(new Phrase(prescription.getPatientName()  , valueFont));
             patientTable.addCell(key);
             key.setPhrase(new Phrase("", keyFont));
             patientTable.addCell(key);
 
             key.setPhrase(new Phrase("Gender:", keyFont));
             patientTable.addCell(key);
-            key.setPhrase(new Phrase("Female", valueFont));
+            key.setPhrase(new Phrase(""+patient.getUser().getGender(), valueFont));
             patientTable.addCell(key);
             key.setPhrase(new Phrase("", keyFont));
             patientTable.addCell(key);
 
             key.setPhrase(new Phrase("Contact Number:", keyFont));
             patientTable.addCell(key);
-            key.setPhrase(new Phrase("1234567890", valueFont));
+            key.setPhrase(new Phrase("" + patient.getUser().getPhone(), valueFont));
             patientTable.addCell(key);
             key.setPhrase(new Phrase("", keyFont));
             patientTable.addCell(key);
@@ -180,7 +191,7 @@ public class PdfServiceImplementation implements  PdfService{
             headerCell.setPhrase(new Phrase("Observation", font));
             observationTable.addCell(headerCell);
 
-            paraCell.setPhrase(new Phrase(prescription.getMedical_findings(), paraFont));
+            paraCell.setPhrase(new Phrase(prescription.getObservation(), paraFont));
             observationTable.addCell(paraCell);
 
             //paraCell.setPhrase(new Phrase(prescription.getRemark(), paraFont));
