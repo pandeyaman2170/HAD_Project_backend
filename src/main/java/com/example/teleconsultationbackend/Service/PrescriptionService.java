@@ -8,6 +8,8 @@ public interface PrescriptionService {
 
     public List<PrescriptionDetails> getPrescriptionsDoctor(long patientId);
 
+    public PrescriptionDetails getPrescriptionById(int prescriptionId);
+
 
 }
 

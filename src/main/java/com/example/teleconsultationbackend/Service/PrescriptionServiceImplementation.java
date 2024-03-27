@@ -98,6 +98,32 @@ public class PrescriptionServiceImplementation implements PrescriptionService{
         return prescriptionDetailsList;
 
     }
+    @Override
+    public PrescriptionDetails getPrescriptionById(int prescriptionId) {
+
+        Prescription prescription;
+        try {
+            if(prescriptionRepository.findById(prescriptionId).isPresent()) {
+                prescription = prescriptionRepository.findById(prescriptionId).get();
+
+                return new PrescriptionDetails(prescription.getPrescriptionId(),
+                        prescription.getConsultationDate(), prescription.getMedical_findings(),
+                        prescription.getMedicine(),
+                        prescription.getRemark(),
+                        prescription.getDoctor().getUser().getFirstName() + " " + prescription.getDoctor().getUser().getLastName(),
+                        prescription.getDoctor().getId(),
+                        prescription.getPatient().getUser().getFirstName() + " " + prescription.getPatient().getUser().getLastName(),
+                        prescription.getPatient().getId(),
+                        prescription.getFollowUpDate());
+            }
+            return null;
+
+        } catch (Exception e) {
+            System.out.println("Error Occurred in getting prescription by prescriptionId");
+            e.printStackTrace();
+            return null;
+        }
+    }
 
 
 

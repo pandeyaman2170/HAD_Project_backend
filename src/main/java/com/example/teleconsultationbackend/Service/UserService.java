@@ -1,6 +1,8 @@
 package com.example.teleconsultationbackend.Service;
 
+import com.example.teleconsultationbackend.DTO.PatientLoginStatus;
 import com.example.teleconsultationbackend.Entity.User;
+import com.example.teleconsultationbackend.Repository.PatientRepository;
 import com.example.teleconsultationbackend.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,12 +13,18 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public String login(String phone, String role) {
+    @Autowired
+    private PatientRepository patientRepository;
+    public PatientLoginStatus login(String phone, String role) {
         User user = userRepository.findByPhoneAndRole(phone, role);
+        PatientLoginStatus patientLoginStatus = new PatientLoginStatus();
         if (user != null) {
-            return "OK";
+            patientLoginStatus.setId(patientRepository.findPatientByUserId(user.getId()).getId());
+            patientLoginStatus.setIsValid(true);
         } else {
-            return "Error: User not found";
+            patientLoginStatus.setIsValid(false);
+            patientLoginStatus.setId(null);
         }
+        return patientLoginStatus;
     }
 }

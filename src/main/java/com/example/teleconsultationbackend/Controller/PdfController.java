@@ -8,29 +8,53 @@ import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.util.Date;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
+@RequestMapping("/pdf")
 public class PdfController {
     @Autowired
     private PdfService pdfService;
 
-    @Autowired
-    PrescriptionRepository prescriptionRepository;
+    @PreAuthorize("hasRole('ROLE_PATIENT')")
+    @GetMapping("/getPdfPatient/{prescriptionId}")
+    public ResponseEntity<InputStreamResource> getPdf(@PathVariable String prescriptionId) {
 
-    @GetMapping("/viewpres/{prescription_id}")
-    public ResponseEntity<InputStreamResource> viewPdf(@PathVariable String prescription_id) throws IOException {
-        // Generate the PDF
+        ByteArrayInputStream pdf = pdfService.generatePdf(Integer.parseInt(prescriptionId));
 
-        PdfServiceImplementation pdfService = new PdfServiceImplementation(prescriptionRepository);
-        ByteArrayInputStream pdf = pdfService.generatePdf(Integer.parseInt(prescription_id));
+        String date = String.valueOf((new Date()));
 
         HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.add("Content-Disposition",
+                "attachment;filename=" + prescriptionId + " " + date +".pdf");
+// Adding headerValue to attachment will make it download the pdf and setting it to inline will show in browser only.
+
+        return ResponseEntity
+                .ok()
+                .headers(httpHeaders)
+                .contentType(MediaType.APPLICATION_PDF)
+                .body(new InputStreamResource(pdf));
+    }
+
+
+    @PreAuthorize("hasRole('ROLE_DOCTOR')")
+    @GetMapping("/getPdfDoctor/{prescriptionId}")
+    public ResponseEntity<InputStreamResource> getPdfDoctor(@PathVariable String prescriptionId) {
+
+        ByteArrayInputStream pdf = pdfService.generatePdf(Integer.parseInt(prescriptionId));
+
+        String date = String.valueOf((new Date()));
+
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.add("Content-Disposition",
+                "inline;filename=" + prescriptionId + " " + date +".pdf");
+// Adding headerValue to attachment will make it download the pdf and setting it to inline will show in browser only.
 
         return ResponseEntity
                 .ok()

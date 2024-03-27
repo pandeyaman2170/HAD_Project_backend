@@ -7,4 +7,6 @@ public interface PatientService {
     void registerPatient(User user);
     void joinQueue(Patient patient, Long dep_id);
     void deletePatientFromQueue(Long pid);
+
+    public Patient getPatientByPatientId(long patientId);
 }
