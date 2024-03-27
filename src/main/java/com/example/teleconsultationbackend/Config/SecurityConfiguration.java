@@ -60,6 +60,10 @@ public class SecurityConfiguration {
                     authorize.requestMatchers("/prescription/getPrescriptionsPatient/{patientId}/**").hasRole("PATIENT");
                     authorize.requestMatchers("/prescription/getPrescriptionsDoctor/{patientId}/**").hasRole("DOCTOR");
                     authorize.requestMatchers("/patient/**").hasRole("PATIENT");
+                    authorize.requestMatchers("/addPrescription/**").hasRole("DOCTOR");
+                    authorize.requestMatchers("/addPrescription/**").hasRole("PATIENT");
+                    authorize.requestMatchers("/global_admin/login/**").permitAll();
+                    authorize.requestMatchers("/global_admin/**").hasRole("GLOBALADMIN");
 //                    authorize.requestMatchers("/login/**").permitAll();
 //                    authorize.requestMatchers("/patient/addPatient/**").permitAll();
 //                    authorize.requestMatchers("/doctor/registerDoctor/**").permitAll();

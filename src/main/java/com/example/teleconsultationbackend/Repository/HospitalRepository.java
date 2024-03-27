@@ -24,4 +24,7 @@ public interface HospitalRepository extends JpaRepository<Hospital,Long> {
 
     @Query("SELECT h from Hospital h WHERE h.hospital_id = ?1")
     Hospital getHospitalsByHospital_id(Long hospitalID);
+
+    @Query("SELECT h from Hospital h WHERE h.hospitalUserName = ?1")
+    Hospital findHospitalsByHospitalUserName(String hospitalUserName);
 }
