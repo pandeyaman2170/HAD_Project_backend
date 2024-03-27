@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class PatientLoginStatus {
+public class UserLoginStatus {
     private Long id;
     private Boolean isValid;
 

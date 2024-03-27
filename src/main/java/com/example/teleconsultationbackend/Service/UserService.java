@@ -1,11 +1,14 @@
 package com.example.teleconsultationbackend.Service;
 
-import com.example.teleconsultationbackend.DTO.PatientLoginStatus;
+import com.example.teleconsultationbackend.DTO.UserLoginStatus;
 import com.example.teleconsultationbackend.Entity.User;
+import com.example.teleconsultationbackend.Repository.DoctorRepository;
 import com.example.teleconsultationbackend.Repository.PatientRepository;
 import com.example.teleconsultationbackend.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Objects;
 
 @Service
 public class UserService {
@@ -14,17 +17,25 @@ public class UserService {
     private UserRepository userRepository;
 
     @Autowired
+    private DoctorRepository doctorRepository;
+
+    @Autowired
     private PatientRepository patientRepository;
-    public PatientLoginStatus login(String phone, String role) {
+    public UserLoginStatus login(String phone, String role) {
         User user = userRepository.findByPhoneAndRole(phone, role);
-        PatientLoginStatus patientLoginStatus = new PatientLoginStatus();
-        if (user != null) {
-            patientLoginStatus.setId(patientRepository.findPatientByUserId(user.getId()).getId());
-            patientLoginStatus.setIsValid(true);
-        } else {
-            patientLoginStatus.setIsValid(false);
-            patientLoginStatus.setId(null);
+        UserLoginStatus userLoginStatus = new UserLoginStatus();
+        if(user != null) {
+            if(role.equals("patient")) {
+                userLoginStatus.setId(patientRepository.findPatientByUserId(user.getId()).getId());
+                userLoginStatus.setIsValid(true);
+            }else {
+                userLoginStatus.setId(doctorRepository.findDoctorByUserId(user.getId()).getId());
+                userLoginStatus.setIsValid(true);
+            }
+        }else {
+            userLoginStatus.setIsValid(false);
+            userLoginStatus.setId(null);
         }
-        return patientLoginStatus;
+        return userLoginStatus;
     }
 }
