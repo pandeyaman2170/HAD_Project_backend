@@ -4,26 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5847fcd3-22ec-45bd-b176-9ee4328e5b25" name="Changes" comment="update">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/QueuesController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/QueueServiceImpl.java" afterDir="false" />
+
+    <list default="true" id="ed71d78f-36fb-4740-a1fe-7c8df3b3d9df" name="Changes" comment="update">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Config/AwsConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/AWSController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/StorageService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/StorageServiceImplementation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Entity/Department.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Entity/Department.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Entity/Doctor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Entity/Doctor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Entity/Patient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Entity/Patient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Entity/Queues.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Entity/Queues.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Entity/ShareRecordHospital.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Entity/ShareRecordHospital.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/HospitalServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/HospitalServiceImplementation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/QueueService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/QueueService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Entity/Department.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Entity/Department.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Entity/Doctor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Entity/Doctor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Entity/Patient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Entity/Patient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Entity/ShareRecordHospital.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Entity/ShareRecordHospital.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Entity/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Service/HospitalServiceImplementation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Service/HospitalServiceImplementation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/ShareRecordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/ShareRecordController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,24 +33,56 @@
         <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
+
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GithubProjectSettings">
-    <option name="branchProtectionPatterns">
-      <list>
-        <option value="main" />
-      </list>
-    </option>
-  </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop-aman-new&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
   }
 }</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="recentNewPullRequestHead">
+      <RepoCoordinatesHolder>
+        <option name="owner" value="pandeyaman2170" />
+        <option name="repository" value="HAD_Project_backend" />
+      </RepoCoordinatesHolder>
+    </option>
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="e9ab0fdb-0169-43e1-b13b-3b2005c38f2c" />
+        <option name="url" value="https://github.com/pandeyaman2170/HAD_Project_backend.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2e2R4z0In2SesFGqMBFwfFq2JDy" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "develop-rushi-new",
+    "last_opened_file_path": "/home/lenovo/Desktop/TeleConsultationBackend",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
   <component name="RunManager">
     <configuration name="TeleConsultationBackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="TeleConsultationBackend" />
@@ -83,6 +105,17 @@
     </recent_temporary>
   </component>
   <component name="TaskManager">
+
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ed71d78f-36fb-4740-a1fe-7c8df3b3d9df" name="Changes" comment="update" />
+      <created>1711100498749</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1711100498749</updated>
+      <workItem from="1711100499836" duration="576000" />
+      <workItem from="1711128214894" duration="2254000" />
+      <workItem from="1711167080268" duration="8731000" />
+    </task>
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

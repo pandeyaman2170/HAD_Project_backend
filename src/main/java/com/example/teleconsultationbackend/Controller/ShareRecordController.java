@@ -17,6 +17,7 @@ public class ShareRecordController {
     @Autowired
     private ShareRecordService shareRecordService;
 
+
     @PostMapping("/share-hospital-record")
     public void shareRecordHospital(@RequestBody Map<String, Hospital> hospitalMap) {
         Hospital sending = hospitalMap.get("sending");
