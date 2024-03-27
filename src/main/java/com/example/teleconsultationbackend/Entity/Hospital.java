@@ -21,6 +21,8 @@ public class Hospital {
     private String name;
     private String location;
     private String phone;
+    private String hospitalUserName;
+    private String hospitalPassword;
 
     @ManyToOne
     @JsonIgnore
@@ -39,11 +41,18 @@ public class Hospital {
 //            inverseJoinColumns = @JoinColumn(name = "department_id", referencedColumnName ="id"))
 //    private Set<Department> departments= new HashSet<>();;
 
+    @Override
     public String toString() {
         return "Hospital{" +
-                "id=" + hospital_id +
+                "hospital_id=" + hospital_id +
                 ", name='" + name + '\'' +
-                // Include other relevant fields
+                ", location='" + location + '\'' +
+                ", phone='" + phone + '\'' +
+                ", hospitalUserName='" + hospitalUserName + '\'' +
+                ", hospitalPassword='" + hospitalPassword + '\'' +
+                ", admin=" + admin +
+                ", doctors=" + doctors +
+                ", departments=" + departments +
                 '}';
     }
 }
