@@ -56,8 +56,9 @@ public class PatientController {
 
     @PreAuthorize("hasRole('ROLE_PATIENT')")
     @PutMapping("/updatePatient/{patientId}")
-    public Patient updatePatient(@RequestBody Patient patient, @PathVariable String patientId) {
-        return patientService.updatePatient(patient, Long.parseLong(patientId));
+    public PatientDetails updatePatient(@RequestBody PatientDetails patientDetails,
+                                        @PathVariable String patientId) {
+        return patientService.updatePatient(patientDetails, Long.parseLong(patientId));
     }
 
 

@@ -9,7 +9,7 @@ public interface PatientService {
     void joinQueue(Patient patient, Long dep_id);
     void deletePatientFromQueue(Long pid);
 
-    public Patient updatePatient(Patient patient, long patientId);
+    PatientDetails updatePatient(PatientDetails patientDetails, long patientId);
 
     public Patient getPatientByPatientId(long patientId);
 
