@@ -15,4 +15,6 @@ public interface PatientService {
 
     public PatientDetails getPatientByPhoneNumber(String phoneNumber);
     public int total_patients();
+
+    PatientDetails getPatientDetailsForConsultation(Long patientId);
 }

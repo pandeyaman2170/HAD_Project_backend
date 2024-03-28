@@ -88,5 +88,15 @@ public class PatientController {
         return patientService.getPatientByPhoneNumber(phoneNumber);
     }
 
+    @PreAuthorize("hasRole('ROLE_PATIENT')")
+    @GetMapping("getPatientDetailsForConsultation/{patientId}")
+    public PatientDetails getPatientDetailsForConsultation(@PathVariable String patientId) {
+        return patientService.getPatientDetailsForConsultation(Long.parseLong(patientId));
+    }
+
+
+
+
+
 
 }
