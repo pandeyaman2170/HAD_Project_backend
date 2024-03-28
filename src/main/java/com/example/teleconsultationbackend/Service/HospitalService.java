@@ -10,7 +10,7 @@ public interface HospitalService {
     void createHospital(Long admin_id,Hospital hospital);
 //    void addDoctor(Long hospitalId, Long departmentID, Doctor doctor);
 
-    void addDepartments(Long hospitalId, Department department);
+    void addDepartments(Long hospitalId, String departmentName);
 
     String adminlogin(String phone);
 
