@@ -54,6 +54,8 @@ public class SecurityConfiguration {
 
         http.csrf().disable()
                 .authorizeHttpRequests((authorize) -> {
+//                    authorize.requestMatchers("/global_admin/getGlobalAdminDetails/**").permitAll();
+//                    authorize.requestMatchers("/**").permitAll();
                     authorize.requestMatchers("/authenticate/**").permitAll();
                     authorize.requestMatchers("/addPrescription/**").hasRole("DOCTOR");
                     authorize.requestMatchers("/addPrescription/**").hasRole("PATIENT");

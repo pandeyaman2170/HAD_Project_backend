@@ -90,6 +90,12 @@ public class GlobalAdminServiceImplementation implements GlobalAdminService{
         return consultationRepository.distinctPatient();
     }
 
+    @Override
+    @Transactional
+    public GlobalAdmin getGlobalAdminByUserName(String userName){
+        return globalAdminRepository.findGlobalAdminByUserName(userName);
+    }
+
 
 
 

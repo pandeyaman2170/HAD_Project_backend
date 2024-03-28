@@ -18,4 +18,6 @@ public interface GlobalAdminService {
     int totalHospitals();
     int totalDoctors();
     int totalPatients();
+
+    GlobalAdmin getGlobalAdminByUserName(String userName);
 }
