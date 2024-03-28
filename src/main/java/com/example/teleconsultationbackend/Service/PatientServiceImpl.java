@@ -138,5 +138,15 @@ public class PatientServiceImpl implements PatientService {
             return null;
         }
     }
+    public PatientDetails getPatientDetailsForConsultation(Long patientId)
+    {
+        Patient patient = patientRepository.getPatientDetailsForConsultation(patientId);
+        PatientDetails patientDetails = new PatientDetails();
+        patientDetails.setPatientId(patient.getId());
+        patientDetails.setFirstName(patient.getUser().getFirstName());
+        patientDetails.setDob(patient.getUser().getDob());
+        patientDetails.setGender(patient.getUser().getGender());
+        return patientDetails;
+    }
 
 }
