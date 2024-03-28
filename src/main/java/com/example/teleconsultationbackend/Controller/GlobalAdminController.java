@@ -34,7 +34,8 @@ public class GlobalAdminController {
     @Autowired
     private UserAuthenticationService userService;
 
-    @PostMapping("/add/{admin_id}")
+    @PreAuthorize("hasRole('ROLE_GLOBALADMIN')")
+    @PostMapping("/addHospital/{admin_id}")
     public String addHospital(@PathVariable Long admin_id, @RequestBody Hospital hospital)
     {
         globalAdminService.createHospital(admin_id,hospital);
