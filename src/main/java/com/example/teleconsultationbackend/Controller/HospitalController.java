@@ -40,11 +40,11 @@ public class HospitalController {
     }
 
     @PostMapping("/hospital_admin/add_depertment/{hospital_id}")
-    public String adddepartment(@PathVariable Long hospital_id,
+    public String addDepartmentInHospital(@PathVariable Long hospital_id,
                                 @RequestBody Department department){
-        System.out.println(department);
-        hospitalService.addDepartments(hospital_id,department);
-        return "Department Added sussefully";
+        String departmentName = department.getName();
+        hospitalService.addDepartments(hospital_id, departmentName);
+        return "Department Added successfully";
     }
 
     @GetMapping("/get_all_departments/{hospital_id}")
