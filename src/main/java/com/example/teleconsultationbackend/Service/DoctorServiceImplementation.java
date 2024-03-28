@@ -29,6 +29,12 @@ public class DoctorServiceImplementation implements DoctorService {
     @Autowired
     private UserRepository userRepository;
 
+    @Override
+    public int total_doctors()
+    {
+        return doctorRepository.get_count();
+    }
+
 
     // --------------------------------- Add Doctor to Database -------------------------------------
     @Transactional

@@ -20,11 +20,11 @@ public class ConsultationController {
     @Autowired
     ConsultationService consultationService;
 
-    @GetMapping("total_consultation")
-    public int total_count_of_consultation()
-    {
-        return consultationService.total_consultation();
-    }
+//    @GetMapping("total_consultation")
+//    public int total_count_of_consultation()
+//    {
+//        return consultationService.total_consultation();
+//    }
 
     @GetMapping("/totalDateWiseConsultations")
     public List<DateWiseConsultations> totalDateWiseConsultations() {

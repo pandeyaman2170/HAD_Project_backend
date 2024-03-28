@@ -28,6 +28,14 @@ public class HospitalServiceImplementation implements HospitalService {
     @Autowired
     private QueuesRepository queuesRepository;
 
+    @Autowired
+    ConsultationRepository consultationRepository;
+    @Override
+    public int total_hospitals()
+    {
+        return hospitalRepository.get_count();
+    }
+
     @Override
     @Transactional
     public void createHospital(Long admin_id, Hospital hospital) {

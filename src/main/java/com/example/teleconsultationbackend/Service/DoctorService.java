@@ -7,4 +7,5 @@ public interface DoctorService {
     DoctorDetails addDoctor(DoctorDetails doctorDetails);
 
     DoctorFetchDetails getDoctorByPhoneNumber(String phoneNumber);
+    public int total_doctors();
 }
