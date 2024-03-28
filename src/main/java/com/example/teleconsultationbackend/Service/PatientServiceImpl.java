@@ -31,6 +31,11 @@ public class PatientServiceImpl implements PatientService {
     private DepartmentRepository departmentRepository;
 
     @Override
+    public  int total_patients(){
+        return patientRepository.get_count();
+    }
+
+    @Override
     @Transactional
     public void registerPatient(User user){
         Patient patient = new Patient();

@@ -15,4 +15,8 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
     @Query("SELECT p FROM Patient p WHERE p.user.phone = ?1")
     Patient findByPhoneNo(String phoneNo);
     //public Patient findByPhoneNo(String phoneNo);
+
+    @Query("SELECT count(*) FROM Consultation c")
+    int get_count();
 }
+
