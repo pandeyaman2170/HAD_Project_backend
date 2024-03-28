@@ -13,6 +13,8 @@ public interface ConsultationService {
     List<DateWiseConsultations> totalDateWiseConsultations();
     List<MonthWiseConsultation> totalMonthWiseConsultations();
 
+    Long totalConsultationByDoctor(Long doctorId);
+
 
 
 
