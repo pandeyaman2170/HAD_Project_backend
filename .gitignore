@@ -1,4 +1,6 @@
 /test/
+/.idea
+/pom.xml
 /main/resources/
 /.idea/dataSources.local.xml
 /.idea/dataSources.xml

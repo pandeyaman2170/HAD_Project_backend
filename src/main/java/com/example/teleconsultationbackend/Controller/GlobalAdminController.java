@@ -1,5 +1,6 @@
 package com.example.teleconsultationbackend.Controller;
 
+import com.example.teleconsultationbackend.Entity.GlobalAdmin;
 import com.example.teleconsultationbackend.Entity.Hospital;
 import com.example.teleconsultationbackend.Entity.JwtRequest;
 import com.example.teleconsultationbackend.Entity.JwtResponse;
@@ -40,7 +41,7 @@ public class GlobalAdminController {
         return "done";
     }
 
-    @GetMapping("/view/{admin_id}")
+    @GetMapping("/viewallHospital/{admin_id}")
     public List<Hospital> viewHospital(@PathVariable Long admin_id)
     {
         return globalAdminService.viewAllHospital(admin_id);
@@ -110,6 +111,12 @@ public class GlobalAdminController {
     {
         return globalAdminService.totalPatients();
     }
+
+    @GetMapping("/getGlobalAdminDetails/{userName}")
+    public GlobalAdmin getGlobalAdmin(@PathVariable String userName){
+        System.out.println("GlobalAdmin: "+userName);
+        return globalAdminService.getGlobalAdminByUserName(userName);
+    };
 
 
 
