@@ -15,4 +15,5 @@ public interface HospitalService {
     String adminlogin(String phone);
 
     List<Department> getAllDepartments(Long hospital_id);
+    public int total_hospitals();
 }

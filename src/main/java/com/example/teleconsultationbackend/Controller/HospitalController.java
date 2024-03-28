@@ -15,7 +15,7 @@ import java.util.Optional;
 import java.util.Set;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class HospitalController {
 
     @Autowired

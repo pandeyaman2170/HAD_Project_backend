@@ -1,15 +1,17 @@
 package com.example.teleconsultationbackend.Controller;
 
+import com.example.teleconsultationbackend.DTO.PatientDetails;
 import com.example.teleconsultationbackend.Entity.Patient;
 import com.example.teleconsultationbackend.Entity.User;
 import com.example.teleconsultationbackend.Repository.PatientRepository;
 import com.example.teleconsultationbackend.Service.PatientService;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("patient")
 public class PatientController {
 
@@ -26,7 +28,8 @@ public class PatientController {
         private boolean otpFlag;
 
     }
-    
+
+    @PreAuthorize("hasRole('ROLE_PATIENT')")
     @PostMapping("/register-patient")
     public void registerPatient(@RequestBody RegistrationRequest registrationRequest) {
         User user1 = registrationRequest.getUser();
@@ -51,6 +54,15 @@ public class PatientController {
         }
     }
 
+    @PreAuthorize("hasRole('ROLE_PATIENT')")
+    @PutMapping("/updatePatient/{patientId}")
+    public PatientDetails updatePatient(@RequestBody PatientDetails patientDetails,
+                                        @PathVariable String patientId) {
+        return patientService.updatePatient(patientDetails, Long.parseLong(patientId));
+    }
+
+
+    @PreAuthorize("hasRole('ROLE_PATIENT')")
     @PostMapping("/joinQueue/{dep_id}/{pid}")
     public void joinQueue(@PathVariable Long pid, @PathVariable Long dep_id){
         Patient patient = patientRepository.findPatientById(pid);
@@ -58,8 +70,23 @@ public class PatientController {
         patientService.joinQueue(patient, dep_id);
     }
 
+    @PreAuthorize("hasRole('ROLE_PATIENT')")
     @PostMapping("/delete-from-queue/{pid}")
     public void deletePatientFromQueue(@PathVariable Long pid){
         patientService.deletePatientFromQueue(pid);
     }
+
+    @PreAuthorize("hasRole('ROLE_PATIENT')")
+    @GetMapping("getPatient/{patientId}")
+    public Patient getPatient(@PathVariable String patientId) {
+        return patientService.getPatientByPatientId(Long.parseLong(patientId));
+    }
+
+    @PreAuthorize("hasRole('ROLE_PATIENT')")
+    @GetMapping("/getPatientByPhoneNumber/{phoneNumber}")
+    public PatientDetails getPatientByPhoneNumber(@PathVariable String phoneNumber) {
+        return patientService.getPatientByPhoneNumber(phoneNumber);
+    }
+
+
 }

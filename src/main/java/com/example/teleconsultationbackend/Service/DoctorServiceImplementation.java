@@ -2,6 +2,7 @@ package com.example.teleconsultationbackend.Service;
 
 
 import com.example.teleconsultationbackend.DTO.DoctorDetails;
+import com.example.teleconsultationbackend.DTO.DoctorFetchDetails;
 import com.example.teleconsultationbackend.Entity.Department;
 import com.example.teleconsultationbackend.Entity.Doctor;
 import com.example.teleconsultationbackend.Entity.Hospital;
@@ -27,6 +28,12 @@ public class DoctorServiceImplementation implements DoctorService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Override
+    public int total_doctors()
+    {
+        return doctorRepository.get_count();
+    }
 
 
     // --------------------------------- Add Doctor to Database -------------------------------------
@@ -68,5 +75,32 @@ public class DoctorServiceImplementation implements DoctorService {
             e.printStackTrace();
             return null;
         }
+
+
     }
+    @Override
+    public DoctorFetchDetails getDoctorByPhoneNumber(String phoneNumber) {
+        try {
+            Doctor doctor = doctorRepository.findByPhoneNumber(phoneNumber);
+            if (doctor != null) {
+                return new DoctorFetchDetails(
+                        doctor.getId(),
+                        doctor.getUser().getTitle(),
+                        doctor.getUser().getFirstName(), doctor.getUser().getLastName(),
+                        doctor.getUser().getEmail(), doctor.getUser().getPhone(),
+                        doctor.getRegistrationNumber(), doctor.getUser().getDob(),
+                        doctor.getUser().getGender(), doctor.getUser().getAddress(),
+                        doctor.getUser().getCity(), doctor.getUser().getPincode(),
+                        doctor.getDepartment().getName(),doctor.getHospital().getHospital_id(),doctor.getUser().getRole()
+
+                );
+            }
+            return null;
+        } catch (Exception e) {
+            System.out.println("Error Occurred while verifying phone number");
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 }
