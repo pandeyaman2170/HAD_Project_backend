@@ -1,5 +1,6 @@
 package com.example.teleconsultationbackend.Service;
 
+import com.example.teleconsultationbackend.DTO.DailyLogDetails;
 import com.example.teleconsultationbackend.DTO.PrescriptionDetails;
 import com.example.teleconsultationbackend.Entity.Consultation;
 import com.example.teleconsultationbackend.Entity.Doctor;
@@ -15,7 +16,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @NoArgsConstructor
@@ -123,6 +127,37 @@ public class PrescriptionServiceImplementation implements PrescriptionService{
             e.printStackTrace();
             return null;
         }
+    }
+
+    @Override
+    public List<DailyLogDetails> doctorDailyLog(long doctorId) {
+
+        List<Prescription> prescriptionList = prescriptionRepository.findPrescriptionsByDoctor_DoctorId(doctorId);
+
+        List<DailyLogDetails> dailyLogDetailsList = new ArrayList<>();
+
+        // We'll compare the dates in string format, we'll convert consultation date and current date to the below pattern
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        if(prescriptionList != null) {
+
+            String currentDate = dateFormat.format(new Date());
+
+            for(Prescription prescription: prescriptionList) {
+                String consultationDate = dateFormat.format(prescription.getConsultationDate());
+                if(currentDate.equals(consultationDate)) {
+                    dailyLogDetailsList.add(new DailyLogDetails(
+                            prescription.getDoctor().getId(),
+                            prescription.getConsultationDate(),
+                            prescription.getPatient().getId(),
+                            prescription.getMedical_findings(),
+                            prescription.getRemark()
+                    ));
+                }
+            }
+            return dailyLogDetailsList;
+        }
+        return null;
     }
 
 
