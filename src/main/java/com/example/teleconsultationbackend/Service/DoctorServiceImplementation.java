@@ -75,8 +75,6 @@ public class DoctorServiceImplementation implements DoctorService {
             e.printStackTrace();
             return null;
         }
-
-
     }
     @Override
     public DoctorFetchDetails getDoctorByPhoneNumber(String phoneNumber) {
@@ -101,6 +99,21 @@ public class DoctorServiceImplementation implements DoctorService {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public DoctorFetchDetails updateDoctorDetails(DoctorFetchDetails doctorDetails){
+        System.out.println("doctor details: "+doctorDetails);
+        Doctor doctor = doctorRepository.findByPhoneNumber(doctorDetails.getPhoneNumber());
+        doctor.getUser().setFirstName(doctorDetails.getFirstName());
+        doctor.getUser().setLastName(doctorDetails.getLastName());
+        doctor.getUser().setPincode(doctorDetails.getPincode());
+        doctor.getUser().setCity(doctorDetails.getCity());
+        doctor.getUser().setAddress(doctorDetails.getAddr());
+        doctor.getUser().setTitle(doctorDetails.getTitle());
+        doctor.getUser().setEmail(doctorDetails.getEmail());
+
+        doctorRepository.save(doctor);
+        return doctorDetails;
     }
 
 }
