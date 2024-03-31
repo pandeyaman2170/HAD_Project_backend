@@ -1,5 +1,6 @@
 package com.example.teleconsultationbackend.Service;
 
+import com.example.teleconsultationbackend.Entity.Department;
 import com.example.teleconsultationbackend.Entity.Hospital;
 import com.example.teleconsultationbackend.Repository.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,5 +18,16 @@ public class DepartmentServiceImplementation implements DepartmentService{
     @Transactional
     public List<Hospital> getAllHospitals(Long department_id){
         return departmentRepository.findHospitalsByDepartmentID(department_id);
+    }
+
+    @Override
+    @Transactional
+    public Long getDepartmentIdByDepartmentName(String depName){
+        Department department = departmentRepository.findDepartmentByName(depName);
+        if(department != null){
+            return department.getId();
+        }else{
+            return null;
+        }
     }
 }
