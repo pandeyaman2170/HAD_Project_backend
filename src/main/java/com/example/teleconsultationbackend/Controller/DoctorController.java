@@ -1,7 +1,6 @@
 package com.example.teleconsultationbackend.Controller;
 
 import com.example.teleconsultationbackend.DTO.DailyLogDetails;
-import com.example.teleconsultationbackend.DTO.DoctorDetails;
 import com.example.teleconsultationbackend.DTO.DoctorFetchDetails;
 import com.example.teleconsultationbackend.Service.DoctorService;
 import com.example.teleconsultationbackend.Service.PrescriptionService;
@@ -33,6 +32,12 @@ public class DoctorController {
     @GetMapping("/doctorDailyLog/{doctorId}")
     public List<DailyLogDetails> doctorDailyLog(@PathVariable String doctorId) {
         return prescriptionService.doctorDailyLog(Long.parseLong(doctorId));
+    }
+
+    @PreAuthorize("hasRole('ROLE_DOCTOR')")
+    @PutMapping("/profile/update")
+    public DoctorFetchDetails updateDoctor(@RequestBody DoctorFetchDetails doctorDetails){
+        return doctorService.updateDoctorDetails(doctorDetails);
     }
 
 }
