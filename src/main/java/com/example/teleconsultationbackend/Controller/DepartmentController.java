@@ -7,6 +7,7 @@ import com.example.teleconsultationbackend.Service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -30,4 +31,8 @@ public class DepartmentController {
         return departmentRepository.findAll();
     }
 
+    @GetMapping("/get_departmentId_by_departmentName/{depName}")
+    public Long getDepartmentIdByDepartmentName(@PathVariable String depName){
+        return departmentService.getDepartmentIdByDepartmentName(depName);
+    }
 }

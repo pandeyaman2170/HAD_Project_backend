@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.Objects;
 
 @Service
 public class PatientServiceImpl implements PatientService {
@@ -49,10 +50,17 @@ public class PatientServiceImpl implements PatientService {
     public void joinQueue(Patient patient, Long dep_id){
         Department department = departmentRepository.findDepartmentById(dep_id);
         Queues queues = queuesRepository.findQueueByDepartment(department);
-        if(queues.getPatients().contains(patient)){
-            System.out.println("patient Already present in the queue");
-            // handle by error
-        }else {
+        boolean flag = false;
+        for(Queues queues1 : queuesRepository.findAll()){
+            for(Patient patient1 : queues1.getPatients()){
+                if (patient1.equals(patient)){
+                    System.out.println("patient already present in the " + department.getName() + " queue");
+                    flag = true;
+                    break;
+                }
+            }
+        }
+        if(!flag) {
             patient.setQueues(queues);
             queues.getPatients().add(patient);
             queuesRepository.save(queues);
@@ -70,6 +78,8 @@ public class PatientServiceImpl implements PatientService {
             Queues queues = patient.getQueues();
             queues.getPatients().remove(patient);
             patient.setQueues(null);
+            patientRepository.save(patient);
+            queuesRepository.save(queues);
             System.out.println("patient deleted from the queue");
         }
     }
