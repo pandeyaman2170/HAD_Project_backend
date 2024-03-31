@@ -2,6 +2,8 @@ package com.example.teleconsultationbackend.Config;
 
 import com.example.teleconsultationbackend.Filter.JwtFilter;
 import com.example.teleconsultationbackend.Service.UserAuthenticationService;
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
+import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import org.apache.http.HttpHeaders;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,6 +22,13 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.Collections;
 
+@SecurityScheme(
+        name = "Bearer Authentication",
+        type = SecuritySchemeType.HTTP,
+        bearerFormat = "JWT",
+        scheme = "bearer"
+
+)
 @Configuration
 public class SecurityConfiguration {
 

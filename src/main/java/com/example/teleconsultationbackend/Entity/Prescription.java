@@ -1,4 +1,5 @@
 package com.example.teleconsultationbackend.Entity;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,6 +11,9 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Schema(
+        description = "Store the Prescrption of patient"
+)
 public class Prescription {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

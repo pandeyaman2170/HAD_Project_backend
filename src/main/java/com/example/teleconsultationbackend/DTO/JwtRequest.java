@@ -1,4 +1,4 @@
-package com.example.teleconsultationbackend.Entity;
+package com.example.teleconsultationbackend.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class JwtResponse {
+public class JwtRequest {
 
-    private String jwtToken;
+    private String username;
+    private String password;
 }

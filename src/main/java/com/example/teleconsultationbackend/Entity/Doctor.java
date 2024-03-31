@@ -1,6 +1,7 @@
 package com.example.teleconsultationbackend.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,6 +13,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Table(name = "Doctors")
+@Schema(
+        description = "Store the Doctor details"
+)
 public class Doctor{
     // Additional doctor-specific attributes or methods can be added here
 

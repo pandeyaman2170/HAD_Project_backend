@@ -1,5 +1,6 @@
 package com.example.teleconsultationbackend.Entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -8,8 +9,10 @@ import java.util.List;
 
 @Data
 @Entity
-
 @Table(name = "global_admin")
+@Schema(
+        description = "Store the Global Admin details"
+)
 public class GlobalAdmin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
