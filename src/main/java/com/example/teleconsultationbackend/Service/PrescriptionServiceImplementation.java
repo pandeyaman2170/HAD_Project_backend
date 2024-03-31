@@ -97,7 +97,7 @@ public class PrescriptionServiceImplementation implements PrescriptionService{
         for (Prescription prescription : prescriptionList) {
             prescriptionDetailsList.add(new PrescriptionDetails(prescription.getPrescriptionId(),prescription.getConsultationDate(),prescription.getMedical_findings(),
                     prescription.getMedicine(),prescription.getRemark(),prescription.getDoctor().getUser().getFirstName()+" " +prescription.getDoctor().getUser().getLastName(),prescription.getDoctor().getId(),
-                    prescription.getPatient().getUser().getFirstName()+" "+prescription.getPatient().getUser().getLastName(),prescription.getPatient().getId(), prescription.getFollowUpDate()));
+                    prescription.getPatient().getUser().getFirstName()+" "+prescription.getPatient().getUser().getLastName(),prescription.getPatient().getId(), prescription.getFollowUpDate(),prescription.getDoctor().getHospital().getName(),prescription.getDoctor().getDepartment().getName()));
         }
         return prescriptionDetailsList;
 
@@ -109,6 +109,8 @@ public class PrescriptionServiceImplementation implements PrescriptionService{
         try {
             if(prescriptionRepository.findById(prescriptionId).isPresent()) {
                 prescription = prescriptionRepository.findById(prescriptionId).get();
+//                String hospital_name= prescription.getDoctor().getHospital().getName();
+//                String department_name = prescription.getDoctor().getDepartment().getName();
 
                 return new PrescriptionDetails(prescription.getPrescriptionId(),
                         prescription.getConsultationDate(), prescription.getMedical_findings(),
@@ -118,7 +120,7 @@ public class PrescriptionServiceImplementation implements PrescriptionService{
                         prescription.getDoctor().getId(),
                         prescription.getPatient().getUser().getFirstName() + " " + prescription.getPatient().getUser().getLastName(),
                         prescription.getPatient().getId(),
-                        prescription.getFollowUpDate());
+                        prescription.getFollowUpDate(),prescription.getDoctor().getHospital().getName(),prescription.getDoctor().getDepartment().getName());
             }
             return null;
 
