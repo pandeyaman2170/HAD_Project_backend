@@ -1,6 +1,7 @@
 package com.example.teleconsultationbackend.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -9,6 +10,9 @@ import java.util.List;
 @Data
 @Entity
 @Table(name="Department")
+@Schema(
+        description = "Store the Department details"
+)
 public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

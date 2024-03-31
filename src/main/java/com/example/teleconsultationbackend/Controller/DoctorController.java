@@ -4,6 +4,7 @@ import com.example.teleconsultationbackend.DTO.DailyLogDetails;
 import com.example.teleconsultationbackend.DTO.DoctorFetchDetails;
 import com.example.teleconsultationbackend.Service.DoctorService;
 import com.example.teleconsultationbackend.Service.PrescriptionService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -28,6 +29,7 @@ public class DoctorController {
         return doctorService.getDoctorByPhoneNumber(phoneNumber);
     }
 
+    @SecurityRequirement( name = "Bearer Authentication")
     @PreAuthorize("hasRole('ROLE_DOCTOR')")
     @GetMapping("/doctorDailyLog/{doctorId}")
     public List<DailyLogDetails> doctorDailyLog(@PathVariable String doctorId) {

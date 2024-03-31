@@ -1,6 +1,7 @@
 package com.example.teleconsultationbackend.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -10,6 +11,9 @@ import java.util.Queue;
 @Data
 @Entity
 @Table(name = "queues")
+@Schema(
+        description = "This will store queue number for particular department"
+)
 public class Queues {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,8 +1,8 @@
 package com.example.teleconsultationbackend.Controller;
 
 
-import com.example.teleconsultationbackend.Entity.JwtRequest;
-import com.example.teleconsultationbackend.Entity.JwtResponse;
+import com.example.teleconsultationbackend.DTO.JwtRequest;
+import com.example.teleconsultationbackend.DTO.JwtResponse;
 import com.example.teleconsultationbackend.Service.UserAuthenticationService;
 import com.example.teleconsultationbackend.Utility.JWTUtility;
 import org.springframework.beans.factory.annotation.Autowired;

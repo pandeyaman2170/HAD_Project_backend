@@ -1,6 +1,7 @@
 package com.example.teleconsultationbackend.Controller;
 
 import com.example.teleconsultationbackend.Service.StorageService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.apache.http.protocol.HTTP;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -17,6 +18,9 @@ import static java.net.HttpURLConnection.HTTP_OK;
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/aws")
+@Tag(
+        name="CRUD operation for AWS Resources"
+)
 public class AWSController {
     @Autowired
     private StorageService storageService;
