@@ -35,6 +35,10 @@ public class PrescriptionDetails {
     @Temporal(TemporalType.DATE)
     private Date followUpDate;
 
+    private String hospital_name;
+    private String department_name;
+
+
 
 }
 

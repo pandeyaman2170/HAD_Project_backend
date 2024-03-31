@@ -5,10 +5,8 @@ import com.example.teleconsultationbackend.Entity.Patient;
 import com.example.teleconsultationbackend.Entity.Prescription;
 import com.example.teleconsultationbackend.Repository.PrescriptionRepository;
 import com.itextpdf.text.*;
-import com.itextpdf.text.pdf.PdfContentByte;
-import com.itextpdf.text.pdf.PdfPCell;
-import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.pdf.*;
+import com.itextpdf.text.pdf.draw.VerticalPositionMark;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -84,16 +82,32 @@ public class PdfServiceImplementation implements  PdfService{
             headerTable.addCell(key);
             key.setPhrase(new Phrase(" ", keyFont));
             headerTable.addCell(key);
-            key.setPhrase(new Phrase("ID" + prescription.getDoctorId(), keyFont));
+            key.setPhrase(new Phrase("Doctor ID: " + prescription.getDoctorId(), keyFont));
             headerTable.addCell(key);
 
+            keyFont.setColor(new BaseColor(30, 58, 138));
+            key.setPhrase(new Phrase(" ", keyFont));
+            headerTable.addCell(key);
+            key.setPhrase(new Phrase(" ", keyFont));
+            headerTable.addCell(key);
+            key.setPhrase(new Phrase("Hospital name: " + prescription.getHospital_name(), keyFont));
+            headerTable.addCell(key);
+
+            keyFont.setColor(new BaseColor(30, 58, 138));
+            key.setPhrase(new Phrase(" ", keyFont));
+            headerTable.addCell(key);
+            key.setPhrase(new Phrase(" ", keyFont));
+            headerTable.addCell(key);
+            key.setPhrase(new Phrase("Department: " + prescription.getDepartment_name(), keyFont));
+            headerTable.addCell(key);
 
             document.add(headerTable);
 
+
             // ================================ Trying to add image to the pdf ==================================
-            Image logo = Image.getInstance("src/main/java/com/example/teleconsultationbackend/Images/logo.png");
-            logo.scaleAbsolute(50, 40);
-            logo.setAbsolutePosition(0, 800);
+            Image logo = Image.getInstance("src/main/java/com/example/teleconsultationbackend/Images/logoforPrescription.png");
+            logo.scaleAbsolute(140, 40);
+            logo.setAbsolutePosition(40, 750);
             document.add(logo);
 
             // ################################ Trying to Create Table for patient details ###################################
@@ -113,12 +127,6 @@ public class PdfServiceImplementation implements  PdfService{
             keyFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 15);
             valueFont = FontFactory.getFont(FontFactory.HELVETICA, 15);
 
-            key.setPhrase(new Phrase("", keyFont));
-            patientTable.addCell(key);
-            key.setPhrase(new Phrase("", keyFont));
-            patientTable.addCell(key);
-            key.setPhrase(new Phrase("", keyFont));
-            patientTable.addCell(key);
 
             key.setPhrase(new Phrase("", keyFont));
             patientTable.addCell(key);
@@ -237,7 +245,24 @@ public class PdfServiceImplementation implements  PdfService{
             document.add(remarkTable);
 
 
-            // Add your PDF generation logic here
+//            // Add copyright text at the bottom of the page
+            Paragraph copyright = new Paragraph("\u00A9 All Rights Reserved @ Healthiest", FontFactory.getFont(FontFactory.HELVETICA, 12));
+            //copyright.setAlignment(Element.ALIGN_CENTER);
+//
+// Calculate the y-coordinate for the bottom position
+            Rectangle pageSize = document.getPageSize();
+            float y = pageSize.getBottom(document.bottomMargin());
+
+            float leftMargin = 272;
+//
+//// Create a ColumnText instance and position the copyright text at the bottom
+            ColumnText.showTextAligned(pdfWriter.getDirectContent(),
+                    Element.ALIGN_CENTER,
+                    new Phrase(copyright),
+                    pageSize.getLeft(document.leftMargin()+ leftMargin),
+                    y,
+                    0);
+//            document.add(copyright);
 
             document.close();
             return new ByteArrayInputStream(out.toByteArray());
