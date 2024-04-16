@@ -1,6 +1,8 @@
 package com.example.teleconsultationbackend.Service;
 
+import com.example.teleconsultationbackend.DTO.DoctorDetails;
 import com.example.teleconsultationbackend.Entity.Department;
+import com.example.teleconsultationbackend.Entity.Doctor;
 import com.example.teleconsultationbackend.Entity.Hospital;
 import com.example.teleconsultationbackend.Repository.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +31,17 @@ public class DepartmentServiceImplementation implements DepartmentService{
         }else{
             return null;
         }
+    }
+
+    @Override
+    @Transactional
+    public Long getOnlineDoctorHelper(Long depId){
+        Department department = departmentRepository.findDepartmentById(depId);
+        for(Doctor doctor:department.getDoctors()){
+            if(doctor.isOnline_status()){
+                return doctor.getId();
+            }
+        }
+        return null;
     }
 }

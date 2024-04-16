@@ -42,4 +42,13 @@ public class DoctorController {
         return doctorService.updateDoctorDetails(doctorDetails);
     }
 
+    @PostMapping("/set_online_status_by_doctorId/{doctorId}")
+    public void setDoctorOnlineStatus(@PathVariable Long doctorId){
+        doctorService.setDoctorOnlineStatusHelper(doctorId);
+    }
+
+    @PostMapping("/set_offline_status_by_doctorId/{doctorId}")
+    public void setDoctorOfflineStatus(@PathVariable Long doctorId){
+        doctorService.setDoctorOfflineStatusHelper(doctorId);
+    }
 }
