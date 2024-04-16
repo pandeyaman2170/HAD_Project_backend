@@ -10,4 +10,8 @@ public interface DoctorService {
     public int total_doctors();
 
     public DoctorFetchDetails updateDoctorDetails(DoctorFetchDetails doctorDetails);
+
+    void setDoctorOnlineStatusHelper(Long doctorId);
+
+    void setDoctorOfflineStatusHelper(Long doctorId);
 }

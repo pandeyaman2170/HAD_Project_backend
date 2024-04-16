@@ -76,11 +76,15 @@ public class PatientServiceImpl implements PatientService {
             // handle by error
         }else{
             Queues queues = patient.getQueues();
-            queues.getPatients().remove(patient);
-            patient.setQueues(null);
-            patientRepository.save(patient);
-            queuesRepository.save(queues);
-            System.out.println("patient deleted from the queue");
+            if(queues != null) {
+                queues.getPatients().remove(patient);
+                patient.setQueues(null);
+                patientRepository.save(patient);
+                queuesRepository.save(queues);
+                System.out.println("patient deleted from the queue");
+            }else{
+                System.out.println("patient is not in the queue");
+            }
         }
     }
 

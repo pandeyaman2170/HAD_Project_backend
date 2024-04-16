@@ -71,7 +71,7 @@ public class PatientController {
     }
 
     @PreAuthorize("hasRole('ROLE_PATIENT')")
-    @PostMapping("/delete-from-queue/{pid}")
+    @DeleteMapping ("/delete-from-queue/{pid}")
     public void leftQueue(@PathVariable Long pid){
         patientService.deletePatientFromQueue(pid);
     }

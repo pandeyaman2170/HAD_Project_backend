@@ -116,4 +116,17 @@ public class DoctorServiceImplementation implements DoctorService {
         return doctorDetails;
     }
 
+    @Override
+    public void setDoctorOnlineStatusHelper(Long doctorId) {
+        Doctor doctor = doctorRepository.findDoctorById(doctorId);
+        doctor.setOnline_status(true);
+        doctorRepository.save(doctor);
+    }
+
+    @Override
+    public void setDoctorOfflineStatusHelper(Long doctorId) {
+        Doctor doctor = doctorRepository.findDoctorById(doctorId);
+        doctor.setOnline_status(false);
+        doctorRepository.save(doctor);
+    }
 }
