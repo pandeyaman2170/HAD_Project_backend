@@ -13,4 +13,6 @@ public interface QueueService {
     List<Patient> getAllPatientByDepNameQueue(String depName);
 
     Long getQueuesTop(String depName);
+
+    int getQueueSizeHelper(String depName);
 }

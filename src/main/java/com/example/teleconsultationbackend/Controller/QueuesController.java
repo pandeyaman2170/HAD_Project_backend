@@ -41,4 +41,8 @@ public class QueuesController {
         return queueService.getQueuesTop(depName);
     }
 
+    @GetMapping("/get_queue_size_by_departmentId/{depName}")
+    public int getQueueSize(@PathVariable String depName){
+        return queueService.getQueueSizeHelper(depName);
+    }
 }
