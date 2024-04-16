@@ -57,4 +57,11 @@ public class QueueServiceImpl implements QueueService{
         }
         return null;
     }
+
+    @Override
+    public int getQueueSizeHelper(String depName) {
+        Department department = departmentRepository.findDepartmentByName(depName);
+        Queues queues = queuesRepository.findQueueByDepartment(department);
+        return queues.getPatients().size();
+    }
 }
