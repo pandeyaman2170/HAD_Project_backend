@@ -1,12 +1,17 @@
 package com.example.teleconsultationbackend.Controller;
 
 import com.example.teleconsultationbackend.DTO.PatientDetails;
+import com.example.teleconsultationbackend.Entity.Department;
 import com.example.teleconsultationbackend.Entity.Patient;
+import com.example.teleconsultationbackend.Entity.Queues;
 import com.example.teleconsultationbackend.Entity.User;
+import com.example.teleconsultationbackend.Repository.DepartmentRepository;
 import com.example.teleconsultationbackend.Repository.PatientRepository;
+import com.example.teleconsultationbackend.Repository.QueuesRepository;
 import com.example.teleconsultationbackend.Service.PatientService;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,6 +25,15 @@ public class PatientController {
 
     @Autowired
     private PatientRepository patientRepository;
+
+    @Autowired
+    private SimpMessagingTemplate simpMessagingTemplate;
+
+    @Autowired
+    private QueuesRepository queuesRepository;
+
+    @Autowired
+    private DepartmentRepository departmentRepository;
 
     // Wrapper class for both User and otpFlag
     @Getter
@@ -68,12 +82,26 @@ public class PatientController {
         Patient patient = patientRepository.findPatientById(pid);
         System.out.println("patientName : " + patient.getUser().getFirstName());
         patientService.joinQueue(patient, dep_id);
+        Department department = departmentRepository.findDepartmentById(dep_id);
+        Queues queues = queuesRepository.findQueueByDepartment(department);
+        if(!queues.getPatients().isEmpty()) {
+            Long pidFirst = queues.getPatients().get(0).getId();
+            simpMessagingTemplate.convertAndSend("/topic/call-incoming/1", pidFirst);
+        }
     }
 
     @PreAuthorize("hasRole('ROLE_PATIENT')")
     @DeleteMapping ("/delete-from-queue/{pid}")
     public void leftQueue(@PathVariable Long pid){
+        Patient patient = patientRepository.findPatientById(pid);
+        Queues queues = patient.getQueues();
         patientService.deletePatientFromQueue(pid);
+        if(!queues.getPatients().isEmpty()) {
+            Patient newPatient = queues.getPatients().get(0);
+            simpMessagingTemplate.convertAndSend("/topic/call-incoming/1", newPatient.getId());
+        } else {
+            simpMessagingTemplate.convertAndSend("/topic/call-incoming/1", -1);
+        }
     }
 
     @PreAuthorize("hasRole('ROLE_PATIENT')")

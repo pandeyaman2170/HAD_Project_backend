@@ -1,18 +1,14 @@
 package com.example.teleconsultationbackend.Service;
 
 import com.example.teleconsultationbackend.DTO.PatientDetails;
-import com.example.teleconsultationbackend.Entity.Department;
-import com.example.teleconsultationbackend.Entity.Patient;
-import com.example.teleconsultationbackend.Entity.Queues;
-import com.example.teleconsultationbackend.Entity.User;
-import com.example.teleconsultationbackend.Repository.DepartmentRepository;
-import com.example.teleconsultationbackend.Repository.PatientRepository;
-import com.example.teleconsultationbackend.Repository.QueuesRepository;
-import com.example.teleconsultationbackend.Repository.UserRepository;
+import com.example.teleconsultationbackend.Entity.*;
+import com.example.teleconsultationbackend.Repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.Objects;
 
@@ -30,6 +26,9 @@ public class PatientServiceImpl implements PatientService {
 
     @Autowired
     private DepartmentRepository departmentRepository;
+
+    @Autowired
+    private Consultation1Repository consultation1Repository;
 
     @Override
     public  int total_patients(){
@@ -63,6 +62,13 @@ public class PatientServiceImpl implements PatientService {
         if(!flag) {
             patient.setQueues(queues);
             queues.getPatients().add(patient);
+            patientRepository.save(patient);
+            consultation1Repository.save(
+                    new Consultation1(Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant()),
+                            null, patient,
+                            "waiting",
+                            dep_id)
+            );
             queuesRepository.save(queues);
         }
     }
@@ -79,6 +85,9 @@ public class PatientServiceImpl implements PatientService {
             if(queues != null) {
                 queues.getPatients().remove(patient);
                 patient.setQueues(null);
+                for (Patient patient1 : queues.getPatients()){
+                    System.out.println("patient is: " + patient1.getId());
+                }
                 patientRepository.save(patient);
                 queuesRepository.save(queues);
                 System.out.println("patient deleted from the queue");
