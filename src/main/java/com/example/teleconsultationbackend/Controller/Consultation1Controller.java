@@ -1,6 +1,5 @@
 package com.example.teleconsultationbackend.Controller;
 
-import com.example.teleconsultationbackend.Repository.Consultation1Repository;
 import com.example.teleconsultationbackend.Service.Consultation1Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
