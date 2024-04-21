@@ -1,5 +1,6 @@
 package com.example.teleconsultationbackend.Service;
 
+import com.example.teleconsultationbackend.DTO.OnlyPatientDetails;
 import com.example.teleconsultationbackend.DTO.PatientDetails;
 import com.example.teleconsultationbackend.Entity.*;
 import com.example.teleconsultationbackend.Repository.*;
@@ -37,9 +38,14 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     @Transactional
-    public void registerPatient(User user){
+    public void registerPatient(User user, OnlyPatientDetails onlyPatientDetails){
         Patient patient = new Patient();
         patient.setUser(user);
+        patient.setHeight(onlyPatientDetails.getHeight());
+        patient.setWeight(onlyPatientDetails.getWeight());
+        patient.setBlood_group(onlyPatientDetails.getBlood_group());
+        patient.setAadhar_number(onlyPatientDetails.getAadhar_number());
+
         patientRepository.save(patient);
         System.out.println("Done Creating User");
     }
