@@ -32,14 +32,19 @@ public class ConsultationController {
         return consultationService.totalDateWiseConsultations();
     }
 
-    @GetMapping("/totalMonthWiseConsultations")
-    public List<MonthWiseConsultation> totalMonthWiseConsultations() {
-        return consultationService.totalMonthWiseConsultations();
+    @GetMapping("/totalMonthWiseConsultations/{doctorId}")
+    public List<MonthWiseConsultation> totalMonthWiseConsultations(@PathVariable Long doctorId) {
+        return consultationService.totalMonthWiseConsultations(doctorId);
     }
 
     @GetMapping("/totalConsultationByDoctor/{doctorId}")
     public Long totalConsultationByDoctor(@PathVariable String doctorId) {
         return consultationService.totalConsultationByDoctor(Long.parseLong(doctorId));
+    }
+
+    @GetMapping("/totalConsultationByPatient/{patientId}")
+    public Long totalConsultationByPatient(@PathVariable String patientId) {
+        return consultationService.totalConsultationByPatient(Long.parseLong(patientId));
     }
 
 

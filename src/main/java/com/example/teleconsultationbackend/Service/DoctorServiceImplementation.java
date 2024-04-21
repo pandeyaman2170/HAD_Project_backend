@@ -75,8 +75,6 @@ public class DoctorServiceImplementation implements DoctorService {
             e.printStackTrace();
             return null;
         }
-
-
     }
     @Override
     public DoctorFetchDetails getDoctorByPhoneNumber(String phoneNumber) {
@@ -103,4 +101,32 @@ public class DoctorServiceImplementation implements DoctorService {
         }
     }
 
+    public DoctorFetchDetails updateDoctorDetails(DoctorFetchDetails doctorDetails){
+        System.out.println("doctor details: "+doctorDetails);
+        Doctor doctor = doctorRepository.findByPhoneNumber(doctorDetails.getPhoneNumber());
+        doctor.getUser().setFirstName(doctorDetails.getFirstName());
+        doctor.getUser().setLastName(doctorDetails.getLastName());
+        doctor.getUser().setPincode(doctorDetails.getPincode());
+        doctor.getUser().setCity(doctorDetails.getCity());
+        doctor.getUser().setAddress(doctorDetails.getAddr());
+        doctor.getUser().setTitle(doctorDetails.getTitle());
+        doctor.getUser().setEmail(doctorDetails.getEmail());
+
+        doctorRepository.save(doctor);
+        return doctorDetails;
+    }
+
+    @Override
+    public void setDoctorOnlineStatusHelper(Long doctorId) {
+        Doctor doctor = doctorRepository.findDoctorById(doctorId);
+        doctor.setOnline_status(true);
+        doctorRepository.save(doctor);
+    }
+
+    @Override
+    public void setDoctorOfflineStatusHelper(Long doctorId) {
+        Doctor doctor = doctorRepository.findDoctorById(doctorId);
+        doctor.setOnline_status(false);
+        doctorRepository.save(doctor);
+    }
 }
