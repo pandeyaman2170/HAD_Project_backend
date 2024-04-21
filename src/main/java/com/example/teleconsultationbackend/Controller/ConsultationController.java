@@ -4,6 +4,7 @@ import com.example.teleconsultationbackend.DTO.DateWiseConsultations;
 import com.example.teleconsultationbackend.DTO.MonthWiseConsultation;
 import com.example.teleconsultationbackend.Service.ConsultationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,12 +17,6 @@ import java.util.List;
 public class ConsultationController {
     @Autowired
     ConsultationService consultationService;
-
-//    @GetMapping("total_consultation")
-//    public int total_count_of_consultation()
-//    {
-//        return consultationService.total_consultation();
-//    }
 
     @GetMapping("/totalDateWiseConsultations")
     public List<DateWiseConsultations> totalDateWiseConsultations() {
@@ -43,14 +38,19 @@ public class ConsultationController {
         return consultationService.totalConsultationByPatient(Long.parseLong(patientId));
     }
 
+    @Autowired
+    private SimpMessagingTemplate simpMessagingTemplate;
 
 
+    @PostMapping("/addConsultationStatus/{patientId}/{depId}")
+    public void addConsultationStatusWaiting(@PathVariable String patientId, @PathVariable String depId){
+        consultationService.addConsultationStatusWaitinghelper(Long.valueOf(patientId), Long.valueOf(depId));
+    }
 
-
-
-
-
-
-
-
+    @CrossOrigin
+    @PostMapping("/accept_call/{doctorId}/{patientId}")
+    public void setStatusToAccepted(@PathVariable String doctorId, @PathVariable String patientId){
+        consultationService.setStatusToAcceptedHelper(Long.valueOf(doctorId), Long.valueOf(patientId));
+        simpMessagingTemplate.convertAndSend("/topic/patient-waiting/"+patientId, Long.valueOf(doctorId));
+    }
 }

@@ -28,7 +28,7 @@ public class PatientServiceImpl implements PatientService {
     private DepartmentRepository departmentRepository;
 
     @Autowired
-    private Consultation1Repository consultation1Repository;
+    private ConsultationRepository consultationRepository;
 
     @Override
     public  int total_patients(){
@@ -63,8 +63,8 @@ public class PatientServiceImpl implements PatientService {
             patient.setQueues(queues);
             queues.getPatients().add(patient);
             patientRepository.save(patient);
-            consultation1Repository.save(
-                    new Consultation1(Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant()),
+            consultationRepository.save(
+                    new Consultation(Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant()),
                             null, patient,
                             "waiting",
                             dep_id)
