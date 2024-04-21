@@ -11,13 +11,9 @@ public interface ConsultationService {
 
     public int total_consultation();
     List<DateWiseConsultations> totalDateWiseConsultations();
-    List<MonthWiseConsultation> totalMonthWiseConsultations();
+    List<MonthWiseConsultation> totalMonthWiseConsultations(Long doctorId);
 
     Long totalConsultationByDoctor(Long doctorId);
 
-
-
-
-
-
+    Long totalConsultationByPatient(Long patientId);
 }

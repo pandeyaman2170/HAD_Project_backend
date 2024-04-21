@@ -1,14 +1,14 @@
 package com.example.teleconsultationbackend.Controller;
 
+import com.example.teleconsultationbackend.DTO.DoctorDetails;
 import com.example.teleconsultationbackend.Entity.Department;
+import com.example.teleconsultationbackend.Entity.Doctor;
 import com.example.teleconsultationbackend.Entity.Hospital;
 import com.example.teleconsultationbackend.Repository.DepartmentRepository;
 import com.example.teleconsultationbackend.Service.DepartmentService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,4 +34,13 @@ public class DepartmentController {
         return departmentRepository.findAll();
     }
 
+    @GetMapping("/get_departmentId_by_departmentName/{depName}")
+    public Long getDepartmentIdByDepartmentName(@PathVariable String depName){
+        return departmentService.getDepartmentIdByDepartmentName(depName);
+    }
+
+    @GetMapping("/department/get_online_doctor/{depId}")
+    public Long getOnlineDoctor(@PathVariable Long depId){
+        return departmentService.getOnlineDoctorHelper(depId);
+    }
 }

@@ -1,5 +1,6 @@
 package com.example.teleconsultationbackend.DTO;
 
+import com.example.teleconsultationbackend.Entity.Department;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;

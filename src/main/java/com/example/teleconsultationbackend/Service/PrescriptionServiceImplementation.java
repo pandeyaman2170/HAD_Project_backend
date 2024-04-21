@@ -2,14 +2,8 @@ package com.example.teleconsultationbackend.Service;
 
 import com.example.teleconsultationbackend.DTO.DailyLogDetails;
 import com.example.teleconsultationbackend.DTO.PrescriptionDetails;
-import com.example.teleconsultationbackend.Entity.Consultation;
-import com.example.teleconsultationbackend.Entity.Doctor;
-import com.example.teleconsultationbackend.Entity.Patient;
-import com.example.teleconsultationbackend.Entity.Prescription;
-import com.example.teleconsultationbackend.Repository.ConsultationRepository;
-import com.example.teleconsultationbackend.Repository.DoctorRepository;
-import com.example.teleconsultationbackend.Repository.PatientRepository;
-import com.example.teleconsultationbackend.Repository.PrescriptionRepository;
+import com.example.teleconsultationbackend.Entity.*;
+import com.example.teleconsultationbackend.Repository.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +31,10 @@ public class PrescriptionServiceImplementation implements PrescriptionService{
 
     @Autowired
     ConsultationRepository consultationRepository;
+
+    @Autowired
+    Consultation1Repository consultation1Repository;
+
     @Transactional
     @Override
     public PrescriptionDetails addPrescription(PrescriptionDetails prescriptionDetails) {
@@ -50,7 +48,10 @@ public class PrescriptionServiceImplementation implements PrescriptionService{
 
                 prescribingDoctor = doctorRepository.findById(prescriptionDetails.getDoctorId()).get();
                 prescribedPatient = patientRepository.findById(prescriptionDetails.getPatientId()).get();
-
+//                Consultation1 consultation1 = consultation1Repository.
+//                        findConsultation1ByPatientAndAndStatus(prescribedPatient, "accepted");
+//                consultation1.setStatus("ended");
+//                consultation1Repository.save(consultation1);
                 Prescription prescription = new Prescription(
                         prescriptionDetails.getConsultationDate(),
                         prescriptionDetails.getObservation(),

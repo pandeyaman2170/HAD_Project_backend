@@ -8,4 +8,10 @@ public interface DoctorService {
 
     DoctorFetchDetails getDoctorByPhoneNumber(String phoneNumber);
     public int total_doctors();
+
+    public DoctorFetchDetails updateDoctorDetails(DoctorFetchDetails doctorDetails);
+
+    void setDoctorOnlineStatusHelper(Long doctorId);
+
+    void setDoctorOfflineStatusHelper(Long doctorId);
 }

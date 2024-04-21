@@ -21,6 +21,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.Collections;
+import java.util.List;
 
 @SecurityScheme(
         name = "Bearer Authentication",
@@ -60,6 +61,7 @@ public class SecurityConfiguration {
     @SuppressWarnings("removal")
     @Bean
     protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.cors(corsConfig ->corsConfig.configurationSource(corsConfigurationSource()));
 
         http.csrf().disable()
                 .authorizeHttpRequests((authorize) -> {
@@ -72,7 +74,7 @@ public class SecurityConfiguration {
                     authorize.requestMatchers("/addPrescription/**").hasRole("DOCTOR");
                     authorize.requestMatchers("/addPrescription/**").hasRole("PATIENT");
                     authorize.requestMatchers("/global_admin/login/**").permitAll();
-                    authorize.requestMatchers("/global_admin/**").hasRole("GLOBALADMIN");
+//                    authorize.requestMatchers("/global_admin/**").hasRole("GLOBALADMIN");
 //                    authorize.requestMatchers("/login/**").permitAll();
 //                    authorize.requestMatchers("/patient/addPatient/**").permitAll();
 //                    authorize.requestMatchers("/doctor/registerDoctor/**").permitAll();
@@ -119,14 +121,26 @@ public class SecurityConfiguration {
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration config = new CorsConfiguration();
-        config.addAllowedOrigin("*");
-        config.addAllowedHeader("*");
-        config.addAllowedMethod("*");
-        config.setExposedHeaders(Collections.singletonList("Authorization"));
+//        CorsConfiguration config = new CorsConfiguration();
+//        config.addAllowedOrigin("*");
+//        config.addAllowedHeader("*");
+//        config.addAllowedMethod("*");
+//        config.addAllowedMethod("OPTIONS");
+//        config.setExposedHeaders(Collections.singletonList("Authorization"));
+//        config.setAllowedHeaders(List.of("Content-Type", "text/plain","Authorization"));
+//
+//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//        source.registerCorsConfiguration("/**", config);
+//        return source;
+        CorsConfiguration corsConfiguration = new CorsConfiguration();
+        corsConfiguration.setAllowedOrigins(List.of("http://localhost:3000", "http://localhost:3001", "http://localhost:3002", "http://localhost:3003"));
+        corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        corsConfiguration.setAllowedHeaders(List.of("Content-Type", "Authorization"));
+        corsConfiguration.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", config);
+        source.registerCorsConfiguration("/**", corsConfiguration);
+
         return source;
     }
 
