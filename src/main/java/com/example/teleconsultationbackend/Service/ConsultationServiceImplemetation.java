@@ -57,11 +57,8 @@ public class ConsultationServiceImplemetation implements ConsultationService{
 
         return dateWiseConsultationsList;
     }
-
-    @Override
-    public List<MonthWiseConsultation> totalMonthWiseConsultations() {
-        List<Consultation> consultationList = consultationRepository.findAll();
-
+    public List<MonthWiseConsultation> totalMonthWiseConsultations(Long doctorId) {
+        List<Consultation> consultationList = consultationRepository.findConsultationByDoctor_Id(doctorId);
         Map<String, Long> totalConsultations = new TreeMap<>();
 
         // Aggregate consultations by month
