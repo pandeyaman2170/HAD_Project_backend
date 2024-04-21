@@ -3,6 +3,7 @@ package com.example.teleconsultationbackend.Controller;
 import com.example.teleconsultationbackend.DTO.DateWiseConsultations;
 import com.example.teleconsultationbackend.DTO.MonthWiseConsultation;
 import com.example.teleconsultationbackend.Service.ConsultationService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,9 @@ import java.util.List;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/consultation")
+@Tag(
+        name="Consultation APIs"
+)
 public class ConsultationController {
     @Autowired
     ConsultationService consultationService;

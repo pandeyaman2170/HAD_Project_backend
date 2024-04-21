@@ -133,7 +133,7 @@ public class SecurityConfiguration {
 //        source.registerCorsConfiguration("/**", config);
 //        return source;
         CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.setAllowedOrigins(List.of("http://localhost:3000", "http://localhost:3001", "http://localhost:3002", "http://localhost:3003"));
+        corsConfiguration.setAllowedOrigins(List.of("http://localhost:3000", "http://localhost:3001", "http://localhost:3002", "http://localhost:3003","http://localhost:3004","http://localhost:3005"));
         corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         corsConfiguration.setAllowedHeaders(List.of("Content-Type", "Authorization"));
         corsConfiguration.setAllowCredentials(true);
