@@ -8,11 +8,15 @@ import java.util.List;
 
 
 public interface ConsultationService {
-
     public int total_consultation();
     List<DateWiseConsultations> totalDateWiseConsultations();
     List<MonthWiseConsultation> totalMonthWiseConsultations();
 
     Long totalConsultationByDoctor(Long doctorId);
 
+    Long totalConsultationByPatient(Long patientId);
+
+    void addConsultationStatusWaitinghelper(Long patientId, Long depId);
+
+    void setStatusToAcceptedHelper(Long doctorId, Long patientId);
 }

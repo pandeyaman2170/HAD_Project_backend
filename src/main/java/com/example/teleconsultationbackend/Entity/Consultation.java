@@ -33,9 +33,21 @@ public class Consultation {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "patient", referencedColumnName = "patient_id")
     private Patient patient;
-    public Consultation(Date consultationDate, Doctor doctor, Patient patient) {
+
+    private Long depId;
+
+    /*
+     * Ongoing
+     * accepted
+     * Waiting
+     * ended
+     */
+    private String status;
+    public Consultation(Date consultationDate, Doctor doctor, Patient patient, String status, Long depId) {
         this.consultationDate = consultationDate;
         this.doctor = doctor;
         this.patient = patient;
+        this.status = status;
+        this.depId = depId;
     }
 }

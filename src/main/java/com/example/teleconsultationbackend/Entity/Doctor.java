@@ -17,8 +17,6 @@ import lombok.NoArgsConstructor;
         description = "Store the Doctor details"
 )
 public class Doctor{
-    // Additional doctor-specific attributes or methods can be added here
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "doctor_id")
