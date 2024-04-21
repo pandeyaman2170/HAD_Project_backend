@@ -44,11 +44,8 @@ public class ConsultationServiceImplemetation implements ConsultationService{
 
         return dateWiseConsultationsList;
     }
-
-    @Override
-    public List<MonthWiseConsultation> totalMonthWiseConsultations() {
-        List<Consultation> consultationList = consultationRepository.findAll();
-
+    public List<MonthWiseConsultation> totalMonthWiseConsultations(Long doctorId) {
+        List<Consultation> consultationList = consultationRepository.findConsultationByDoctor_Id(doctorId);
         Map<String, Long> totalConsultations = new TreeMap<>();
 
         // Aggregate consultations by month
@@ -64,6 +61,7 @@ public class ConsultationServiceImplemetation implements ConsultationService{
         for (Map.Entry<String, Long> entry : totalConsultations.entrySet()) {
             String month = entry.getKey();
             Long consultations = entry.getValue();
+            System.out.println(month+" "+consultations);
             monthWiseConsultationsList.add(new MonthWiseConsultation(month, consultations));
         }
 
@@ -80,6 +78,11 @@ public class ConsultationServiceImplemetation implements ConsultationService{
     @Override
     public Long totalConsultationByDoctor(Long doctorId) {
         return consultationRepository.findAllByDoctor_DoctorId(doctorId);
+    }
+
+    @Override
+    public Long totalConsultationByPatient(Long doctorId) {
+        return consultationRepository.findAllByPatientId(doctorId);
     }
 
 
