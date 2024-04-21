@@ -7,6 +7,7 @@ import com.example.teleconsultationbackend.Service.DoctorService;
 import com.example.teleconsultationbackend.Entity.User;
 import com.example.teleconsultationbackend.Service.HospitalService;
 import com.example.teleconsultationbackend.Service.HospitalServiceImplementation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,8 +15,12 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
+
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
+@Tag(
+        name="Hospital APIs"
+)
 public class HospitalController {
 
     @Autowired

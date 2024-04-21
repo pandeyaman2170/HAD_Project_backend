@@ -7,6 +7,7 @@ import com.example.teleconsultationbackend.DTO.JwtResponse;
 import com.example.teleconsultationbackend.Service.GlobalAdminService;
 import com.example.teleconsultationbackend.Service.UserAuthenticationService;
 import com.example.teleconsultationbackend.Utility.JWTUtility;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -21,6 +22,9 @@ import java.util.List;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/global_admin")
+@Tag(
+        name="Global Admin APIs"
+)
 public class GlobalAdminController {
     @Autowired
     private GlobalAdminService globalAdminService;

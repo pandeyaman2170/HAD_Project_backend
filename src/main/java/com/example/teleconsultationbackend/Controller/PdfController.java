@@ -3,6 +3,7 @@ package com.example.teleconsultationbackend.Controller;
 import com.example.teleconsultationbackend.Repository.PrescriptionRepository;
 import com.example.teleconsultationbackend.Service.PdfService;
 import com.example.teleconsultationbackend.Service.PdfServiceImplementation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
@@ -18,6 +19,9 @@ import java.util.Date;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/pdf")
+@Tag(
+        name="PDF APIs"
+)
 public class PdfController {
     @Autowired
     private PdfService pdfService;

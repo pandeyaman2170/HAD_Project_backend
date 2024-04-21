@@ -4,6 +4,7 @@ import com.example.teleconsultationbackend.Entity.Department;
 import com.example.teleconsultationbackend.Entity.Hospital;
 import com.example.teleconsultationbackend.Repository.DepartmentRepository;
 import com.example.teleconsultationbackend.Service.DepartmentService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +14,9 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
+@Tag(
+        name="Department APIs"
+)
 public class DepartmentController {
     @Autowired
     private DepartmentService departmentService;

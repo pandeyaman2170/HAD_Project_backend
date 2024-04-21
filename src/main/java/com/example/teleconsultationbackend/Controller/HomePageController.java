@@ -3,6 +3,7 @@ import com.example.teleconsultationbackend.Service.ConsultationService;
 import com.example.teleconsultationbackend.Service.DoctorService;
 import com.example.teleconsultationbackend.Service.HospitalService;
 import com.example.teleconsultationbackend.Service.PatientService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/homepage")
+@Tag(
+        name="Home page APIs"
+)
 public class HomePageController {
     @Autowired
     private ConsultationService consultationService;
