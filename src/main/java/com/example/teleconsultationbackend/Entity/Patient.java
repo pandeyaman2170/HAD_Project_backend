@@ -18,6 +18,16 @@ public class Patient{
     @Column(name = "patient_id")
     private Long id;
 
+    @Column(name = "blood_group",nullable = false)
+    private String blood_group;
+    @Column(name = "height",nullable = false)
+    private String height;
+    @Column(name = "weight",nullable = false)
+    private String weight;
+    @Column(name = "aadhar_no",nullable = false,unique = true)
+    private String aadhar_number;
+
+
     @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
