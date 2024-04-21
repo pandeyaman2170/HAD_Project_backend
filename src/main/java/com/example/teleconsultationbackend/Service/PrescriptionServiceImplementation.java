@@ -32,9 +32,6 @@ public class PrescriptionServiceImplementation implements PrescriptionService{
     @Autowired
     ConsultationRepository consultationRepository;
 
-    @Autowired
-    Consultation1Repository consultation1Repository;
-
     @Transactional
     @Override
     public PrescriptionDetails addPrescription(PrescriptionDetails prescriptionDetails) {
@@ -48,10 +45,6 @@ public class PrescriptionServiceImplementation implements PrescriptionService{
 
                 prescribingDoctor = doctorRepository.findById(prescriptionDetails.getDoctorId()).get();
                 prescribedPatient = patientRepository.findById(prescriptionDetails.getPatientId()).get();
-//                Consultation1 consultation1 = consultation1Repository.
-//                        findConsultation1ByPatientAndAndStatus(prescribedPatient, "accepted");
-//                consultation1.setStatus("ended");
-//                consultation1Repository.save(consultation1);
                 Prescription prescription = new Prescription(
                         prescriptionDetails.getConsultationDate(),
                         prescriptionDetails.getObservation(),
@@ -66,7 +59,9 @@ public class PrescriptionServiceImplementation implements PrescriptionService{
                 consultationRepository.save(
                         new Consultation(prescriptionDetails.getConsultationDate(),
                                 prescribingDoctor,
-                                prescribedPatient)
+                                prescribedPatient,
+                                "ended",
+                                prescription.getDoctor().getDepartment().getId())
                 );
 
                 return prescriptionDetails;
