@@ -1,5 +1,6 @@
 package com.example.teleconsultationbackend.Service;
 
+import com.example.teleconsultationbackend.DTO.ConsultationDetails;
 import com.example.teleconsultationbackend.DTO.DateWiseConsultations;
 import com.example.teleconsultationbackend.DTO.MonthWiseConsultation;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,8 @@ public interface ConsultationService {
     List<MonthWiseConsultation> totalMonthWiseConsultations(Long doctorId);
 
     Long totalConsultationByDoctor(Long doctorId);
+    List<ConsultationDetails> totalConsultationByDep(Long depId, Long hospitalId);
+
 
     Long totalConsultationByPatient(Long patientId);
 

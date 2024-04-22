@@ -1,7 +1,10 @@
 package com.example.teleconsultationbackend.Controller;
 
+import com.example.teleconsultationbackend.DTO.ConsultationDetails;
 import com.example.teleconsultationbackend.DTO.DateWiseConsultations;
 import com.example.teleconsultationbackend.DTO.MonthWiseConsultation;
+import com.example.teleconsultationbackend.Entity.Department;
+import com.example.teleconsultationbackend.Repository.DepartmentRepository;
 import com.example.teleconsultationbackend.Service.ConsultationService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +25,9 @@ public class ConsultationController {
     @Autowired
     ConsultationService consultationService;
 
+    @Autowired
+    private DepartmentRepository departmentRepository;
+
     @GetMapping("/totalDateWiseConsultations")
     public List<DateWiseConsultations> totalDateWiseConsultations() {
         return consultationService.totalDateWiseConsultations();
@@ -35,6 +41,13 @@ public class ConsultationController {
     @GetMapping("/totalConsultationByDoctor/{doctorId}")
     public Long totalConsultationByDoctor(@PathVariable String doctorId) {
         return consultationService.totalConsultationByDoctor(Long.parseLong(doctorId));
+    }
+
+    @GetMapping("/getAllConsultations/{depName}/{hospitalId}")
+    public List<ConsultationDetails> totalConsultationByDep(@PathVariable String depName, @PathVariable Long hospitalId) {
+        Long depId = departmentRepository.findDepartmentByName(depName).getId();
+        System.out.println("Inside the API");
+        return consultationService.totalConsultationByDep(depId, hospitalId);
     }
 
     @GetMapping("/totalConsultationByPatient/{patientId}")
