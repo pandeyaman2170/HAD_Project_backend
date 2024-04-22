@@ -1,6 +1,7 @@
 package com.example.teleconsultationbackend.Service;
 
 
+import com.example.teleconsultationbackend.DTO.ConsultationDetails;
 import com.example.teleconsultationbackend.DTO.DateWiseConsultations;
 import com.example.teleconsultationbackend.DTO.MonthWiseConsultation;
 import com.example.teleconsultationbackend.Entity.Consultation;
@@ -91,6 +92,26 @@ public class ConsultationServiceImplemetation implements ConsultationService{
     @Override
     public Long totalConsultationByDoctor(Long doctorId) {
         return consultationRepository.findAllByDoctor_DoctorId(doctorId);
+    }
+
+    @Override
+    public List<ConsultationDetails> totalConsultationByDep(Long depId, Long hospitalId) {
+        List<Consultation> consultationList = consultationRepository.
+                findConsultationsByDepIdAndStatus(depId, "accepted");
+        List<ConsultationDetails> consultationDetailsList = new ArrayList<>();
+        for (Consultation consultation : consultationList){
+            if(Objects.equals(consultation.getDoctor().getHospital().getHospital_id(), hospitalId)){
+                ConsultationDetails consultationDetails = new ConsultationDetails();
+                consultationDetails.setConsultationId(consultation.getConsultationId());
+                consultationDetails.setDoctorName(consultation.getDoctor().getUser().getFirstName());
+                consultationDetails.setDoctorId(consultation.getDoctor().getId());
+                consultationDetails.setPatientId(consultation.getPatient().getId());
+                consultationDetails.setPatientName(consultation.getPatient().getUser().getFirstName());
+                consultationDetails.setStatus(consultation.getStatus());
+                consultationDetailsList.add(consultationDetails);
+            }
+        }
+        return consultationDetailsList;
     }
 
     @Override

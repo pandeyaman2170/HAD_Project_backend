@@ -38,6 +38,7 @@ public class QueuesController {
 
     @GetMapping("/get_waiting_patients_by_departmentName/{depName}")
     public List<Patient> getAllWaitingPatientByInQueueByDepartmentId(@PathVariable String depName){
+        System.out.println(depName+"*************");
         return queueService.getAllPatientByDepNameQueue(depName);
     }
 

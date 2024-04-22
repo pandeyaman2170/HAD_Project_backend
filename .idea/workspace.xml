@@ -5,14 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed71d78f-36fb-4740-a1fe-7c8df3b3d9df" name="Changes" comment="getDoctorByPhoneNumber is added in doctor Service. Roles are added in aws controller.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/DTO/ConsultationDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/DepartmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/DepartmentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/DTO/PatientLoginStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/DTO/UserLoginStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Repository/DoctorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Repository/DoctorRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/ConsultationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/ConsultationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/QueuesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Controller/QueuesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Repository/ConsultationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Repository/ConsultationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/ConsultationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/ConsultationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/ConsultationServiceImplemetation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/ConsultationServiceImplemetation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/DoctorServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/DoctorServiceImplementation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Controller/GlobalAdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Controller/GlobalAdminController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Controller/HospitalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Controller/HospitalController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Controller/ShareRecordController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Controller/ShareRecordController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Entity/Department.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Entity/Department.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Entity/Doctor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Entity/Doctor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Entity/GlobalAdmin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Entity/GlobalAdmin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Entity/Hospital.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Entity/Hospital.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Entity/Patient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Entity/Patient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Entity/ShareRecordHospital.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Entity/ShareRecordHospital.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Entity/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Repository/DoctorRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Repository/DoctorRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Repository/PatientRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Repository/PatientRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Repository/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Service/ShareRecordImplementation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/Service/ShareRecordImplementation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/TeleConsultationBackendApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/teleconsultationbackend/TeleConsultationBackendApplication.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +77,7 @@
   &quot;associatedIndex&quot;: 7
 }</component>
   <component name="ProjectId" id="2e2R4z0In2SesFGqMBFwfFq2JDy" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -72,8 +91,9 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.TeleConsultationBackendApplication.executor": "Run",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "develop-aman-new",
+    "git-widget-placeholder": "develop-veerendra",
     "last_opened_file_path": "/home/lenovo/IdeaProjects/HAD_Project_Frontend",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -160,5 +180,16 @@
     <MESSAGE value="AWS configuration in spring boot is done. &#10;Also all crud API for AWS i.e UPLOAD file,DELETE file, fetch file with id all is done." />
     <MESSAGE value="IMPLEMENTED JWT SECURITY WITH PATIENT ROLE." />
     <option name="LAST_COMMIT_MESSAGE" value="IMPLEMENTED JWT SECURITY WITH PATIENT ROLE." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/teleconsultationbackend/Service/QueueServiceImpl.java</url>
+          <line>63</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
