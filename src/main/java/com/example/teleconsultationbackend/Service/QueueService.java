@@ -8,7 +8,7 @@ import java.util.List;
 public interface QueueService {
     List<Doctor> getAllDoctorsFromDepartment(Long dep_id);
 
-    int getAllWaitingPatientByInQueueByDepartmentId(Long dep_id);
+    int getAllWaitingPatientByInQueueByDepartmentId(Long pid);
 
     List<Patient> getAllPatientByDepNameQueue(String depName);
 

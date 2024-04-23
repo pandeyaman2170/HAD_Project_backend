@@ -31,9 +31,9 @@ public class QueuesController {
         return queueService.getAllDoctorsFromDepartment(dep_id);
     }
 
-    @GetMapping("/waiting_list_by_departmentId/{depId}")
-    public int getAllWaitingPatientByInQueueByDepartmentId(@PathVariable Long depId){
-        return queueService.getAllWaitingPatientByInQueueByDepartmentId(depId);
+    @GetMapping("/waiting_list_by_departmentId/{pid}")
+    public int getAllWaitingPatientByInQueueByDepartmentId(@PathVariable Long pid){
+        return queueService.getAllWaitingPatientByInQueueByDepartmentId(pid);
     }
 
     @GetMapping("/get_waiting_patients_by_departmentName/{depName}")
