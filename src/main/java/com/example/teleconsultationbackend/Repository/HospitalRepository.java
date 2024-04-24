@@ -30,4 +30,6 @@ public interface HospitalRepository extends JpaRepository<Hospital,Long> {
 
     @Query("SELECT count(*) FROM Hospital h")
     int get_count();
+    @Query("SELECT h from Hospital h WHERE h.hospitalUserName = ?1")
+    Hospital getHospitalsByUserName(String username);
 }

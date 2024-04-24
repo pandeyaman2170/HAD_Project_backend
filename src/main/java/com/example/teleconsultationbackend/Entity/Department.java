@@ -32,4 +32,12 @@ public class Department {
     @JsonIgnore
     @OneToOne(mappedBy = "department", cascade = CascadeType.ALL)
     private Queues queues;
+
+    @Override
+    public String toString() {
+        return "Department{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

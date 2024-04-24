@@ -9,12 +9,14 @@ import com.example.teleconsultationbackend.Entity.User;
 import com.example.teleconsultationbackend.Repository.DepartmentRepository;
 import com.example.teleconsultationbackend.Repository.PatientRepository;
 import com.example.teleconsultationbackend.Repository.QueuesRepository;
+import com.example.teleconsultationbackend.Security.EncryptionService;
 import com.example.teleconsultationbackend.Service.PatientService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -53,7 +55,7 @@ public class PatientController {
 
     @PreAuthorize("hasRole('ROLE_PATIENT')")
     @PostMapping("/register-patient")
-    public boolean registerPatient(@RequestBody RegistrationRequest registrationRequest) {
+    public void registerPatient(@RequestBody RegistrationRequest registrationRequest) throws Exception {
         User user1 = registrationRequest.getUser();
         User user = new User();
         OnlyPatientDetails onlyPatientDetails = new OnlyPatientDetails();
@@ -62,7 +64,7 @@ public class PatientController {
         user.setCity(user1.getCity());
         user.setEmail(user1.getEmail());
         user.setGender(user1.getGender());
-        user.setPhone(user.getPhone());
+        user.setPhone(user1.getPhone());
         user.setFirstName(user1.getFirstName());
         user.setLastName(user1.getLastName());
         user.setTitle(user1.getTitle());

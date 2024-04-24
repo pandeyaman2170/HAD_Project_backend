@@ -1,8 +1,10 @@
 package com.example.teleconsultationbackend.Repository;
 
+import com.example.teleconsultationbackend.Entity.Doctor;
 import com.example.teleconsultationbackend.Entity.Prescription;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -20,6 +22,6 @@ public interface PrescriptionRepository extends JpaRepository<Prescription, Inte
     @Query("SELECT p FROM Prescription p WHERE p.doctor.id = ?1")
     public List<Prescription> findPrescriptionsByDoctor_DoctorId(long doctorId);
 
-
-
+    @Query("SELECT p FROM Prescription p WHERE p.doctor IN :doctors")
+    public List<Prescription> getAllPrescription(@Param("doctors") List<Doctor> doctors);
 }

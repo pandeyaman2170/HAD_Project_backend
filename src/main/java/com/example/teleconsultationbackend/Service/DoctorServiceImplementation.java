@@ -3,17 +3,17 @@ package com.example.teleconsultationbackend.Service;
 
 import com.example.teleconsultationbackend.DTO.DoctorDetails;
 import com.example.teleconsultationbackend.DTO.DoctorFetchDetails;
-import com.example.teleconsultationbackend.Entity.Department;
-import com.example.teleconsultationbackend.Entity.Doctor;
-import com.example.teleconsultationbackend.Entity.Hospital;
-import com.example.teleconsultationbackend.Entity.User;
+import com.example.teleconsultationbackend.Entity.*;
 import com.example.teleconsultationbackend.Repository.DepartmentRepository;
 import com.example.teleconsultationbackend.Repository.DoctorRepository;
 import com.example.teleconsultationbackend.Repository.HospitalRepository;
 import com.example.teleconsultationbackend.Repository.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class DoctorServiceImplementation implements DoctorService {

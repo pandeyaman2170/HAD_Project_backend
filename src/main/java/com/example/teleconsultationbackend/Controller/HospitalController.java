@@ -1,5 +1,8 @@
 package com.example.teleconsultationbackend.Controller;
 import com.example.teleconsultationbackend.DTO.DoctorDetails;
+import com.example.teleconsultationbackend.DTO.DoctorFetchDetails;
+import com.example.teleconsultationbackend.DTO.HospiatlDepartments;
+import com.example.teleconsultationbackend.DTO.PrescriptionDetails;
 import com.example.teleconsultationbackend.Entity.Department;
 import com.example.teleconsultationbackend.Entity.Doctor;
 import com.example.teleconsultationbackend.Entity.Hospital;
@@ -32,10 +35,10 @@ public class HospitalController {
     @Autowired
     private DoctorService doctorService;
 
-    @PostMapping("/hospital_admin/login")
-    public String login(@RequestBody Hospital loginRequest) {
-        return hospitalservice.adminlogin(loginRequest.getPhone());
-    }
+//    @PostMapping("/hospital_admin/login")
+//    public String login(@RequestBody Hospital loginRequest) {
+//        return hospitalservice.adminlogin(loginRequest.getPhone());
+//    }
 
     @PostMapping("/hospital_admin/add_doctor")
     public String addDoctor(@RequestBody DoctorDetails doctorDetails){
@@ -56,5 +59,26 @@ public class HospitalController {
     public List<Department> getDepartments(@PathVariable Long hospital_id){
         return hospitalService.getAllDepartments(hospital_id);
     }
+
+    @GetMapping("/hospital_admin/getHospitalAdminDetails/{username}")
+    public Hospital getHospitalDetail(@PathVariable String username){
+        return hospitalService.getHospitalByUserName(username);
+    }
+
+    @GetMapping("/hospital_admin/get_doctor_list/{hospital_id}")
+    public List<DoctorFetchDetails> getDoctorsListOfAHospital(@PathVariable Long hospital_id){
+        return hospitalService.getDoctorsListOfAHospital(hospital_id);
+    }
+
+    @GetMapping("/hospital_admin/get_department_list/{hospital_id}")
+    public List<Department> getHospitalDepartments(@PathVariable Long hospital_id){
+        return hospitalService.getHospitalDepartments(hospital_id);
+    }
+
+    @GetMapping("hospital_admin/get_consultation_list/{hospital_id}")
+    public List<PrescriptionDetails> getHospitalTotalConsultations(@PathVariable Long hospital_id){
+        return hospitalService.getHospitalTotalConsultations(hospital_id);
+    }
+
 
 }

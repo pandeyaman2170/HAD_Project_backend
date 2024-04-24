@@ -48,4 +48,13 @@ public class Doctor{
     @ManyToOne
     @JoinColumn(name="department_id")
     private Department department;
+
+    @Override
+    public String toString() {
+        return "Doctor{" +
+                "id=" + id +
+                ", registrationNumber='" + registrationNumber + '\'' +
+                ", online_status=" + online_status +
+                '}';
+    }
 }

@@ -63,9 +63,6 @@ public class Hospital {
                 ", phone='" + phone + '\'' +
                 ", hospitalUserName='" + hospitalUserName + '\'' +
                 ", hospitalPassword='" + hospitalPassword + '\'' +
-                ", admin=" + admin +
-                ", doctors=" + doctors +
-                ", departments=" + departments +
                 '}';
     }
 }
