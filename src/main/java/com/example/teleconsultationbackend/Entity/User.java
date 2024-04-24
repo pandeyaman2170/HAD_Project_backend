@@ -45,4 +45,22 @@ public class User {
     // Constructors
 
     // Other methods
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", dob=" + dob +
+                ", role='" + role + '\'' +
+                ", email='" + email + '\'' +
+                ", gender=" + gender +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                ", city='" + city + '\'' +
+                ", pincode=" + pincode +
+                '}';
+    }
 }

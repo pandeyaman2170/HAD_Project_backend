@@ -36,7 +36,6 @@ public class GlobalAdmin {
                 ", email='" + email + '\'' +
                 ", globalAdminUsername='" + globalAdminUsername + '\'' +
                 ", globalAdminPassword='" + globalAdminPassword + '\'' +
-                ", hospitals=" + hospitals +
                 '}';
     }
 }

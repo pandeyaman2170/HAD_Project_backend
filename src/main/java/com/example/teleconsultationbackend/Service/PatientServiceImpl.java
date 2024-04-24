@@ -4,12 +4,14 @@ import com.example.teleconsultationbackend.DTO.PatientDetails;
 import com.example.teleconsultationbackend.Entity.*;
 import com.example.teleconsultationbackend.Repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Service
@@ -132,28 +134,13 @@ public class PatientServiceImpl implements PatientService {
     public PatientDetails getPatientByPhoneNumber(String phoneNumber) {
         try {
             Patient patient = patientRepository.findByPhoneNo(phoneNumber);
-
-//                public PatientDetails(long patientId, String title, String firstName, String lastName, String gender, String phoneNo, String email, Date
-//            dob, String addr, String city, long pincode) {
-//                this.patientId = patientId;
-//                this.title = title;
-//                this.firstName = firstName;
-//                this.lastName = lastName;
-//                this.gender = gender;
-//                this.phoneNo = phoneNo;
-//                this.email = email;
-//                this.dob = dob;
-//                this.addr = addr;
-//                this.city = city;
-//                this.pincode = pincode;
-//            }
-
             if (patient != null) {
                 return new PatientDetails(patient.getId(),patient.getUser().getTitle(),patient.getUser().getFirstName(),patient.getUser().getLastName(),
                         patient.getUser().getGender(),patient.getUser().getPhone(),patient.getUser().getEmail(),patient.getUser().getDob(),
                         patient.getUser().getAddress(),patient.getUser().getCity(),patient.getUser().getPincode()
                 );
             }
+
             return null;
         } catch (Exception e) {
             System.out.println("Error Occurred while verifying phone number");
