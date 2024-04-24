@@ -17,15 +17,22 @@ import lombok.NoArgsConstructor;
         description = "Store the Doctor details"
 )
 public class Doctor{
-    // Additional doctor-specific attributes or methods can be added here
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "doctor_id")
     private Long id;
 
+    @Column(name = "aadhar_no",nullable = false,unique = true)
+    private String aadhar_number;
+
+    @Column(name = "registrationNumber",nullable = false,unique = true)
     private String registrationNumber;
+
+    @Column(name = "online_status",nullable = false)
     private boolean online_status;
+
+    @Column(name = "role",nullable = false)
+    private String role;
 
     @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL)

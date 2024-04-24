@@ -22,10 +22,19 @@ public class Hospital {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long hospital_id;
 
+    @Column(name = "name",nullable = false)
     private String name;
+
+    @Column(name = "location",nullable = false)
     private String location;
+
+    @Column(name = "phone",nullable = false)
     private String phone;
+
+    @Column(name = "hospitalUserName",nullable = false)
     private String hospitalUserName;
+
+    @Column(name = "hospitalPassword",nullable = false)
     private String hospitalPassword;
 
     @ManyToOne

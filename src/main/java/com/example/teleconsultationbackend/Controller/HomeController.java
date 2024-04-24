@@ -5,6 +5,7 @@ import com.example.teleconsultationbackend.DTO.JwtRequest;
 import com.example.teleconsultationbackend.DTO.JwtResponse;
 import com.example.teleconsultationbackend.Service.UserAuthenticationService;
 import com.example.teleconsultationbackend.Utility.JWTUtility;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -17,6 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
+@Tag(
+        name="User Authentication API"
+)
 public class HomeController {
     @Autowired
     private JWTUtility jwtUtility;

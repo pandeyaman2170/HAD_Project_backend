@@ -6,6 +6,7 @@ import com.example.teleconsultationbackend.Entity.Patient;
 import com.example.teleconsultationbackend.Entity.Queues;
 import com.example.teleconsultationbackend.Repository.DepartmentRepository;
 import com.example.teleconsultationbackend.Repository.DoctorRepository;
+import com.example.teleconsultationbackend.Repository.PatientRepository;
 import com.example.teleconsultationbackend.Repository.QueuesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,9 @@ public class QueueServiceImpl implements QueueService{
     @Autowired
     private QueuesRepository queuesRepository;
 
+    @Autowired
+    private PatientRepository patientRepository;
+
     @Override
     public List<Doctor> getAllDoctorsFromDepartment(Long dep_id) {
         List<Doctor> allDoctors = departmentRepository.findDepartmentById(dep_id).getDoctors();
@@ -35,10 +39,11 @@ public class QueueServiceImpl implements QueueService{
     }
 
     @Override
-    public int getAllWaitingPatientByInQueueByDepartmentId(Long dep_id) {
-        Department department = departmentRepository.findDepartmentById(dep_id);
-        Queues queues = queuesRepository.findQueueByDepartment(department);
-        return queues.getPatients().size();
+    public int getAllWaitingPatientByInQueueByDepartmentId(Long pid) {
+        Patient patient = patientRepository.findPatientById(pid);
+        Queues queues = patient.getQueues();
+        int index = queues.getPatients().indexOf(patient);
+        return queues.getPatients().size() - index + 1;
     }
 
     @Override

@@ -19,6 +19,8 @@ public interface ConsultationRepository extends JpaRepository<Consultation,Long>
     @Query("SELECT count(*) FROM Consultation c where c.doctor.id=:doctorId")
     Long findAllByDoctor_DoctorId(Long doctorId);
 
+    List<Consultation> findConsultationsByDepIdAndStatus(Long depId, String status);
+
     @Query("SELECT c from Consultation c where c.doctor.id=:doctorId" )
     List<Consultation> findConsultationByDoctor_Id(Long doctorId);
 

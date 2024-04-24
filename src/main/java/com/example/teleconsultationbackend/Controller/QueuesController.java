@@ -3,6 +3,7 @@ package com.example.teleconsultationbackend.Controller;
 import com.example.teleconsultationbackend.Entity.Doctor;
 import com.example.teleconsultationbackend.Entity.Patient;
 import com.example.teleconsultationbackend.Service.QueueService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,6 +11,10 @@ import java.util.List;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
+@Tag(
+        name="Queue APIs"
+)
+
 @RequestMapping("/queues")
 public class QueuesController {
 
@@ -26,13 +31,14 @@ public class QueuesController {
         return queueService.getAllDoctorsFromDepartment(dep_id);
     }
 
-    @GetMapping("/waiting_list_by_departmentId/{depId}")
-    public int getAllWaitingPatientByInQueueByDepartmentId(@PathVariable Long depId){
-        return queueService.getAllWaitingPatientByInQueueByDepartmentId(depId);
+    @GetMapping("/waiting_list_by_departmentId/{pid}")
+    public int getAllWaitingPatientByInQueueByDepartmentId(@PathVariable Long pid){
+        return queueService.getAllWaitingPatientByInQueueByDepartmentId(pid);
     }
 
     @GetMapping("/get_waiting_patients_by_departmentName/{depName}")
     public List<Patient> getAllWaitingPatientByInQueueByDepartmentId(@PathVariable String depName){
+        System.out.println(depName+"*************");
         return queueService.getAllPatientByDepNameQueue(depName);
     }
 

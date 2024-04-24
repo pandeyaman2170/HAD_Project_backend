@@ -2,6 +2,7 @@ package com.example.teleconsultationbackend.Controller;
 
 import com.example.teleconsultationbackend.DTO.PrescriptionDetails;
 import com.example.teleconsultationbackend.Service.PrescriptionService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -12,6 +13,9 @@ import java.util.List;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/prescription")
+@Tag(
+        name="Prescription APIs"
+)
 public class PrescriptionController {
     @Autowired
     PrescriptionService prescriptionService;

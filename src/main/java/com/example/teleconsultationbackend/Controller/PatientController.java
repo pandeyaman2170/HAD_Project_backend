@@ -1,5 +1,6 @@
 package com.example.teleconsultationbackend.Controller;
 
+import com.example.teleconsultationbackend.DTO.OnlyPatientDetails;
 import com.example.teleconsultationbackend.DTO.PatientDetails;
 import com.example.teleconsultationbackend.Entity.Department;
 import com.example.teleconsultationbackend.Entity.Patient;
@@ -10,6 +11,7 @@ import com.example.teleconsultationbackend.Repository.PatientRepository;
 import com.example.teleconsultationbackend.Repository.QueuesRepository;
 import com.example.teleconsultationbackend.Security.EncryptionService;
 import com.example.teleconsultationbackend.Service.PatientService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
@@ -20,6 +22,9 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("patient")
+@Tag(
+        name="Patient APIs"
+)
 public class PatientController {
 
     @Autowired
@@ -41,8 +46,11 @@ public class PatientController {
     @Getter
     public static class RegistrationRequest {
         private User user;
+        private String height;
+        private String weight;
+        private String blood_group;
+        private String aadhar_no;
         private boolean otpFlag;
-
     }
 
     @PreAuthorize("hasRole('ROLE_PATIENT')")
@@ -50,6 +58,7 @@ public class PatientController {
     public void registerPatient(@RequestBody RegistrationRequest registrationRequest) throws Exception {
         User user1 = registrationRequest.getUser();
         User user = new User();
+        OnlyPatientDetails onlyPatientDetails = new OnlyPatientDetails();
         user.setAddress(user1.getAddress());
         user.setDob(user1.getDob());
         user.setCity(user1.getCity());
@@ -60,13 +69,23 @@ public class PatientController {
         user.setLastName(user1.getLastName());
         user.setTitle(user1.getTitle());
         user.setPincode(user1.getPincode());
+        user.setPhone(user1.getPhone());
+        onlyPatientDetails.setHeight(registrationRequest.getHeight());
+        onlyPatientDetails.setWeight(registrationRequest.getWeight());
+        onlyPatientDetails.setBlood_group(registrationRequest.getBlood_group());
+        onlyPatientDetails.setAadhar_number(registrationRequest.getAadhar_no());
         user.setRole("patient");
+
+
         boolean otpFlag = registrationRequest.isOtpFlag();
+
         if (otpFlag) {
-            patientService.registerPatient(user);
+            patientService.registerPatient(user,onlyPatientDetails);
         } else {
             throw new IllegalArgumentException("OTP Not verified");
         }
+        return true;
+
     }
 
     @PreAuthorize("hasRole('ROLE_PATIENT')")

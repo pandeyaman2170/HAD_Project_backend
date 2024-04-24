@@ -7,6 +7,7 @@ import com.example.teleconsultationbackend.Entity.User;
 import com.example.teleconsultationbackend.Service.UserAuthenticationService;
 import com.example.teleconsultationbackend.Service.UserService;
 import com.example.teleconsultationbackend.Utility.JWTUtility;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -19,6 +20,10 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
+@Tag(
+        name="User APIs"
+)
+
 public class UserController {
 
     @Autowired

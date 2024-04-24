@@ -1,5 +1,6 @@
 package com.example.teleconsultationbackend.Service;
 
+import com.example.teleconsultationbackend.DTO.OnlyPatientDetails;
 import com.example.teleconsultationbackend.DTO.PatientDetails;
 import com.example.teleconsultationbackend.Entity.*;
 import com.example.teleconsultationbackend.Repository.*;
@@ -30,7 +31,7 @@ public class PatientServiceImpl implements PatientService {
     private DepartmentRepository departmentRepository;
 
     @Autowired
-    private Consultation1Repository consultation1Repository;
+    private ConsultationRepository consultationRepository;
 
     @Override
     public  int total_patients(){
@@ -39,9 +40,14 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     @Transactional
-    public void registerPatient(User user){
+    public void registerPatient(User user, OnlyPatientDetails onlyPatientDetails){
         Patient patient = new Patient();
         patient.setUser(user);
+        patient.setHeight(onlyPatientDetails.getHeight());
+        patient.setWeight(onlyPatientDetails.getWeight());
+        patient.setBlood_group(onlyPatientDetails.getBlood_group());
+        patient.setAadhar_number(onlyPatientDetails.getAadhar_number());
+
         patientRepository.save(patient);
         System.out.println("Done Creating User");
     }
@@ -65,8 +71,8 @@ public class PatientServiceImpl implements PatientService {
             patient.setQueues(queues);
             queues.getPatients().add(patient);
             patientRepository.save(patient);
-            consultation1Repository.save(
-                    new Consultation1(Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant()),
+            consultationRepository.save(
+                    new Consultation(Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant()),
                             null, patient,
                             "waiting",
                             dep_id)
