@@ -1,6 +1,8 @@
 package com.example.teleconsultationbackend.Repository;
 
 import com.example.teleconsultationbackend.Entity.Consultation;
+import com.example.teleconsultationbackend.Entity.Doctor;
+import com.example.teleconsultationbackend.Entity.Patient;
 import com.example.teleconsultationbackend.Entity.Prescription;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -20,6 +22,8 @@ public interface ConsultationRepository extends JpaRepository<Consultation,Long>
     Long findAllByDoctor_DoctorId(Long doctorId);
 
     List<Consultation> findConsultationsByDepIdAndStatus(Long depId, String status);
+
+    Consultation findConsultationByDoctorAndPatient(Doctor doctorId, Patient patientId);
 
     @Query("SELECT c from Consultation c where c.doctor.id=:doctorId" )
     List<Consultation> findConsultationByDoctor_Id(Long doctorId);

@@ -66,8 +66,8 @@ public class ConsultationController {
 
     @CrossOrigin
     @PostMapping("/accept_call/{doctorId}/{patientId}")
-    public void setStatusToAccepted(@PathVariable String doctorId, @PathVariable String patientId){
-        consultationService.setStatusToAcceptedHelper(Long.valueOf(doctorId), Long.valueOf(patientId));
-        simpMessagingTemplate.convertAndSend("/topic/patient-waiting/"+patientId, Long.valueOf(doctorId));
+    public void setStatusToAccepted(@PathVariable Long doctorId, @PathVariable String patientId){
+        consultationService.setStatusToAcceptedHelper(doctorId, Long.valueOf(patientId));
+        simpMessagingTemplate.convertAndSend("/topic/patient-waiting/"+patientId, doctorId);
     }
 }

@@ -43,7 +43,7 @@ public class QueueServiceImpl implements QueueService{
         Patient patient = patientRepository.findPatientById(pid);
         Queues queues = patient.getQueues();
         int index = queues.getPatients().indexOf(patient);
-        return queues.getPatients().size() - index + 1;
+        return index+1;
     }
 
     @Override
