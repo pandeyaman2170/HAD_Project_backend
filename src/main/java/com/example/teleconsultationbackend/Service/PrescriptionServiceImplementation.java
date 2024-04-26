@@ -56,14 +56,9 @@ public class PrescriptionServiceImplementation implements PrescriptionService{
                 );
 
                 prescriptionRepository.save(prescription);
-                consultationRepository.save(
-                        new Consultation(prescriptionDetails.getConsultationDate(),
-                                prescribingDoctor,
-                                prescribedPatient,
-                                "ended",
-                                prescription.getDoctor().getDepartment().getId())
-                );
-
+                Consultation consultation = consultationRepository.findConsultationByDoctorAndPatient(prescribingDoctor, prescribedPatient);
+                consultation.setStatus("ended");
+                consultationRepository.save(consultation);
                 return prescriptionDetails;
             }
             else return null;

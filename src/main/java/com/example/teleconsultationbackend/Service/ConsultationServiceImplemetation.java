@@ -115,8 +115,8 @@ public class ConsultationServiceImplemetation implements ConsultationService{
     }
 
     @Override
-    public Long totalConsultationByPatient(Long doctorId) {
-        return consultationRepository.findAllByPatientId(doctorId);
+    public Long totalConsultationByPatient(Long patientId) {
+        return consultationRepository.findAllByPatientId(patientId);
     }
 
     @Override
