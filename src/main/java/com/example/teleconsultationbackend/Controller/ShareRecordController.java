@@ -27,4 +27,8 @@ public class ShareRecordController {
         System.out.println("done");
     }
 
+    @PostMapping("/addRecord/{patientId}/{doctorId}")
+    public void addRecord(@PathVariable Long patientId, @PathVariable Long doctorId){
+        shareRecordService.addRecordHelper(patientId, doctorId);
+    }
 }

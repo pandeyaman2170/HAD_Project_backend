@@ -6,4 +6,5 @@ import com.example.teleconsultationbackend.Entity.Patient;
 public interface ShareRecordService {
     void createShareRecord(Hospital sending, Hospital receiving);
 
+    void addRecordHelper(Long patientId, Long doctorId);
 }
