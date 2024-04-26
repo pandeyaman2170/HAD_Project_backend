@@ -55,7 +55,7 @@ public class PatientController {
 
     @PreAuthorize("hasRole('ROLE_PATIENT')")
     @PostMapping("/register-patient")
-    public void registerPatient(@RequestBody RegistrationRequest registrationRequest) throws Exception {
+    public boolean registerPatient(@RequestBody RegistrationRequest registrationRequest) throws Exception {
         User user1 = registrationRequest.getUser();
         User user = new User();
         OnlyPatientDetails onlyPatientDetails = new OnlyPatientDetails();
