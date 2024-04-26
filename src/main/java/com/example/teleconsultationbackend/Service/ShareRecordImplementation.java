@@ -1,11 +1,7 @@
 package com.example.teleconsultationbackend.Service;
 
-import com.example.teleconsultationbackend.Entity.Consultation;
-import com.example.teleconsultationbackend.Entity.Hospital;
-import com.example.teleconsultationbackend.Entity.ShareRecordHospital;
-import com.example.teleconsultationbackend.Repository.ConsultationRepository;
-import com.example.teleconsultationbackend.Repository.HospitalRepository;
-import com.example.teleconsultationbackend.Repository.ShareRecordRepository;
+import com.example.teleconsultationbackend.Entity.*;
+import com.example.teleconsultationbackend.Repository.*;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +20,11 @@ public class ShareRecordImplementation implements ShareRecordService{
     @Autowired
     ConsultationRepository consultationRepository;
 
+    @Autowired
+    PrescriptionRepository prescriptionRepository;
+
+    @Autowired
+    DoctorRepository doctorRepository;
 
     @Override
     @Transactional
@@ -44,4 +45,26 @@ public class ShareRecordImplementation implements ShareRecordService{
         System.out.println("Done with creating record");
     }
 
+    @Override
+    @Transactional
+    public void addRecordHelper(Long patientId, Long doctorId){
+        List<Prescription> prescriptionList = prescriptionRepository.findPrescriptionsByPatient_PatientId(patientId);
+        Doctor doctor = doctorRepository.findDoctorById(doctorId);
+        Hospital recievingHospital = doctor.getHospital();
+        for (Prescription prescription : prescriptionList){
+            Hospital sendingHospital = prescription.getDoctor().getHospital();
+            if (sendingHospital != recievingHospital){
+                ShareRecordHospital shareRecordHospital = shareRecordRepository.
+                        findShareRecordHospitalByPatientIdAndSending_hospitalAndReceiving_hospital(
+                                patientId, sendingHospital, recievingHospital);
+                if(shareRecordHospital == null){
+                    ShareRecordHospital shareRecordHospital1 = new ShareRecordHospital();
+                    shareRecordHospital1.setPatientId(patientId);
+                    shareRecordHospital1.setSending_hospital(sendingHospital);
+                    shareRecordHospital1.setReceiving_hospital(recievingHospital);
+                    shareRecordRepository.save(shareRecordHospital1);
+                }
+            }
+        }
+    }
 }

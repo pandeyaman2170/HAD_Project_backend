@@ -22,6 +22,8 @@ public class ShareRecordHospital {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long record_id;
 
+    private Long patientId;
+
     @JsonIgnore
     @ManyToOne(cascade = CascadeType.MERGE)
     private Hospital sending_hospital;
