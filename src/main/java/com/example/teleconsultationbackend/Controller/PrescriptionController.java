@@ -27,7 +27,9 @@ public class PrescriptionController {
     @PostMapping("/addPrescription")
     public PrescriptionDetails addPrescription(@RequestBody PrescriptionDetails prescriptionDetails) {
         PrescriptionDetails prescriptionDetails1 = prescriptionService.addPrescription(prescriptionDetails);
-        simpMessagingTemplate.convertAndSend("/topic/patient-end-call/" + prescriptionDetails.getPatientId(), prescriptionDetails.getDoctorId());
+        simpMessagingTemplate.convertAndSend(
+                "/topic/patient-end-call/" + prescriptionDetails.getPatientId(),
+                prescriptionDetails.getDoctorId());
         return prescriptionDetails1;
     }
 

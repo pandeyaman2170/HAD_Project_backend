@@ -3,6 +3,7 @@ package com.example.teleconsultationbackend.Service;
 import com.example.teleconsultationbackend.DTO.ConsultationDetails;
 import com.example.teleconsultationbackend.DTO.DateWiseConsultations;
 import com.example.teleconsultationbackend.DTO.MonthWiseConsultation;
+import com.example.teleconsultationbackend.Entity.Consultation;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
