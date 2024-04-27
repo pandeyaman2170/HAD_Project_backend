@@ -1,7 +1,6 @@
 package com.example.teleconsultationbackend.Controller;
 import com.example.teleconsultationbackend.DTO.DoctorDetails;
 import com.example.teleconsultationbackend.DTO.DoctorFetchDetails;
-import com.example.teleconsultationbackend.DTO.HospiatlDepartments;
 import com.example.teleconsultationbackend.DTO.PrescriptionDetails;
 import com.example.teleconsultationbackend.Entity.Department;
 import com.example.teleconsultationbackend.Entity.Doctor;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 
 @RestController
@@ -34,12 +32,6 @@ public class HospitalController {
 
     @Autowired
     private DoctorService doctorService;
-
-//    @PostMapping("/hospital_admin/login")
-//    public String login(@RequestBody Hospital loginRequest) {
-//        return hospitalservice.adminlogin(loginRequest.getPhone());
-//    }
-
     @PostMapping("/hospital_admin/add_doctor")
     public String addDoctor(@RequestBody DoctorDetails doctorDetails){
         doctorDetails.setRole("doctor");
@@ -79,6 +71,5 @@ public class HospitalController {
     public List<PrescriptionDetails> getHospitalTotalConsultations(@PathVariable Long hospital_id){
         return hospitalService.getHospitalTotalConsultations(hospital_id);
     }
-
 
 }
