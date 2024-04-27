@@ -23,7 +23,7 @@ public interface ConsultationRepository extends JpaRepository<Consultation,Long>
 
     List<Consultation> findConsultationsByDepIdAndStatus(Long depId, String status);
 
-    Consultation findConsultationByDoctorAndPatient(Doctor doctorId, Patient patientId);
+    Consultation findConsultationByDoctorAndPatientAndStatus(Doctor doctor, Patient patient, String status);
 
     @Query("SELECT c from Consultation c where c.doctor.id=:doctorId" )
     List<Consultation> findConsultationByDoctor_Id(Long doctorId);
