@@ -1,6 +1,7 @@
 package com.example.teleconsultationbackend.Service;
 
 import com.example.teleconsultationbackend.DTO.DailyLogDetails;
+import com.example.teleconsultationbackend.DTO.FollowUpDetails;
 import com.example.teleconsultationbackend.DTO.PrescriptionDetails;
 import com.example.teleconsultationbackend.Entity.*;
 import com.example.teleconsultationbackend.Repository.*;
@@ -153,6 +154,50 @@ public class PrescriptionServiceImplementation implements PrescriptionService{
         return null;
     }
 
+    @Override
+    public List<FollowUpDetails> getFollowUpDetails(long patientId) {
+
+        try {
+            List<Prescription> prescriptionList = prescriptionRepository.findPrescriptionsByPatient_PatientId(patientId);
+
+            List<FollowUpDetails> followUpDetailsList = new ArrayList<>();
+
+            // We'll compare the dates in string format, we'll convert consultation date and current date to the below pattern
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+            for (Prescription prescription : prescriptionList) {
+                if (prescription.getFollowUpDate() != null) {
+
+                    String currentDate = dateFormat.format(new Date());
+
+                    String followUpDate = dateFormat.format(prescription.getFollowUpDate());
+
+                    Date followUpDateObject = new SimpleDateFormat("yyyy-MM-dd").parse(followUpDate);
+                    Date currentDateObject = new SimpleDateFormat("yyyy-MM-dd").parse(currentDate);
+                    if(followUpDateObject.after(currentDateObject)) {
+                        followUpDetailsList.add(new FollowUpDetails(
+                                prescription.getFollowUpDate(),
+                                prescription.getDoctor().getDepartment().getName(),
+                                prescription.getDoctor().getUser().getFirstName() + prescription.getDoctor().getUser().getLastName(),
+                                prescription.getMedical_findings(),prescription.getDoctor().isOnline_status(),prescription.getDoctor().getUser().getPhone()
+                        ));
+                    }
+                }
+            }
+
+            return followUpDetailsList;
+        } catch (Exception e) {
+            System.out.println("Error Occurred in getting followup dates");
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+//    public boolean getOnlineStatusDoctor(long patientId)
+//    {
+//        List<Prescription> prescriptions=prescriptionRepository.findPrescriptionsByPatient_PatientId(patientId);
+//
+//    }
 
 
 }

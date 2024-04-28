@@ -41,7 +41,9 @@ public class QueueServiceImpl implements QueueService{
     @Override
     public int getAllWaitingPatientByInQueueByDepartmentId(Long pid) {
         Patient patient = patientRepository.findPatientById(pid);
+
         Queues queues = patient.getQueues();
+
         if(queues != null && queues.getPatients() != null) {
             int index = queues.getPatients().indexOf(patient);
             return index + 1;
