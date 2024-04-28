@@ -72,7 +72,7 @@ public class ConsultationController {
     }
 
     @CrossOrigin
-    @PostMapping("/getRepeatStatus/{patientId}/{doctorId}")
+    @GetMapping("/getRepeatStatus/{patientId}/{doctorId}")
     public String getRepeatStatus(@PathVariable Long patientId, @PathVariable Long doctorId){
         return consultationService.getRepeatStatusHelper(patientId, doctorId);
     }
