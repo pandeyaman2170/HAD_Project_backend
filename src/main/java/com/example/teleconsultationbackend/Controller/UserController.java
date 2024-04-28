@@ -12,7 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.NoSuchAlgorithmException;
@@ -59,11 +62,11 @@ public class UserController {
 
     @PostMapping("/hospital_admin/login")
     public JwtResponse hospitalAdmin(@RequestBody JwtRequest jwtRequest) throws Exception{
-        System.out.println("Hello");
-        System.out.println(jwtRequest.getUsername());
-        System.out.println(jwtRequest.getPassword());
+//        System.out.println("Hello");
+//        System.out.println(jwtRequest.getUsername());
+//        System.out.println(jwtRequest.getPassword());
         try {
-            System.out.println("in try");
+//            System.out.println("in try");
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
                             jwtRequest.getUsername(),
@@ -83,4 +86,24 @@ public class UserController {
 
         return  new JwtResponse(token);
     }
+
+
+//    @PostMapping("/hospital_admin/login")
+//    public JwtResponse hospitalAdmin(@RequestBody JwtRequest jwtRequest) throws Exception {
+//        String username = jwtRequest.getUsername();
+//        String password = jwtRequest.getPassword();
+//
+//        try {
+//            Authentication authentication = authenticationManager.authenticate(
+//                    new UsernamePasswordAuthenticationToken(username, password)
+//            );
+//
+//            UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+//            final String token = jwtUtility.generateToken(userDetails);
+//
+//            return new JwtResponse(token);
+//        } catch (BadCredentialsException e) {
+//            throw new Exception("INVALID_CREDENTIALS", e);
+//        }
+//    }
 }

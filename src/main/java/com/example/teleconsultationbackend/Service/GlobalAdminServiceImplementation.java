@@ -10,6 +10,7 @@ import com.example.teleconsultationbackend.Repository.ConsultationRepository;
 import com.example.teleconsultationbackend.Repository.GlobalAdminRepository;
 import com.example.teleconsultationbackend.Repository.HospitalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,6 +29,8 @@ public class GlobalAdminServiceImplementation implements GlobalAdminService{
     @Autowired
     ConsultationRepository consultationRepository;
 
+    private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
     @Override
     @Transactional
     public void createHospital(Long admin_id, Hospital hospital) {
@@ -35,6 +38,7 @@ public class GlobalAdminServiceImplementation implements GlobalAdminService{
         if (optionalGlobalAdmin.isPresent()) {
             GlobalAdmin globalAdmin = optionalGlobalAdmin.get();
             hospital.setAdmin(globalAdmin);
+
             hospitalRepository.save(hospital);
         } else {
             // Handle the case where GlobalAdmin with given ID is not found
