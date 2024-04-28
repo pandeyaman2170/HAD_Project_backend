@@ -37,7 +37,7 @@ public class DoctorServiceImplementation implements DoctorService {
 
 
     // --------------------------------- Add Doctor to Database -------------------------------------
-    @Transactional
+
     @Override
     public DoctorDetails addDoctor(DoctorDetails doctorDetails) {
 
@@ -60,11 +60,13 @@ public class DoctorServiceImplementation implements DoctorService {
             user.setLastName(doctorDetails.getLastName());
             user.setCity(doctorDetails.getCity());
             user.setPincode(doctorDetails.getPincode());
-            user.setRole(doctorDetails.getRole());
+            user.setRole("doctor");
             user.setPhone(doctorDetails.getPhoneNumber());
             user.setTitle(doctorDetails.getTitle());
             doctor.setRegistrationNumber(doctorDetails.getRegistration_number());
+            doctor.setRole(doctorDetails.getRole());
             doctor.setUser(user);
+            doctor.setAadhar_number(doctorDetails.getAadhar_number());
             userRepository.save(user);
             doctorRepository.save(doctor);
             // Saving the online doctors to the database
@@ -101,6 +103,7 @@ public class DoctorServiceImplementation implements DoctorService {
         }
     }
 
+    @Override
     public DoctorFetchDetails updateDoctorDetails(DoctorFetchDetails doctorDetails){
         System.out.println("doctor details: "+doctorDetails);
         Doctor doctor = doctorRepository.findByPhoneNumber(doctorDetails.getPhoneNumber());
