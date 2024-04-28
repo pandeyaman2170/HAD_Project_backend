@@ -112,12 +112,8 @@ public class PatientController {
         Department department = departmentRepository.findDepartmentById(dep_id);
         Queues queues = queuesRepository.findQueueByDepartment(department);
         if(queues != null && !queues.getPatients().isEmpty()) {
-            Patient patient1 = queues.getPatients().get(0);
-            PatientDetails patientDetails = new PatientDetails(patient1.getId(),patient1.getUser().getTitle(),patient1.getUser().getFirstName(),patient1.getUser().getLastName(),
-                    patient1.getUser().getGender(),patient1.getUser().getPhone(),patient1.getUser().getEmail(),patient1.getUser().getDob(),
-                    patient1.getUser().getAddress(),patient1.getUser().getCity(),patient1.getUser().getPincode()
-            );
-            simpMessagingTemplate.convertAndSend("/topic/call-incoming/1", patientDetails);
+            Long pidFirst = queues.getPatients().get(0).getId();
+            simpMessagingTemplate.convertAndSend("/topic/call-incoming/1", pidFirst);
         }
     }
 
