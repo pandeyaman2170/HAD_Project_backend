@@ -70,4 +70,10 @@ public class ConsultationController {
         consultationService.setStatusToAcceptedHelper(doctorId, Long.valueOf(patientId));
         simpMessagingTemplate.convertAndSend("/topic/patient-waiting/"+patientId, doctorId);
     }
+
+    @CrossOrigin
+    @PostMapping("/getRepeatStatus/{patientId}/{doctorId}")
+    public String getRepeatStatus(@PathVariable Long patientId, @PathVariable Long doctorId){
+        return consultationService.getRepeatStatusHelper(patientId, doctorId);
+    }
 }

@@ -42,7 +42,7 @@ public class QueueServiceImpl implements QueueService{
     public int getAllWaitingPatientByInQueueByDepartmentId(Long pid) {
         Patient patient = patientRepository.findPatientById(pid);
         Queues queues = patient.getQueues();
-        if(queues.getPatients() != null) {
+        if(queues != null && queues.getPatients() != null) {
             int index = queues.getPatients().indexOf(patient);
             return index + 1;
         }
@@ -53,14 +53,16 @@ public class QueueServiceImpl implements QueueService{
     public List<Patient> getAllPatientByDepNameQueue(String depName){
         Department department = departmentRepository.findDepartmentByName(depName);
         Queues queues = queuesRepository.findQueueByDepartment(department);
-        return queues.getPatients();
+        if(queues != null && queues.getPatients() != null)
+            return queues.getPatients();
+        return null;
     }
 
     @Override
     public Long getQueuesTop(String depName){
         Department department = departmentRepository.findDepartmentByName(depName);
         Queues queues = queuesRepository.findQueueByDepartment(department);
-        if(!queues.getPatients().isEmpty()){
+        if(queues != null && !queues.getPatients().isEmpty()){
             return queues.getPatients().get(0).getId();
         }
         return null;
@@ -70,6 +72,8 @@ public class QueueServiceImpl implements QueueService{
     public int getQueueSizeHelper(String depName) {
         Department department = departmentRepository.findDepartmentByName(depName);
         Queues queues = queuesRepository.findQueueByDepartment(department);
-        return queues.getPatients().size();
+        if(queues != null && queues.getPatients() != null)
+            return queues.getPatients().size();
+        return -1;
     }
 }
