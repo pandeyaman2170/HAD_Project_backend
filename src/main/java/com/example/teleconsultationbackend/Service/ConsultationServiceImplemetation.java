@@ -12,6 +12,7 @@ import com.example.teleconsultationbackend.Repository.DoctorRepository;
 import com.example.teleconsultationbackend.Repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -143,5 +144,22 @@ public class ConsultationServiceImplemetation implements ConsultationService{
                 break;
             }
         }
+    }
+
+    @Override
+    @Transactional
+    public String getRepeatStatusHelper(Long patientId, Long doctorId) {
+        Doctor doctor = doctorRepository.findDoctorById(doctorId);
+        Patient patient = patientRepository.findPatientById(patientId);
+        if (doctor != null && patient != null){
+            for (Consultation consultation : consultationRepository.findAll()){
+               if (consultation.getDoctor() == doctor &&
+                       consultation.getPatient() == patient &&
+                       Objects.equals(consultation.getStatus(), "ended")){
+                   return "Repeat";
+               }
+            }
+        }
+        return "Not-Repeat";
     }
 }

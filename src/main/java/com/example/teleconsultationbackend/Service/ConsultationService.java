@@ -24,4 +24,6 @@ public interface ConsultationService {
     void addConsultationStatusWaitinghelper(Long patientId, Long depId);
 
     void setStatusToAcceptedHelper(Long doctorId, Long patientId);
+
+    String getRepeatStatusHelper(Long patientId, Long doctorId);
 }
