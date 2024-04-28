@@ -1,5 +1,6 @@
 package com.example.teleconsultationbackend.Controller;
 
+import com.example.teleconsultationbackend.DTO.HospitalCompleteDetail;
 import com.example.teleconsultationbackend.Entity.GlobalAdmin;
 import com.example.teleconsultationbackend.Entity.Hospital;
 import com.example.teleconsultationbackend.DTO.JwtRequest;
@@ -123,6 +124,9 @@ public class GlobalAdminController {
         return globalAdminService.getGlobalAdminByUserName(userName);
     };
 
-
+    @GetMapping("/getAllHospitalDetails")
+    public List<HospitalCompleteDetail> getAllHospitalDetails(){
+        return globalAdminService.getAllHospitalDetails();
+    }
 
 }

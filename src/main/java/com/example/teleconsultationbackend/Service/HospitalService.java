@@ -1,7 +1,6 @@
 package com.example.teleconsultationbackend.Service;
 
 import com.example.teleconsultationbackend.DTO.DoctorFetchDetails;
-import com.example.teleconsultationbackend.DTO.HospiatlDepartments;
 import com.example.teleconsultationbackend.DTO.PrescriptionDetails;
 import com.example.teleconsultationbackend.Entity.Department;
 import com.example.teleconsultationbackend.Entity.Doctor;

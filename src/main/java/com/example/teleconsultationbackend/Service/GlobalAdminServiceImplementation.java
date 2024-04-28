@@ -1,5 +1,9 @@
 package com.example.teleconsultationbackend.Service;
 
+import com.example.teleconsultationbackend.DTO.DoctorFetchDetails;
+import com.example.teleconsultationbackend.DTO.HospitalCompleteDetail;
+import com.example.teleconsultationbackend.Entity.Department;
+import com.example.teleconsultationbackend.Entity.Doctor;
 import com.example.teleconsultationbackend.Entity.GlobalAdmin;
 import com.example.teleconsultationbackend.Entity.Hospital;
 import com.example.teleconsultationbackend.Repository.ConsultationRepository;
@@ -9,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -96,6 +101,52 @@ public class GlobalAdminServiceImplementation implements GlobalAdminService{
         return globalAdminRepository.findGlobalAdminByUserName(userName);
     }
 
+    @Override
+    @Transactional
+    public List<HospitalCompleteDetail> getAllHospitalDetails(){
+        List<Hospital> hospitals = hospitalRepository.getAllHospitalDetails();
+        List<HospitalCompleteDetail> allHospitals = new ArrayList<>();
+        for(Hospital hospital: hospitals){
+            HospitalCompleteDetail hospitalCompleteDetail = new HospitalCompleteDetail();
+            List<Department> departmentsList = (hospital.getDepartments());
+            hospitalCompleteDetail.setDepartments(departmentsList);
+//            for(Department dep:departmentsList){
+//
+//            }
+            hospitalCompleteDetail.setHospital_id(hospital.getHospital_id());
+            hospitalCompleteDetail.setLocation(hospital.getLocation());
+            hospitalCompleteDetail.setPhone(hospital.getPhone());
+            hospitalCompleteDetail.setName(hospital.getName());
+
+            List<Doctor> doctors = hospital.getDoctors();
+            List<DoctorFetchDetails> doclist = new ArrayList<>();
+            for(Doctor doctor: doctors){
+                DoctorFetchDetails doc = new DoctorFetchDetails();
+                doc.setDoctorId(doctor.getId());
+                doc.setTitle(doctor.getUser().getTitle());
+                doc.setFirstName(doctor.getUser().getFirstName());
+                doc.setLastName(doctor.getUser().getLastName());
+                doc.setEmail(doctor.getUser().getEmail());
+                doc.setHospitalID(doctor.getHospital().getHospital_id());
+                doc.setPhoneNumber(doctor.getUser().getPhone());
+                doc.setRegistration_number(doctor.getRegistrationNumber());
+                doc.setDob(doctor.getUser().getDob());
+                doc.setGender(doctor.getUser().getGender());
+                doc.setAddr(doctor.getUser().getAddress());
+                doc.setPincode(doctor.getUser().getPincode());
+                doc.setCity(doctor.getUser().getCity());
+                doc.setDepartmentName(doctor.getDepartment().getName());
+                doc.setRole(doctor.getUser().getRole());
+                doclist.add(doc);
+//            System.out.println(doctor.getUser().getFirstName());
+            }
+            hospitalCompleteDetail.setDoctorFetchDetails(doclist);
+
+            allHospitals.add(hospitalCompleteDetail);
+        }
+
+        return allHospitals;
+    }
 
 
 

@@ -2,7 +2,6 @@ package com.example.teleconsultationbackend.Service;
 
 import com.example.teleconsultationbackend.DTO.DoctorDetails;
 import com.example.teleconsultationbackend.DTO.DoctorFetchDetails;
-import com.example.teleconsultationbackend.DTO.HospiatlDepartments;
 import com.example.teleconsultationbackend.DTO.PrescriptionDetails;
 import com.example.teleconsultationbackend.Entity.*;
 import com.example.teleconsultationbackend.Repository.*;
@@ -66,11 +65,11 @@ public class HospitalServiceImplementation implements HospitalService {
     public void addDepartments(Long hospitalId, String departmentName){
         Department department1 = departmentRepository.findDepartmentByName(departmentName);
         System.out.println("dddd: "+department1);
+        Optional<Hospital> optionalHospital = hospitalRepository.findById(hospitalId);
+        Hospital hospital = optionalHospital.get();
         if(department1 != null) {
-            Optional<Hospital> optionalHospital = hospitalRepository.findById(hospitalId);
             if (optionalHospital.isPresent()) {
                 boolean flag = false;
-                Hospital hospital = optionalHospital.get();
                 Department department = new Department();
                 for(Department department2:hospital.getDepartments()){
                     if (department2.getId() == department1.getId()){
@@ -102,6 +101,18 @@ public class HospitalServiceImplementation implements HospitalService {
             Department department = new Department();
             department.setName(departmentName);
             departmentRepository.save(department);
+            hospital.getDepartments().add(department);
+            if (queuesRepository.findQueueByDepartment(department) != null) {
+                System.out.println("The Queue Already created for this department");
+            } else {
+                System.out.println("creating the queue");
+
+                Queues queues = new Queues();
+                queues.setDepartment(department);
+                department.setQueues(queues);
+                queuesRepository.save(queues);
+                System.out.println("created the queue for department : " + department.getName());
+            }
             System.out.println("deparetment "+department.getId()+":"+department.getName()+ " in department table");
         }
     }

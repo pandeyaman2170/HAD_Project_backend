@@ -90,7 +90,7 @@ public class PatientServiceImpl implements PatientService {
             // handle by error
         }else{
             Queues queues = patient.getQueues();
-            if(queues != null) {
+            if(queues != null && queues.getPatients() != null) {
                 queues.getPatients().remove(patient);
                 patient.setQueues(null);
                 for (Patient patient1 : queues.getPatients()){
