@@ -1,5 +1,6 @@
 package com.example.teleconsultationbackend.Controller;
 
+import com.example.teleconsultationbackend.DTO.FollowUpDetails;
 import com.example.teleconsultationbackend.DTO.OnlyPatientDetails;
 import com.example.teleconsultationbackend.DTO.PatientDetails;
 import com.example.teleconsultationbackend.Entity.Department;
@@ -11,6 +12,7 @@ import com.example.teleconsultationbackend.Repository.PatientRepository;
 import com.example.teleconsultationbackend.Repository.QueuesRepository;
 import com.example.teleconsultationbackend.Security.EncryptionService;
 import com.example.teleconsultationbackend.Service.PatientService;
+import com.example.teleconsultationbackend.Service.PrescriptionService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,8 @@ import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -41,6 +45,9 @@ public class PatientController {
 
     @Autowired
     private DepartmentRepository departmentRepository;
+
+    @Autowired
+    private PrescriptionService prescriptionService;
 
     // Wrapper class for both User and otpFlag
     @Getter
@@ -141,6 +148,18 @@ public class PatientController {
     public PatientDetails getPatientDetailsForConsultation(@PathVariable String patientId) {
         return patientService.getPatientDetailsForConsultation(Long.parseLong(patientId));
     }
+
+    @PreAuthorize("hasRole('ROLE_PATIENT')")
+    @GetMapping("/getFollowUp/{patient_id}")
+    public List<FollowUpDetails> getFollowUpDetails(@PathVariable String patient_id) {
+        return prescriptionService.getFollowUpDetails(Long.parseLong(patient_id));
+    }
+
+//    @PreAuthorize("hasRole('ROLE_PATIENT')")
+//    @GetMapping("/getOnlineStatusDoctor/{patient_id}")
+//    public bool getOnlineStatusDoctor(@PathVariable String patient_id) {
+//        return prescriptionService.getOnlineStatusDoctor(Long.parseLong(patient_id));
+//    }
 
 
 
