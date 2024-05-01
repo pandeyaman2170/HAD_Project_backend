@@ -14,4 +14,6 @@ public interface DoctorService {
     void setDoctorOnlineStatusHelper(Long doctorId);
 
     void setDoctorOfflineStatusHelper(Long doctorId);
+
+    void updateDoctorDetails(Long doctorId, DoctorFetchDetails doctorFetchDetails);
 }

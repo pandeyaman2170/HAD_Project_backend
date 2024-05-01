@@ -72,4 +72,10 @@ public class HospitalController {
         return hospitalService.getHospitalTotalConsultations(hospital_id);
     }
 
+    @PutMapping("/hospital_admin/updateDoctor/{doctorId}")
+    public String updateDoctor(@PathVariable Long doctorId, @RequestBody DoctorFetchDetails doctorFetchDetails){
+        doctorService.updateDoctorDetails(doctorId,doctorFetchDetails);
+        return "doctor updated successfully";
+    }
+
 }

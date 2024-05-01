@@ -61,16 +61,33 @@ public class ConsultationController {
         consultationService.addConsultationStatusWaitinghelper(Long.valueOf(patientId), Long.valueOf(depId));
     }
 
-    @CrossOrigin
-    @PostMapping("/accept_call/{doctorId}/{patientId}")
-    public void setStatusToAccepted(@PathVariable Long doctorId, @PathVariable String patientId){
-        consultationService.setStatusToAcceptedHelper(doctorId, Long.valueOf(patientId));
-        simpMessagingTemplate.convertAndSend("/topic/patient-waiting/"+patientId, doctorId);
-    }
+//    @CrossOrigin
+//    @PostMapping("/accept_call/{doctorId}/{patientId}")
+//    public void setStatusToAccepted(@PathVariable Long doctorId, @PathVariable String patientId){
+//        consultationService.setStatusToAcceptedHelper(doctorId, Long.valueOf(patientId));
+//        simpMessagingTemplate.convertAndSend("/topic/patient-waiting/"+patientId, doctorId);
+//    }
 
     @CrossOrigin
-    @GetMapping("/getRepeatStatus/{patientId}/{doctorId}")
-    public String getRepeatStatus(@PathVariable Long patientId, @PathVariable Long doctorId){
-        return consultationService.getRepeatStatusHelper(patientId, doctorId);
+    @PostMapping("/accept_call/{doctorId}/{patientId}")
+    public void setStatusToAccepted(@PathVariable Long doctorId, @PathVariable String patientId) {
+        System.out.println("doc id:"+ doctorId);
+        System.out.println("Pat ID: "+ patientId);
+        try {
+            Long patientIdLong = null;
+            if (patientId != null && !patientId.equals("undefined")) {
+                patientIdLong = Long.parseLong(patientId);
+            }
+            if (patientIdLong != null) {
+                consultationService.setStatusToAcceptedHelper(doctorId, patientIdLong);
+                simpMessagingTemplate.convertAndSend("/topic/patient-waiting/" + patientIdLong, doctorId);
+            } else {
+                // Handle the case where patientId is null or "undefined"
+                // You can log an error message or throw an exception as appropriate
+            }
+        } catch (NumberFormatException e) {
+            // Handle the case where patientId is not a valid numeric string
+            // You can log an error message or throw an exception as appropriate
+        }
     }
 }

@@ -120,6 +120,26 @@ public class DoctorServiceImplementation implements DoctorService {
     }
 
     @Override
+    public void updateDoctorDetails(Long doctorId, DoctorFetchDetails doctorDetails){
+        System.out.println("doctor details: "+doctorDetails);
+        Doctor doctor = doctorRepository.findDoctorById(doctorId);
+        doctor.getUser().setPhone(doctorDetails.getPhoneNumber());
+        doctor.getUser().setFirstName(doctorDetails.getFirstName());
+        doctor.getUser().setLastName(doctorDetails.getLastName());
+        doctor.getUser().setPincode(doctorDetails.getPincode());
+        doctor.getUser().setCity(doctorDetails.getCity());
+        doctor.getUser().setAddress(doctorDetails.getAddr());
+        doctor.getUser().setTitle(doctorDetails.getTitle());
+        doctor.getUser().setEmail(doctorDetails.getEmail());
+        doctor.setRole(doctorDetails.getRole());
+        doctor.getUser().setDob(doctorDetails.getDob());
+        Department department = departmentRepository.findDepartmentByName(doctorDetails.getDepartmentName());
+        doctor.setDepartment(department);
+
+        doctorRepository.save(doctor);
+    }
+
+    @Override
     public void setDoctorOnlineStatusHelper(Long doctorId) {
         Doctor doctor = doctorRepository.findDoctorById(doctorId);
         doctor.setOnline_status(true);
