@@ -73,9 +73,9 @@ public class GlobalAdminController {
 
     @PostMapping("/login")
     public JwtResponse authenticate(@RequestBody JwtRequest jwtRequest) throws Exception{
-        System.out.println("hello");
-        System.out.println(jwtRequest.getUsername());
-        System.out.println(jwtRequest.getPassword());
+//        System.out.println("hello");
+//        System.out.println(jwtRequest.getUsername());
+//        System.out.println(jwtRequest.getPassword());
         try {
             System.out.println("in try");
             authenticationManager.authenticate(
