@@ -7,4 +7,6 @@ public interface ShareRecordService {
     void createShareRecord(Hospital sending, Hospital receiving);
 
     void addRecordHelper(Long patientId, Long doctorId);
+
+    void revokeConsentHelper(Long patientId);
 }

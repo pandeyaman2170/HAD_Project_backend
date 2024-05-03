@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class ShareRecordImplementation implements ShareRecordService{
@@ -66,5 +67,16 @@ public class ShareRecordImplementation implements ShareRecordService{
                 }
             }
         }
+    }
+
+    @Override
+    public void revokeConsentHelper(Long patientId) {
+        List<ShareRecordHospital> recordsToDelete = new ArrayList<>();
+        for (ShareRecordHospital shareRecordHospital : shareRecordRepository.findAll()) {
+            if (Objects.equals(shareRecordHospital.getPatientId(), patientId)) {
+                recordsToDelete.add(shareRecordHospital);
+            }
+        }
+        shareRecordRepository.deleteAll(recordsToDelete);
     }
 }
