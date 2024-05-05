@@ -31,4 +31,9 @@ public class ShareRecordController {
     public void addRecord(@PathVariable Long patientId, @PathVariable Long doctorId){
         shareRecordService.addRecordHelper(patientId, doctorId);
     }
+
+    @DeleteMapping("/revokeConsent/{patientId}")
+    public void revokeConsent(@PathVariable Long patientId){
+        shareRecordService.revokeConsentHelper(patientId);
+    }
 }
