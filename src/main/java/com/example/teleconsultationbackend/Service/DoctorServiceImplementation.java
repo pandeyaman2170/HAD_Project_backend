@@ -93,8 +93,7 @@ public class DoctorServiceImplementation implements DoctorService {
                         doctor.getRegistrationNumber(), doctor.getUser().getDob(),
                         doctor.getUser().getGender(), doctor.getUser().getAddress(),
                         doctor.getUser().getCity(), doctor.getUser().getPincode(),
-                        doctor.getDepartment().getName(),doctor.getHospital().getHospital_id(),doctor.getRole()
-
+                        doctor.getDepartment().getName(),doctor.getHospital().getHospital_id(),doctor.getRole(),doctor.getAccount_status()
                 );
             }
             return null;

@@ -44,6 +44,8 @@ public class DoctorFetchDetails {
     private Long hospitalID;
 
     private String role;
+
+    private String accountStatus;
     // ------------------------------- toString() method -------------------------------
 
     @Override
