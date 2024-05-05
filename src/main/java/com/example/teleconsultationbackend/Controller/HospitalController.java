@@ -77,5 +77,10 @@ public class HospitalController {
         doctorService.updateDoctorDetails(doctorId,doctorFetchDetails);
         return "doctor updated successfully";
     }
+    @PostMapping("/hospital_admin/deactivateDoctor/{doctorId}")
+    public String deactivateDoctor(@PathVariable Long doctorId){
+        doctorService.deactivateDoctor(doctorId);
+        return "doctor deactivated successfully";
+    }
 
 }

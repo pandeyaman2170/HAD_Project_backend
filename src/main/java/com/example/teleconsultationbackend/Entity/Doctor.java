@@ -34,6 +34,9 @@ public class Doctor{
     @Column(name = "role",nullable = false)
     private String role;
 
+    @Column(name = "account_status",nullable = false)
+    private String account_status;
+
     @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")

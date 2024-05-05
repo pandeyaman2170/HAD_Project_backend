@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.print.Doc;
 import java.util.List;
 
 @Service
@@ -67,6 +68,7 @@ public class DoctorServiceImplementation implements DoctorService {
             doctor.setRole(doctorDetails.getRole());
             doctor.setUser(user);
             doctor.setAadhar_number(doctorDetails.getAadhar_number());
+            doctor.setAccount_status("active");
             userRepository.save(user);
             doctorRepository.save(doctor);
             // Saving the online doctors to the database
@@ -151,5 +153,14 @@ public class DoctorServiceImplementation implements DoctorService {
         Doctor doctor = doctorRepository.findDoctorById(doctorId);
         doctor.setOnline_status(false);
         doctorRepository.save(doctor);
+    }
+
+    @Override
+    public String deactivateDoctor(Long doctorId)
+    {
+        Doctor doctor = doctorRepository.findDoctorById(doctorId);
+        doctor.setAccount_status("deactive");
+        doctorRepository.save(doctor);
+        return "deactivated";
     }
 }

@@ -16,4 +16,6 @@ public interface DoctorService {
     void setDoctorOfflineStatusHelper(Long doctorId);
 
     void updateDoctorDetails(Long doctorId, DoctorFetchDetails doctorFetchDetails);
+
+    String deactivateDoctor(Long doctorId);
 }
