@@ -1,7 +1,7 @@
 /test/
 /.idea
 /pom.xml
-/main/resources/
+/main/resources/application.yml
 /.idea/dataSources.local.xml
 /.idea/dataSources.xml
 /.idea/dataSources/e350c549-7e7a-47ae-ba2b-b6039e61c0fa.xml
@@ -43,5 +43,5 @@ build/
 
 ### VS Code ###
 .vscode/
-/src/main/resources/
-/src/main/resources/
+/src/main/resources/application.yml
+/src/main/resources/application.yml
