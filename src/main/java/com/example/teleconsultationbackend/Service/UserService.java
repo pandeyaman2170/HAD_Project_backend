@@ -51,9 +51,10 @@ public class UserService {
             if(role.equals("patient")) {
                 userLoginStatus.setId(patientRepository.findPatientByUserId(user.getId()).getId());
                 userLoginStatus.setIsValid(true);
-            }else {
-                userLoginStatus.setId(doctorRepository.findDoctorByUserId(user.getId()).getId());
-                userLoginStatus.setIsValid(true);
+            }else if(role.equals("doctor")){
+                if(user.getDoctor().getAccount_status().equals("active"))
+                { userLoginStatus.setId(doctorRepository.findDoctorByUserId(user.getId()).getId());
+                userLoginStatus.setIsValid(true);}
             }
         }else {
             userLoginStatus.setIsValid(false);
