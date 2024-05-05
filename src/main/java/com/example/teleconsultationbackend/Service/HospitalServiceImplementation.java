@@ -165,7 +165,9 @@ public class HospitalServiceImplementation implements HospitalService {
             doc.setCity(doctor.getUser().getCity());
             doc.setDepartmentName(doctor.getDepartment().getName());
             doc.setRole(doctor.getUser().getRole());
+            doc.setAccountStatus(doctor.getAccount_status());
             doclist.add(doc);
+
 //            System.out.println(doctor.getUser().getFirstName());
         }
         return doclist;
