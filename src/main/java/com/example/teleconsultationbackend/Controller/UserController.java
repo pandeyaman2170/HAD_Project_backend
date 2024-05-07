@@ -8,6 +8,7 @@ import com.example.teleconsultationbackend.Service.UserAuthenticationService;
 import com.example.teleconsultationbackend.Service.UserService;
 import com.example.teleconsultationbackend.Utility.JWTUtility;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -40,6 +41,9 @@ public class UserController {
 
     @Autowired
     private UserAuthenticationService userAuthenticationService;
+
+    @Autowired
+    private HttpServletRequest request;
 
     @GetMapping ("/login/{phone_num}/{role}")
     public UserLoginStatus login(@PathVariable String role, @PathVariable String phone_num) throws NoSuchAlgorithmException {
