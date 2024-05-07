@@ -9,6 +9,7 @@ import com.example.teleconsultationbackend.Service.GlobalAdminService;
 import com.example.teleconsultationbackend.Service.UserAuthenticationService;
 import com.example.teleconsultationbackend.Utility.JWTUtility;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -38,6 +39,9 @@ public class GlobalAdminController {
 
     @Autowired
     private UserAuthenticationService userService;
+
+    @Autowired
+    private HttpServletRequest request;
 
     @PreAuthorize("hasRole('ROLE_GLOBALADMIN')")
     @PostMapping("/addHospital/{admin_id}")
