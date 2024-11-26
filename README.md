@@ -91,13 +91,75 @@ Each service underwent rigorous testing for:
 ### Activity Transition Graphs (ATG)
 ```mermaid
 stateDiagram-v2
-    [*] --> PatientRegistration
-    PatientRegistration --> Login
-    Login --> WaitingQueue
-    WaitingQueue --> Consultation
-    Consultation --> PrescriptionGeneration
-    PrescriptionGeneration --> RecordSharing
-    RecordSharing --> [*]
+    [*] --> Authentication: User Login
+    
+    Authentication --> GlobalAdminPortal: Global Admin Login
+    Authentication --> HospitalAdminPortal: Hospital Admin Login
+    Authentication --> DoctorPortal: Doctor Login
+    Authentication --> PatientPortal: Patient Login/Register
+
+    state GlobalAdminPortal {
+        [*] --> ManageHospitals
+        ManageHospitals --> ViewHospitals
+        ManageHospitals --> AddHospital
+        ManageHospitals --> UpdateHospital
+        ManageHospitals --> DeleteHospital
+        state ViewAnalytics {
+            TotalHospitals
+            TotalDoctors
+            TotalPatients
+        }
+    }
+
+    state HospitalAdminPortal {
+        [*] --> ManageDepartments
+        [*] --> ManageDoctors
+        ManageDepartments --> AddDepartment
+        ManageDepartments --> ViewDepartments
+        ManageDoctors --> AddDoctor
+        ManageDoctors --> ViewDoctors
+        state ViewHospitalStats {
+            ConsultationList
+            DepartmentList
+            DoctorList
+        }
+    }
+
+    state DoctorPortal {
+        [*] --> OnlineStatus
+        OnlineStatus --> Online: Set Online
+        OnlineStatus --> Offline: Set Offline
+        Online --> ConsultationMode
+        state ConsultationMode {
+            WaitingForPatient
+            InConsultation
+            WritePrescription
+        }
+        ConsultationMode --> ViewDailyLog
+        ConsultationMode --> GeneratePDF
+    }
+
+    state PatientPortal {
+        [*] --> UpdateProfile
+        [*] --> JoinQueue
+        JoinQueue --> WaitingInQueue: Department Selection
+        WaitingInQueue --> InConsultation: Doctor Accepts
+        InConsultation --> ConsultationEnd: Doctor Generates Prescription
+        ConsultationEnd --> ViewPrescriptions
+        ConsultationEnd --> DownloadPDF
+        state ViewRecords {
+            PrescriptionHistory
+            FollowupDetails
+            SharedRecords
+        }
+    }
+
+    state ConsultationProcess {
+        WaitingInQueue --> PatientCalled: Doctor Available
+        PatientCalled --> ConsultationStarted: Accept Call
+        ConsultationStarted --> PrescriptionGenerated: End Consultation
+        PrescriptionGenerated --> ConsultationClosed: Patient Confirms
+    }
 ```
 
 ### Data Flow Model
