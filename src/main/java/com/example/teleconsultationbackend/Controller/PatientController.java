@@ -113,7 +113,7 @@ public class PatientController {
         Queues queues = queuesRepository.findQueueByDepartment(department);
         if(queues != null && !queues.getPatients().isEmpty()) {
             Long pidFirst = queues.getPatients().get(0).getId();
-            simpMessagingTemplate.convertAndSend("/topic/call-incoming/1", pidFirst);
+            simpMessagingTemplate.convertAndSend("/topic/call-incoming/"+dep_id.toString(), pidFirst);
         }
     }
 
@@ -125,9 +125,9 @@ public class PatientController {
         patientService.deletePatientFromQueue(pid);
         if(queues != null && !queues.getPatients().isEmpty()) {
             Patient newPatient = queues.getPatients().get(0);
-            simpMessagingTemplate.convertAndSend("/topic/call-incoming/1", newPatient.getId());
+            simpMessagingTemplate.convertAndSend("/topic/call-incoming/"+queues.getDepartment().getId().toString(), newPatient.getId());
         } else {
-            simpMessagingTemplate.convertAndSend("/topic/call-incoming/1", -1);
+            simpMessagingTemplate.convertAndSend("/topic/call-incoming/"+queues.getDepartment().getId().toString(), -1);
         }
     }
 

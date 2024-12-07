@@ -76,6 +76,6 @@ public class QueueServiceImpl implements QueueService{
         Queues queues = queuesRepository.findQueueByDepartment(department);
         if(queues != null && queues.getPatients() != null)
             return queues.getPatients().size();
-        return -1;
+        else return 0;
     }
 }
